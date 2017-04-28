@@ -1,4 +1,4 @@
-通用：
+﻿通用：
 请求前缀 http://hzmozhi.com:85/api/
 code 10000  成功  其他失败(具体看msg)
      50003  缺少accessToken
@@ -10,6 +10,7 @@ code 10000  成功  其他失败(具体看msg)
 
 管理员登录
 url：admin/login
+POST
 input:
 account 、pwd(md5后)    测试账号： admin/123456
 output:
@@ -17,6 +18,7 @@ accessToken(用户信息的token 后台访问都需要带上 有效期2小时) �
 
 退出
 url：admin/loginOut
+GET
 input:
 accessToken
 output:
@@ -24,6 +26,7 @@ code 10000
 
 操作管理员组
 url：admin/operAdminGroup
+POST
 input:
 type(1 新增、2 编辑、3 删除) 、adminGpId(管理组id) 、adminGpName(管理组的名称) 、status(状态) 、isYwy(是否是业务员) 、remark(备注)、permission(权限 传对象)
 output:
@@ -32,6 +35,7 @@ code 10000
 
 管理员组列表
 url：admin/adminGroupList
+GET
 input:
 offset(游标)、count(每页展示多少条) 
 output:
@@ -40,6 +44,7 @@ adminGroupList
 
 操作管理员
 url：admin/operAdmin
+POST
 input:
 type(1 新增、2 编辑、3 删除) 、adminId 、account 、pwd、nickName、email、status(状态)、remark(备注)、groupId
 output:
@@ -48,14 +53,24 @@ code 10000
 
 管理员列表
 url：admin/adminList
+GET
 input:
 offset(游标)、count(每页展示多少条) 
 output:
 adminList
 
 
+权限列表
+url：admin/getPermissions
+GET
+input:
+output:
+permissionList
+
+
 操作用户组
 url：admin/operUserGroup
+POST
 input:
 type(1 新增、2 编辑、3 删除) 、userGpId 、userGpName 、remark
 output:
@@ -64,6 +79,7 @@ code 10000
 
 用户组列表
 url：admin/userGroupList
+GET
 input:
 offset(游标)、count(每页展示多少条) 
 output:
@@ -72,6 +88,7 @@ userGroupList
 
 操作用户
 url：admin/operUser
+POST
 input:
 type(1 新增、2 编辑、3 删除) 、userId 、userName 、pwd、realName、groupId、status、ywyId(业务员ID)
 output:
@@ -80,6 +97,7 @@ code 10000
 
 用户列表
 url：admin/userList
+GET
 input:
 offset(游标)、count(每页展示多少条) 
 output:
@@ -88,6 +106,7 @@ userList
 
 操作分销商
 url：admin/operDistributor
+POST
 input:
 type(1 新增、2 编辑、3 删除) 、distId 、disName 、company、contact、contactTel、status、bindDomain、luozuanAdvantage、caizuanAdvantage、sanhuoAdvantage、consignmentAdvantage、note
 output:
@@ -96,6 +115,7 @@ code 10000
 
 分销商列表
 url：admin/distributorList
+GET
 input:
 offset(游标)、count(每页展示多少条) 
 output:
