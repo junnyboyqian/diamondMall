@@ -1,4 +1,4 @@
-通用：
+﻿通用：
 请求前缀 http://hzmozhi.com:85/api/
 code 10000  成功  其他失败(具体看msg)
      50003  缺少accessToken
@@ -54,7 +54,7 @@ actGoodsList
 
 
 产品分类列表
-url：goodsCateList
+url：goodsCateList   /  goodsCateListV1
 GET
 input:
 output:
