@@ -89,3 +89,41 @@ input:
 output:
 goodsAttrList
 
+
+上传证书货图片
+url: uploadZshImage
+POST
+input: imageUrl
+output:
+code 10000
+
+
+上传证书货视频
+url: uploadZshVideo
+POST
+input: videoUrl
+output:
+code 10000
+
+
+上传产品图片
+url: uploadGoodsImage
+POST
+input: imageUrl
+output:
+code 10000
+
+
+上传珠宝试戴图片
+url: uploadGoodsTryThumb
+POST
+input: tryThumb
+output:
+code 10000
+
+上传珠宝视频
+url: uploadGoodsVideoAdds
+POST
+input: videoAdds
+output:
+code 10000
