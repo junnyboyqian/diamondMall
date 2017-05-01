@@ -12,7 +12,11 @@ code 10000  成功  其他失败(具体看msg)
 url：admin/operZsh
 POST
 input:
-type(1 新增、2 编辑、3 删除) 、zshId(证书货id) 、dia_type(钻石类型) 、shape(钻石的形状) 、zs_type(证书类型) 、address(所在地)、weight(重量)、jd(净度)、polish (抛光)、fluor(荧光)、coffee(咖色)、dia_global_price（国际报价）、image_url、video_url、stock（库存）、certificate_number（证书编号）、quxiang(去向)、color、cut(切工)、symmetry(对称)、milk(奶色)、dia_table（台面比）、dia_size（大小）、dia_discount（折扣）、dia_price（销售单价）、purchase_price(采购单价)
+type(1 新增、2 编辑、3 删除) 、zshId(证书货id) 、diaType(钻石类型) 、shape(钻石的形状) 、zsType(证书类型) 、
+address(所在地)、weight(重量)、jd(净度)、polish (抛光)、fluor(荧光)、coffee(咖色)、diaGlobalPrice（国际报价）、
+imageUrl、videoUrl、stock（库存）、certificateNumber（证书编号）、quxiang(去向)、color、cut(切工)、
+symmetry(对称)、milk(奶色)、diaTable（台面比）、diaSize（大小）、diaDiscount（折扣）、diaPrice（销售单价）、
+purchasePrice(采购单价)
 output:
 code 10000
 
@@ -85,3 +89,41 @@ input:
 output:
 goodsAttrList
 
+
+上传证书货图片
+url: uploadZshImage
+POST
+input: imageUrl
+output:
+code 10000
+
+
+上传证书货视频
+url: uploadZshVideo
+POST
+input: videoUrl
+output:
+code 10000
+
+
+上传产品图片
+url: uploadGoodsImage
+POST
+input: imageUrl
+output:
+code 10000
+
+
+上传珠宝试戴图片
+url: uploadGoodsTryThumb
+POST
+input: tryThumb
+output:
+code 10000
+
+上传珠宝视频
+url: uploadGoodsVideoAdds
+POST
+input: videoAdds
+output:
+code 10000
