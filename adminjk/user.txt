@@ -42,6 +42,15 @@ output:
 adminGroupList
 
 
+管理员组详情
+url：admin/getAdminGroupDetail
+GET
+input:
+adminGpId
+output:
+adminGroupDetail
+
+
 操作管理员
 url：admin/operAdmin
 POST
@@ -49,6 +58,15 @@ input:
 type(1 新增、2 编辑、3 删除) 、adminId 、account 、pwd、nickName、email、status(状态)、remark(备注)、groupId
 output:
 code 10000
+
+
+管理员详情
+url：admin/getAdminDetail
+GET
+input:
+adminId
+output:
+adminDetail
 
 
 管理员列表
@@ -77,6 +95,15 @@ output:
 code 10000
 
 
+用户组详情
+url：admin/getUserGroupDetail
+GET
+input:
+userGpId
+output:
+userGroupDetail
+
+
 用户组列表
 url：admin/userGroupList
 GET
@@ -93,6 +120,15 @@ input:
 type(1 新增、2 编辑、3 删除) 、userId 、userName 、pwd、realName、groupId、status、ywyId(业务员ID)
 output:
 code 10000
+
+
+用户详情
+url：admin/getUserDetail
+GET
+input:
+userId
+output:
+userDetail
 
 
 用户列表
