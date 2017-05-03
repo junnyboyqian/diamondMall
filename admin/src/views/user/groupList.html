@@ -1,0 +1,79 @@
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {}
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">首页</a>
+        </li>
+        <li class="active">用户</li>
+    </ul>
+    <!-- /.breadcrumb -->
+</div>
+
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+                        用户
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            管理组列表
+                        </small>
+                    </h1>
+    </div>
+    <!-- /.page-header -->
+    <div class="page-header">
+        <a ui-sref="index.addGroup" class="btn btn-primary">添加管理组</a>
+    </div>
+    <!-- /.page-header -->
+
+    <div class="row" ng-controller="groupListCtrl">
+        <div class="col-xs-12">
+            <table id="simple-table" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>管理组id</th>
+                        <th>管理组名称</th>
+                        <th class="hidden-480">管理组状态</th>
+
+                        <th>
+                            备注
+                        </th>
+                        <th class="hidden-480">操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="item in adminGroupList">
+
+                        <td align="center">
+                            {{item.id}}
+                        </td>
+                        <td align="center">{{item.groupName}}</td>
+                        <td align="center" class="hidden-480">
+                            <span ng-show="item.status == 1">正常</span>
+                            <span ng-show="item.status == 2">关闭</span>
+                        </td>
+                        <td align="center">{{item.remark}}</td>
+
+                        <td class="hidden-480" align="center">
+                            <a ui-sref="index.groupInfo({id: item.id})">分配权限</a>
+                            <a ui-sref="index.adminUserList({id: item.id})">下级管理员</a>
+                            <a ui-sref="index.groupInfo">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.page-content -->

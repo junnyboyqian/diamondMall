@@ -1,0 +1,266 @@
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {}
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">首页</a>
+        </li>
+        <li class="active">产品</li>
+    </ul>
+    <!-- /.breadcrumb -->
+</div>
+
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+                        产品
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            产品列表
+                        </small>
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            添加产品
+                        </small>
+                    </h1>
+    </div>
+    <!-- /.page-header -->
+
+    <div class="row" ng-controller="addProductCtrl">
+        <div class="col-xs-12">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品分类: </label>
+
+                    <div class="col-sm-9">
+                        <select class="" name="">
+                            <option ng-repeat="item in productCatLits" value="{{item.cateId}}">{{item.cateName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品名称: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" value="servcie@nanping.btbzm.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品编号: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" value="servcie@nanping.btbzm.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品属性: </label>
+
+                    <div class="col-sm-9">
+                        <div class="widget-box">
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                    <label>
+										<input name="form-field-checkbox" type="checkbox" class="ace">
+										<span class="lbl"> 后台首页</span>
+									</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品定制规格： </label>
+
+                    <div class="col-sm-9">
+                        <label>
+                            <input type="radio" name="sex" class="ace">
+                            <span class="lbl"> 金工石</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="sex" class="ace">
+                            <span class="lbl"> 自定义</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 个性符号: </label>
+
+                    <div class="col-sm-9">
+                        <input type="file" id="id-input-file-2" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品图片: </label>
+
+                    <div class="col-sm-9">
+                        <input type="file" id="id-input-file-3" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 珠宝试戴图片: </label>
+
+                    <div class="col-sm-9">
+                        <input type="file" id="id-input-file-1" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品视频: </label>
+
+                    <div class="col-sm-9">
+                        <input type="file" id="id-input-file-4" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 商品详情: </label>
+
+                    <div class="col-sm-9">
+                        <div class="wysiwyg-editor" id="editor1"></div>
+                    </div>
+                </div>
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-1 col-md-9">
+                        <button class="btn btn-info" type="button">
+							<i class="ace-icon fa fa-check bigger-110"></i>
+							提交
+						</button> &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset">
+							<i class="ace-icon fa fa-undo bigger-110"></i>
+							重置
+						</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.page-content -->
+
+<script type="text/javascript">
+    $(function() {
+        $('#id-input-file-1 , #id-input-file-2 , #id-input-file-3, #id-input-file-4').ace_file_input({
+            no_file: 'No File ...',
+            btn_choose: 'Choose',
+            btn_change: 'Change',
+            droppable: false,
+            onchange: null,
+            thumbnail: false //| true | large
+            //whitelist:'gif|png|jpg|jpeg'
+            //blacklist:'exe|php'
+            //onchange:''
+            //
+        });
+    
+        function showErrorAlert (reason, detail) {
+            var msg='';
+            if (reason==='unsupported-file-type') { msg = "Unsupported format " +detail; }
+            else {
+                //console.log("error uploading file", reason, detail);
+            }
+            $('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+ 
+             '<strong>File upload error</strong> '+msg+' </div>').prependTo('#alerts');
+        }
+
+        // $('#editor1').ace_wysiwyg();//this will create the default editor will all buttons
+
+        //but we want to change a few buttons colors for the third style
+        $('#editor1').ace_wysiwyg({
+            toolbar:
+            [
+                'font',
+                null,
+                'fontSize',
+                null,
+                {name:'bold', className:'btn-info'},
+                {name:'italic', className:'btn-info'},
+                {name:'strikethrough', className:'btn-info'},
+                {name:'underline', className:'btn-info'},
+                null,
+                {name:'insertunorderedlist', className:'btn-success'},
+                {name:'insertorderedlist', className:'btn-success'},
+                {name:'outdent', className:'btn-purple'},
+                {name:'indent', className:'btn-purple'},
+                null,
+                {name:'justifyleft', className:'btn-primary'},
+                {name:'justifycenter', className:'btn-primary'},
+                {name:'justifyright', className:'btn-primary'},
+                {name:'justifyfull', className:'btn-inverse'},
+                null,
+                {name:'createLink', className:'btn-pink'},
+                {name:'unlink', className:'btn-pink'},
+                null,
+                {name:'insertImage', className:'btn-success'},
+                null,
+                'foreColor',
+                null,
+                {name:'undo', className:'btn-grey'},
+                {name:'redo', className:'btn-grey'}
+            ],
+            'wysiwyg': {
+                fileUploadError: showErrorAlert
+            }
+        }).prev().addClass('wysiwyg-style2');
+
+        
+
+        
+
+        //RESIZE IMAGE
+        
+        //Add Image Resize Functionality to Chrome and Safari
+        //webkit browsers don't have image resize functionality when content is editable
+        //so let's add something using jQuery UI resizable
+        //another option would be opening a dialog for user to enter dimensions.
+        if ( typeof jQuery.ui !== 'undefined' && ace.vars['webkit'] ) {
+            
+            var lastResizableImg = null;
+            function destroyResizable() {
+                if(lastResizableImg == null) return;
+                lastResizableImg.resizable( "destroy" );
+                lastResizableImg.removeData('resizable');
+                lastResizableImg = null;
+            }
+
+            var enableImageResize = function() {
+                $('.wysiwyg-editor')
+                .on('mousedown', function(e) {
+                    var target = $(e.target);
+                    if( e.target instanceof HTMLImageElement ) {
+                        if( !target.data('resizable') ) {
+                            target.resizable({
+                                aspectRatio: e.target.width / e.target.height,
+                            });
+                            target.data('resizable', true);
+                            
+                            if( lastResizableImg != null ) {
+                                //disable previous resizable image
+                                lastResizableImg.resizable( "destroy" );
+                                lastResizableImg.removeData('resizable');
+                            }
+                            lastResizableImg = target;
+                        }
+                    }
+                })
+                .on('click', function(e) {
+                    if( lastResizableImg != null && !(e.target instanceof HTMLImageElement) ) {
+                        destroyResizable();
+                    }
+                })
+                .on('keydown', function() {
+                    destroyResizable();
+                });
+            }
+
+            enableImageResize();
+        }
+    })
+</script>

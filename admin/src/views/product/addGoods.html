@@ -1,0 +1,320 @@
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {}
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">首页</a>
+        </li>
+        <li class="active">产品</li>
+    </ul>
+    <!-- /.breadcrumb -->
+</div>
+
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+                        产品
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            产品列表
+                        </small>
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            添加编辑证书货
+                        </small>
+                    </h1>
+    </div>
+    <!-- /.page-header -->
+
+    <div class="row" ng-controller="addGoodsCtrl">
+        <div class="col-xs-12">
+            <form class="form-horizontal" role="form" ng-submit="processForm()">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 钻石名称: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="name" value="" 
+                            ng-model="formData.name">
+                        <span class="text-danger" ng-if="error.name"> {{error.name}}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 证书编号: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="certificate_number" value=""
+                            ng-model="formData.certificate_number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 钻石类型: </label>
+
+                    <div class="col-sm-9">
+                        <label>
+                            <input type="radio" name="dia_type" checked="true" class="ace"
+                                ng-model="formData.dia_type">
+                            <span class="lbl"> 白钻</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="dia_type" class="ace"
+                                ng-model="formData.dia_type">
+                            <span class="lbl"> 彩钻</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 钻石形状: </label>
+
+                    <div class="col-sm-9">
+                        <select class="" name="shape"
+                            ng-model="formData.shape"
+                            ng-init="formData.shape='ROUND'">
+                            <option value="ROUND">圆形</option>
+                            <option value="OVAL">椭圆</option>
+                            <option value="MARQUIS">马眼</option>
+                            <option value="HEART">心形</option>
+                            <option value="PEAR">水滴</option>
+                            <option value="PRINCESS">方形</option>
+                            <option value="EMERALD">祖母绿</option>
+                            <option value="CUSHION">枕形</option>
+                            <option value="RADIANT">蕾蒂恩</option>
+                            <option value="BAGUETTE ">梯方</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 证书类型: </label>
+
+                    <div class="col-sm-9">
+                        <select class="" name="zs_type"
+                            ng-model="formData.zs_type"
+                            ng-init="formData.zs_type='GIA'">
+                            <option value="GIA" selected>GIA</option>
+                            <option value="HRD">HRD</option>
+                            <option value="IGI">IGI</option>
+                            <option value="NGTC">国检</option>
+                            <option value="GTC">省检</option>
+                            <option value="OTHER">其它</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 所在地: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="address" value=""
+                            ng-model="formData.address">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 重量: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="weight" value=""
+                            ng-model="formData.weight">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 净度: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="jd" value=""
+                            ng-model="formData.jd">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 抛光: </label>
+
+                    <div class="col-sm-9">
+                        <select class="" name="polish"
+                            ng-model="formData.polish"
+                            ng-init="formData.polish='Ideal'">
+                            <option value="Ideal" selected>Ideal</option>
+                            <option value="EX">EX</option>
+                            <option value="VG">VG</option>
+                            <option value="GOOD">GOOD</option>
+                            <option value="OTHER">其它</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 荧光: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="fluor" value=""
+                            ng-model="formData.fluor">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 咖色: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="coffee" value=""
+                            ng-model="formData.coffee">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 全深比: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="duibi" value=""
+                            ng-model="formData.duibi">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 国际报价: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="dia_global_price" value=""
+                            ng-model="formData.dia_global_price">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 库存: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="stock" value=""
+                            ng-model="formData.stock">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 去向: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="quxiang" value=""
+                            ng-model="formData.quxiang">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 颜色: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="color" value=""
+                            ng-model="formData.color">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 切工: </label>
+
+                    <div class="col-sm-9">
+                        <select class="" name="cut"
+                            ng-model="formData.cut"
+                            ng-init="formData.cut='Ideal'">
+                            <option value="Ideal" selected>Ideal</option>
+                            <option value="EX">EX</option>
+                            <option value="VG">VG</option>
+                            <option value="GOOD">GOOD</option>
+                            <option value="OTHER">其它</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 对称: </label>
+
+                    <div class="col-sm-9">
+                        <select class="" name="symmetry"
+                            ng-model="formData.symmetry"
+                            ng-init="formData.symmetry='Ideal'">
+                            <option value="Ideal" selected>Ideal</option>
+                            <option value="EX">EX</option>
+                            <option value="VG">VG</option>
+                            <option value="GOOD">GOOD</option>
+                            <option value="OTHER">其它</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 奶色: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="milk" value=""
+                            ng-model="formData.milk">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 台面比: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="dia_table" value=""
+                            ng-model="formData.dia_table">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 大小: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="dia_size" value=""
+                            ng-model="formData.dia_size">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 折扣: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" name="dia_discount" value=""
+                            ng-model="formData.dia_discount">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品图片: </label>
+
+                    <div class="col-sm-9">
+                        <input type="file" id="id-input-file-3" name="image_url" 
+                            ng-change="checkInputError(1)"
+                            ng-model="formData.image_url"/>
+                        <p>注释：参考尺寸800*800px，等比例放大缩小，大小不得超过3M，支持jpg/png</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品视频: </label>
+
+                    <div class="col-sm-9">
+                        <input type="file" id="id-input-file-4" name="video_url" 
+                            ng-model="formData.video_url"/>
+                        <p>注释：大小不得超过3M，支持mp4</p>
+                    </div>
+                </div>
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-1 col-md-9">
+                        <button class="btn btn-info" type="submit">
+							<i class="ace-icon fa fa-check bigger-110"></i>
+							提交
+						</button> &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset">
+							<i class="ace-icon fa fa-undo bigger-110"></i>
+							重置
+						</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.page-content -->
+
+<script type="text/javascript">
+    $(function() {
+        $('#id-input-file-3, #id-input-file-4').ace_file_input({
+            no_file: 'No File ...',
+            btn_choose: 'Choose',
+            btn_change: 'Change',
+            droppable: false,
+            onchange: null,
+            thumbnail: false //| true | large
+            // whitelist:'gif|png|jpg|jpeg'
+            //blacklist:'exe|php'
+            //onchange:''
+            //
+        });
+    })
+</script>

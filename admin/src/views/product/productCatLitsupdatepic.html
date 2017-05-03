@@ -1,0 +1,92 @@
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {}
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">首页</a>
+        </li>
+        <li class="active">产品</li>
+    </ul>
+    <!-- /.breadcrumb -->
+</div>
+
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+                        产品
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            产品分类
+                        </small>
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            上传图片
+                        </small>
+                    </h1>
+    </div>
+    <!-- /.page-header -->
+
+    <div class="row">
+        <div class="col-xs-12">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 分类名称: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" value="servcie@nanping.btbzm.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" value="servcie@nanping.btbzm.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 图片: </label>
+
+                    <div class="col-sm-2">
+                        <input type="file" id="id-input-file-2" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> </label>
+
+                    <div class="col-sm-9">
+                        温馨提示：以上图片为系统默认图片，您还可以自己上传图片 。 上传图片要求：<br/>
+                        图片尺寸比例3：1，参考尺寸900*300px，大小不超过2M，支持JPG/PNG
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.page-content -->
+
+<script type="text/javascript">
+    $(function() {
+        $('#id-input-file-2').ace_file_input({
+            no_file: 'No File ...',
+            btn_choose: 'Choose',
+            btn_change: 'Change',
+            droppable: false,
+            onchange: null,
+            thumbnail: false //| true | large
+            //whitelist:'gif|png|jpg|jpeg'
+            //blacklist:'exe|php'
+            //onchange:''
+            //
+        });
+    })
+</script>

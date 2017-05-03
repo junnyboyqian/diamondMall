@@ -1,0 +1,85 @@
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {}
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">首页</a>
+        </li>
+        <li class="active">产品</li>
+    </ul>
+    <!-- /.breadcrumb -->
+</div>
+
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+                        产品
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            产品分类
+                        </small>
+                    </h1>
+    </div>
+    <!-- /.page-header -->
+
+    <div class="row" ng-controller="productCatLitsCtrl">
+        <div class="col-xs-12">
+            <table id="simple-table" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>分类ID</th>
+                        <th>分类名称、别名</th>
+                        <th>图片</th>
+                        <th class="hidden-480">操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="item in productCatLits">
+                        <td align="center">{{item.cateId}}</td>
+                        <td align="center">{{item.cateName}}</td>
+                        <th></th>
+                        <td class="hidden-480" align="center">
+                            <a ui-sref="index.productCatLitsupdatepic">上传图片</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.page-content -->
+
+<script type="text/javascript">
+
+	//And for the first simple table, which doesn't have TableTools or dataTables
+	//select/deselect all rows according to table header checkbox
+	var active_class = 'active';
+	$('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function(){
+		var th_checked = this.checked;//checkbox inside "TH" table header
+
+		$(this).closest('table').find('tbody > tr').each(function(){
+			var row = this;
+			if(th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
+			else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
+		});
+	});
+
+	//select/deselect a row when the checkbox is checked/unchecked
+	$('#simple-table').on('click', 'td input[type=checkbox]' , function(){
+		var $row = $(this).closest('tr');
+		if(this.checked) $row.addClass(active_class);
+		else $row.removeClass(active_class);
+	});
+
+</script>

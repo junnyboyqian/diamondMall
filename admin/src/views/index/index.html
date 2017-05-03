@@ -1,0 +1,14 @@
+<div id="navbar" class="navbar navbar-default" ng-include="'src/components/header.html'"></div>
+<!-- /section:basics/navbar.layout -->
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {}
+    </script>
+    <div id="sidebar" class="sidebar responsive" ng-include="'src/components/menu.html'"></div>
+    <div class="main-content">
+        <div class="main-content-inner" ui-view></div>
+    </div>
+    <div class="footer" ng-include="'src/components/footer.html'"></div>
+</div>

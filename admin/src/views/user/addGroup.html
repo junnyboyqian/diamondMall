@@ -1,0 +1,120 @@
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {}
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">首页</a>
+        </li>
+        <li class="active">用户</li>
+    </ul>
+    <!-- /.breadcrumb -->
+</div>
+
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+                        用户
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            管理组列表
+                        </small>
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            分配权限
+                        </small>
+                    </h1>
+    </div>
+    <!-- /.page-header -->
+
+    <div class="row" ng-controller="operAdminGroupCtrl">
+        <div class="col-xs-12">
+            <form class="form-horizontal" role="form" ng-submit="processForm()">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 管理组名称： </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" value="" ng-model="formData.adminGpName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 管理组名称： </label>
+
+                    <div class="col-sm-9">
+                        <select class="" name=""
+                            ng-model="formData.status"
+                            ng-init="formData.status='1'">
+                            <option value="1">开启</option>
+                            <option value="2">关闭</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 是否是业务员： </label>
+
+                    <div class="col-sm-9" >
+                        <select class="" name=""
+                            ng-model="formData.isYwy"
+                            ng-init="formData.isYwy='1'">
+                            <option value="1">是</option>
+                            <option value="2">否</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 备注： </label>
+
+                    <div class="col-sm-9">
+                        <textarea class="form-control" id="form-field-8" placeholder="Default Text" ng-model="formData.remark"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label no-padding-right">权限：</div>
+                    <div class="col-sm-9">
+                        <div class="col-sm-12" ng-repeat="list in permissionList">
+                            <div class="widget-box">
+                                <div class="widget-header">
+                                    <h4 class="widget-title">{{list.perName}}</h4>
+                                </div>
+
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <label ng-repeat="item in list.items">
+                                            <input name="permission" type="checkbox" class="ace" value="{{item.id}}" 
+                                                ng-model="$parent.formData.permission[list.id][$index]">
+                                            <span class="lbl"> {{item.perName}}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix form-actions">
+					<div class="col-md-offset-1 col-md-9">
+						<button class="btn btn-info" type="submit">
+							<i class="ace-icon fa fa-check bigger-110"></i>
+							提交
+						</button>
+
+						&nbsp; &nbsp; &nbsp;
+						<button class="btn" type="reset">
+							<i class="ace-icon fa fa-undo bigger-110"></i>
+							重置
+						</button>
+					</div>
+				</div>
+            </form>
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.page-content -->
