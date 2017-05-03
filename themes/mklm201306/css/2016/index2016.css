@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* ==轮播图== */
+.flicker-example { width: 100%; height:700px; margin:0 auto;}
+.flicker-example li a{width:100%; height:700px; display:block;}
+
+
+/* ==首页广告== */
+.in1606_adbody{width:100%; height:auto; background:#e9e8e8; margin:0 auto; padding:50px 0; overflow:hidden;}
+.in1606_ad{width:1280px; height:auto; margin:0 auto; position:relative;}
+.in1606_adpicl{width:851px; height:471px; }
+.in1606_adpicl img{width:845px; height:465px; border:solid 6px #fff;}
+
+.in1606_adpicl_info{width:490px; height:280px; position:absolute; background:#fff;}
+.in1606_adpicl_info h2{font:700 26px/40px "微软雅黑"; text-align:center; margin-top:80px;}
+.in1606_adpicl_info h3{font:400 20px/40px "微软雅黑"; text-align:center; color:#a3a3a3;}
+.in1606_adpicl_info h4{font:400 16px/40px "微软雅黑"; text-align:center; color:#900;}
+.in1606_adpicl_info a{width:140px; height:40px; border:solid 1px #555; text-align:center; font:400 16px/40px "微软雅黑"; display:block; margin:10px auto;}
+.in1606_adpicl_info a:hover{border:solid 1px #900; color:#fff; background:#973131;}
+.in1606_adpicl_xt{width:280px; height:100px; position:absolute;}
+.in1606_adpicl_xt img{width:280px; height:100px;}
+
+/* ==商品展示== */
+.in1606_show{width:1280px; height:97px; background:url(../../images/201606/index16_line.png) repeat-x; margin:0 auto;}
+.in1606_show_l{width:410px; height:97px; background:url(../../images/201606/index16_bg.png) no-repeat 0 -121px; float:left;}
+.in1606_show_menu{width:210px; height:30px; float:right; margin-top:20px;}
+.in1606_show_menu li{font:400 14px/30px "微软雅黑"; margin-right:10px; list-style:disc; float:left; width:60px; cursor:pointer;}
+.in1606_show_menu li.cur{color:#900; font-weight:bold;}
+
+.in1606_show_list{width:1280px; height:auto; margin:20px auto;}
+.in1606_show_list li{width:288px; height:auto; background:#eee; float:left; margin:0 16px; box-shadow:-webkit-box-shadow:0 0 10px #ccc;  -moz-box-shadow:0 0 10px #ccc;  box-shadow:0 0 10px #ccc; text-align:center;}
+.in1606_show_list li img{width:288px; height:288px;}
+.in1606_show_list li a{font:400 14px/30px "微软雅黑";}
