@@ -16,7 +16,7 @@ type(1 新增、2 编辑、3 删除) 、zshId(证书货id) 、diaType(钻石类�
 address(所在地)、weight(重量)、jd(净度)、polish (抛光)、fluor(荧光)、coffee(咖色)、diaGlobalPrice（国际报价）、
 imageUrl、videoUrl、stock（库存）、certificateNumber（证书编号）、quxiang(去向)、color、cut(切工)、
 symmetry(对称)、milk(奶色)、diaTable（台面比）、diaSize（大小）、diaDiscount（折扣）、diaPrice（销售单价）、
-purchasePrice(采购单价)
+purchasePrice(采购单价)、description(商品详情)
 output:
 code 10000
 
@@ -34,7 +34,7 @@ zshList
 url：admin/operGoods
 POST
 input:
-type(1 新增、2 编辑、3 删除) 、goodsId(证书货id) 、gtype(1 珠宝成品  2 珠宝定制)、cateId(分类id)、goodsName(商品名称)、goodsSeries(产品系列)、goodsSn(产品编号)、goodsAttr(产品属性 传对象)、imagesPath(产品图片)、price(销售价格 )、priceModel(产品定制规格)、defaultImage(默认图片)、tryThumb(珠宝试戴图片)、videoAdds(产品视频) 、description(商品详情)
+type(1 新增、2 编辑、3 删除) 、goodsId(证书货id) 、gtype(1 珠宝成品  2 珠宝定制)、cateId(分类id)、goodsName(商品名称)、goodsSeries(产品系列)、goodsSn(产品编号)、diaJd(钻石净度)、diaColor(钻石颜色)、diaQg(钻石切工)、imagesPath(产品图片)、price(销售价格 )、priceModel(产品定制规格)、defaultImage(默认图片)、tryThumb(珠宝试戴图片)、videoAdds(产品视频) 、description(商品详情)
 output:
 code 10000
 
