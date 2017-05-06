@@ -29,12 +29,23 @@ offset(游标)、count(每页展示多少条)
 output:
 zshList
 
+获取商品详情
+url: admin/getGoodsDetail
+GET
+input:
+goodsId
+output:
+goodsInfo
+包含字段：
+goodsId(证书货id) 、goodsName、gtype(1 珠宝成品  2 珠宝定制)、cateId、cateName、goodsSn(产品编号)、price(销售价)、marketPrice(市场价)、material(材质)、zdiaNum(主钻数量)、fdiaNum(副钻数量)、zdiaShape(钻石形状)、certificate(证书)、zdiaWeight(主钻重量)、fdiaWeight(副钻重量)、isSpot(是否现货)、stock(库存)、diaJd(钻石净度)、diaColor(钻石颜色)、diaQg(钻石切工)、goodsWeight(总重)、imagesPath(个性符号)、price(销售价格)、defaultImage(默认图片)、tryThumb(珠宝试戴图片)、videoAdds(产品视频) 、description(商品详情)、goodsImages(图片地址数组)
+
+
 
 操作产品
 url：admin/operGoods
 POST
 input:
-type(1 新增、2 编辑、3 删除) 、goodsId(证书货id) 、gtype(1 珠宝成品  2 珠宝定制)、cateId(分类id)、goodsName(商品名称)、goodsSeries(产品系列)、marketPrice(市场价)、material(材质)、zdiaNum(主钻数量)、fdiaNum(副钻数量)、zdiaShape(钻石形状)、certificate(证书)、zdiaWeight(主钻重量)、fdiaWeight(副钻重量)、isSpot(是否现货)、stock(库存)、goodsSn(产品编号)、diaJd(钻石净度)、diaColor(钻石颜色)、diaQg(钻石切工)、goodsWeight(总重)、imagesPath(产品图片)、price(销售价格)、defaultImage(默认图片)、tryThumb(珠宝试戴图片)、videoAdds(产品视频) 、description(商品详情)、goodsImages(图片地址数组)
+type(1 新增、2 编辑、3 删除) 、goodsId(证书货id) 、gtype(1 珠宝成品  2 珠宝定制)、cateId(分类id)、goodsName(商品名称)、goodsSeries(产品系列)、marketPrice(市场价)、material(材质)、zdiaNum(主钻数量)、fdiaNum(副钻数量)、zdiaShape(钻石形状)、certificate(证书)、zdiaWeight(主钻重量)、fdiaWeight(副钻重量)、isSpot(是否现货)、stock(库存)、goodsSn(产品编号)、diaJd(钻石净度)、diaColor(钻石颜色)、diaQg(钻石切工)、goodsWeight(总重)、imagesPath(个性符号)、price(销售价格)、defaultImage(默认图片)、tryThumb(珠宝试戴图片)、videoAdds(产品视频) 、description(商品详情)、goodsImages(图片地址数组)
 output:
 code 10000
 
