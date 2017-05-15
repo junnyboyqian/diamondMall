@@ -40,7 +40,8 @@ a:hover {color:#000;}
 */
 
 
-.head1606_logo{width:318px; height:76px; background:url(../../images/201606/index16_bg.png) repeat; margin:20px auto;}
+/*.head1606_logo{width:318px; height:76px; background:url(../../images/201606/index16_bg.png) repeat; margin:20px auto;}*/
+.head1606_logo{width:318px; height:76px; background:url(../../images/logo.png) repeat;background-size: cover; margin:20px auto;}
 .head1606_logo a{width:318px; height:76px; display:block;}
 
 .head1606_nav{width:1280px; height:40px; margin:0 auto; text-align:center;}
