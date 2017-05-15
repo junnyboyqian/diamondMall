@@ -20,6 +20,13 @@ purchasePrice(采购单价)、description(商品详情)
 output:
 code 10000
 
+证书货详情
+url：admin/zshDetail
+GET
+input: 
+zshId
+output: 
+zshInfo
 
 证书货列表
 url：admin/zshList
