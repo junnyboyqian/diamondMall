@@ -70,7 +70,48 @@ module.controller('productCatLitsCtrl', function ($scope, proData) {
 })
 
 module.controller('addProductCtrl', function ($scope, proData) {
-    // 添加产品
+    // 获取分类
     proData.getProductCatLits()
     $scope.productCatLits = proData.productCatLits
+    //  添加产品
+    $scope.formData = {};
+    $scope.formData.type = '1';
+    $scope.checkInputError = function (code) {
+        // console.log($scope.formData.image_url)
+    };
+    $scope.addProForm = function () {
+        var file1 = document.getElementById('id-input-file-1').files[0];
+        var file2 = document.getElementById('id-input-file-2').files[0];
+        var file3 = document.getElementById('id-input-file-3').files[0];
+        if (!file1) {
+            SweetAlert.swal({
+                title: '错误',
+                text: '请上传图片',
+                type: 'error'
+            });
+            return
+        }
+        if (!file2) {
+            SweetAlert.swal({
+                title: '错误',
+                text: '请上传视频',
+                type: 'error'
+            });
+            return
+        }
+        if (!file3) {
+            SweetAlert.swal({
+                title: '错误',
+                text: '请上传视频',
+                type: 'error'
+            });
+            return
+        }
+        $scope.formData.defaultImage = file1.name
+        $scope.formData.tryThumb = file2.name
+        $scope.formData.videoAdds = file3.name
+        $scope.formData.description = $('#editor1').html()
+        var params = $scope.formData
+        proData.addProduct(params)
+    };
 })

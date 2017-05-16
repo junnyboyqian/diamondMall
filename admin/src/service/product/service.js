@@ -115,4 +115,29 @@ module.service('proData', function ($http, $state, SweetAlert) {
             return console.log('ERROR: ' + res);
         })
     }
+    //  添加产品
+    self.addProduct = function (formData) {
+        var url = '/api/admin/operGoods';
+        return $http({
+            method: 'POST',
+            url: url,
+            params: formData,
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function (data) {
+            SweetAlert.swal({
+                title: '正确',
+                text: '添加成功',
+                type: 'success'
+            });
+            $state.go('index.productList');
+        }).error(function (res) {
+            SweetAlert.swal({
+                title: '错误',
+                text: '请填写所有字段',
+                type: 'error'
+            });
+        })
+    };
 })
