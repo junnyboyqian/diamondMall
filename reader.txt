@@ -1,22 +1,24 @@
-1.�̳��������ÿ������ http://www.mklm.cn
+莆田格莱斯弗珠宝有限公司
 
-  ���ԡ����������ÿ������ ���ࡢ����֧����ɾ��
+1.商城总体参照每克拉美 http://www.mklm.cn
+
+  属性、分类均参照每克拉美 分类、属性支持增删改
  
-  ����ɸѡ ���������ɫ (���ꡢ����) �������Թ̶�
+  裸钻筛选 需加裸钻颜色 (白钻、彩钻) 裸钻属性固定
 
-2.��̨���� http://nanping.btbzm.com/Admin
+2.后台参照 http://nanping.btbzm.com/Admin
 
 
-/* ����״̬ */
-define('ORDER_SUBMITTED', 10);                 // ��Ի���������ԣ�������һ��״̬�������ѷ���
-define('ORDER_PENDING', 11);                   // �ȴ���Ҹ���
-define('ORDER_ACCEPTED', 20);                  // ����Ѹ���ȴ����ҷ���
-define('ORDER_SHIPPED', 30);                   // �����ѷ���
-define('ORDER_FINISHED', 40);                  // ���׳ɹ�
-define('ORDER_REFUND', 50);                  // �˿�
-define('ORDER_CANCELED', 0);                   // ������ȡ��
+/* 订单状态 */
+define('ORDER_SUBMITTED', 10);                 // 针对货到付款而言，他的下一个状态是卖家已发货
+define('ORDER_PENDING', 11);                   // 等待买家付款
+define('ORDER_ACCEPTED', 20);                  // 买家已付款，等待卖家发货
+define('ORDER_SHIPPED', 30);                   // 卖家已发货
+define('ORDER_FINISHED', 40);                  // 交易成功
+define('ORDER_REFUND', 50);                  // 退款
+define('ORDER_CANCELED', 0);                   // 交易已取消
 
 *********************************************************
 
-����
-�˺�47638762  ����15268805585  ͨ������ƽ̨��ַ��http://sms.ihuyi.cn/login.html
+短信
+账号47638762  密码15268805585  通道管理平台地址：http://sms.ihuyi.cn/login.html
