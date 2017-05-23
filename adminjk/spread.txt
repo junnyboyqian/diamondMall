@@ -1,0 +1,43 @@
+通用：
+请求前缀 http://hzmozhi.com:85/api/
+code 10000  成功  其他失败(具体看msg)
+     50003  缺少accessToken
+     50004  accessToken已过期
+     50007  您的账号已在别处登陆！
+     50008  用户不存在
+     50005  accessToken无效
+
+文章分类列表
+url：admin/articleCateList
+GET
+input:
+offset(游标)、count(每页展示多少条) 
+output:
+articleCateList
+
+
+操作文章分类
+url：admin/operArticleCate
+POST
+input:
+type(1 新增、2 编辑、3 删除) 、acateId 、parentId 、cateName、sortOrder、ifShow
+output:
+code 10000
+
+
+文章列表
+url：admin/articleList
+GET
+input:
+offset(游标)、count(每页展示多少条) 
+output:
+articleList、total(总共条数)
+
+
+操作文章
+url：admin/operArticle
+POST
+input:
+type(1 新增、2 编辑、3 删除) 、articleId 、title 、cateId、content、ifShow
+output:
+code 10000
