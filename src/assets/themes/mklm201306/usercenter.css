@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* CSS Document */
+
+.noumenon {width:100%;height:100%; min-height: 500px; margin-bottom: 100px; position:relative;}
+#headBox {position:absolute;top:0;left:0;width:100%;}
+#headBar {width:99%;}
+.looyKfOn,.looyKfOff {position:absolute;top:0;right:16px;}
+
+
+
+.menbet_left{width:178px; height:auto; float:left;}
+
+.menbet_left_menu{border:solid 1px #b3b3b3; margin-top:10px;}
+.menbet_left_menu dl{padding:10px 0; width:90%; margin:-1px auto 0; border-top:dotted 1px #b3b3b3;}
+.menbet_left_menu dt{text-align:center; font:700 12px/25px arial,"微软雅黑";}
+.menbet_left_menu dd{margin-top:5px; padding-left:5px;}
+.menbet_left_menu dd span{line-height:22px;}
+.menbet_left_menu a{width:120px; padding-left:30px; height:26px; line-height:26px; display:block; margin:0 auto;}
+.menbet_left_menu a:hover{color:#fff; font-weight:bold; background:#f0040e;}
+.menbet_left_menu p{width:160px; height:26px; background:#000; text-align:center; font:700 12px/26px arial,"微软雅黑"; margin:0 auto; color:#fff;}
+
+
+.menbet_left_line{width:90%; height:10px; border-top:dotted 1px #b3b3b3; margin:0 auto;}

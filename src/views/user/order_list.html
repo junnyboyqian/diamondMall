@@ -1,0 +1,63 @@
+<div class="" ng-include="'src/components/user/header.html'"></div>
+
+
+<style type="text/css">.menbet_right{width:745px; height:auto; float:right; margin-top:10px;} .menbet_right h1{font:700 18px/30px arial,"微软雅黑";} .menbet_right h1 span{color:#727272; margin-left:20px;} .menbet_right p{line-height:25px;} .menbet_right_userinfo{width:735px; height:auto; border:solid 1px #a6a6a6; position:relative; -webkit-box-shadow: 1px 1px 11px #a6a6a6; margin-top:35px; _padding-top:20px;} .menbet_right_userinfo_tit{width:80px; height:28px; padding-left:18px; font:700 12px/28px "微软雅黑"; background:url(./src/assets/themes/mklm201306/images/usercenter_bg.gif) no-repeat -862px 0; position:absolute; top:-28px; left:30px;} .menbet_r_con{width:710px; height:auto; margin:20px auto;} .menbet_r_con_tit,.menbet_r_con_con{width:690px; height:auto; background:#bbb;} .menbet_r_con_tit td{text-align:center; background:#000; height:31px; line-height:31px; color:#fff;} .menbet_r_bill_tit{width:680px; height:31px; line-height:31px; background:#bbb; padding:0 5px;} .menbet_r_bill_tit span{float:right;} .menbet_r_bill_td1{width:310px;} .menbet_r_bill_td2{width:100px;} .menbet_r_con_con td{text-align:center; background:#fff; height:auto; padding-bottom:5px;} .menbet_r_con_con td label{margin:5px 10px 0; float:left;} .menbet_r_con_con td label img{border:solid 1px #d4d4d4;} .menbet_r_con_con td p{line-height:20px; color:#000; text-align:left;} .menbet_r_con_con td p span{margin-left:20px;} .menbet_r_con_con a{text-decoration:underline;} .menbet_r_con_con a:hover{color:#f0040e;} .list_sppx_r{width:680px;text-align:right; margin-top:20px;} .listRankPre,.listRankNex{background:url(themes/mklm201306/images/usercenter_bg.gif) no-repeat;} .listRankPre{background-position:-420px 0; padding-left:10px;} .listRankNex{background-position:-560px 0; margin-left:20px; padding-right:10px;} .list_sppx_r b {margin-left:18px;}</style>
+<div class="noumenon" id="zeronn">
+    <div class="wrap">
+        <div class="menbet_left" ng-include="'src/components/user/left.html'"></div>
+        <div class="menbet_right">
+            <ul class="menbet_right_userinfo">
+                <div class="menbet_right_userinfo_tit">我的订单</div>
+                <div class="menbet_r_con">
+                    <p>订单状态为已发货的订单无法变更，请在订购前确认好型号、收货人信息等。尚未发货的订单如需变更请尽快联系客服人员。</p>
+                    <table border="0" cellspacing="1" cellpadding="0" class="menbet_r_con_tit">
+                        <tbody>
+                            <tr>
+                                <td class="menbet_r_bill_td1">订单商品</td>
+                                <td class="menbet_r_bill_td2">订单金额</td>
+                                <td class="menbet_r_bill_td2">订单状态</td>
+                                <td>操作</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="menbet_r_bill_tit">
+                        <span>下单时间：2017-05-14 23:07:56</span>订单编号：1705144269</div>
+                    <table border="0" cellspacing="1" cellpadding="0" class="menbet_r_con_con">
+                        <colgroup class="menbet_r_bill_td1"></colgroup>
+                        <colgroup class="menbet_r_bill_td2"></colgroup>
+                        <colgroup class="menbet_r_bill_td2"></colgroup>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div style="clear:both; margin-bottom:5px;">
+                                        <label>
+                                            <a href="goods.php?id=15783158">
+                                                <img src="images/201609/thumb_img/15783158_thumb_G_1474935050764.jpg" alt="爵迹官方授权幽冥系列·诸神黄昏·项链" width="100" height="100"></a>
+                                        </label>
+                                        <p>爵迹官方授权幽冥系列·诸神黄昏·项链</p>
+                                    </div>
+                                </td>
+                                <td>￥1111.00
+                                    <br>支付宝</td>
+                                <td>
+                                    <p>
+                                        <span>未付款</span>
+                                        <br>
+                                        <span>未确认</span>
+                                        <br>
+                                        <span>未发货</span></p>
+                                </td>
+                                <td>
+                                    <a href="flow.php?step=pay_from_order&amp;id=8063">立即付款</a>
+                                    <br>
+                                    <a href="user.php?act=order_detail&amp;order_id=8063">订单详情</a>
+                                    <br>
+                                    <a href="user.php?act=cancel_order&amp;order_id=8063" onclick="if (!confirm('您确认要取消该订单吗？取消后此订单将视为无效订单')) return false;">取消订单</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="bottom14" ng-include="'src/components/user/footer.html'"></div>
