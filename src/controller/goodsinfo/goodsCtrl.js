@@ -49,8 +49,10 @@ module.controller('goodsitemCtrl', function ($scope, $stateParams, goodsitemData
             mli[i].style.display = i == n ? "block": "none";
         }
     }
+    goodsitemData.getGoodsInfo()
+    $scope.goodsInfo = goodsitemData.goodsInfo
     $scope.goodsAddCart = function () {
-        $scope.formData.specId = $stateParams.id
+        $scope.formData.specId = $scope.goodsInfo.defaultSpec
         $scope.formData.isLz = 0
         $scope.formData.quantity = 1
         if ($scope.formData.ringSize === '0') {
@@ -60,6 +62,4 @@ module.controller('goodsitemCtrl', function ($scope, $stateParams, goodsitemData
         var params = $scope.formData
         goodsitemData.goodsAddCartserviece(params)
     }
-    goodsitemData.getGoodsInfo()
-    $scope.goodsInfo = goodsitemData.goodsInfo
 })

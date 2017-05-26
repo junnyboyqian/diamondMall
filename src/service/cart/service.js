@@ -13,7 +13,7 @@ module.service('cartFlowData', function ($http) {
               'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
-            return angular.copy(data.data.cartList, self.cartList);
+            return angular.copy(data.data.carts, self.cartList);
         }).error(function (res) {
             return console.log('ERROR: ' + res);
         })

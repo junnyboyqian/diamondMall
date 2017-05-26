@@ -23,23 +23,23 @@
             </table>
             <table class="gwc_table" border="0" cellspacing="1" cellpadding="0">
                 <tbody>
-                    <tr>
+                    <tr ng-repeat="list in cartList.goods">
                         <td width="440">
                             <div class="gwc_t_pic">
                                 <a href="javascript:;">
-                                    <img src="./src/assets/images/201605/thumb_img/11207175_thumb_G_1463641296704.jpg" width="80" height="80" alt="MAKELUMER/每克拉美 情缘 白18K金钻石女戒钻戒求婚结婚"></a>
+                                    <img ng-src="{{list.goodsImage}}" width="80" height="80"></a>
                             </div>
                             <div class="gwc_t_tit">
-                                <a href="javascript:;" target="_blank">　MAKELUMER/每克拉美 情缘 白18K金钻石女戒钻戒求婚结婚</a>
+                                <a href="javascript:;" target="_blank">{{list.goodsName}}</a>
                                 <br>
-                                <span style="color:#f11924;">所选手寸：9</span></div>
+                                <span style="color:#f11924;">所选手寸：{{list.ringSize}}</span></div>
                         </td>
-                        <td width="160">121067</td>
-                        <td width="130">￥2482.00</td>
-                        <td width="130" style="color:#f11924;">1</td>
+                        <td width="160">{{list.goodsSn}}</td>
+                        <td width="130">￥{{list.price}}</td>
+                        <td width="130" style="color:#f11924;">{{list.quantity}}</td>
                         <td width="100">
                             <span>
-                                <a href="javascript:;" ng-click="delCart(1)">删除</a></span>
+                                <a href="javascript:;" ng-click="delCart(list.recId)">删除</a></span>
                         </td>
                     </tr>
                 </tbody>
@@ -47,8 +47,8 @@
         <input type="hidden" name="goods_number[22748]" id="goods_number_22748" value="1">
         <div class="gwc_tongji">
             <input type="button" style="float:left; margin:25px 0 0 10px;" value="清空购物车" ng-click="dropCart()">　　商品数量总计：
-            <span>1件</span>　　商品总金额：
-            <span>￥2482.00</span>　　
+            <span>{{cartList.quantity}}件</span>　　商品总金额：
+            <span>￥{{cartList.amount}}</span>　　
         </div>
     </form>
     <div class="gwc_sub">

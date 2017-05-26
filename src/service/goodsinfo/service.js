@@ -1,9 +1,10 @@
 var module = angular.module('goodsinfoService', [])
 
-module.service('goodsitemData', function ($http) {
+module.service('goodsitemData', function ($http, $state) {
     let self = this;
-    //  管理组列表
+    //  获取信息
     self.goodsInfo = {};
+    self.specId = null;
     self.getGoodsInfo = function () {
         var url = '/api/goods';
         return $http({
@@ -16,12 +17,13 @@ module.service('goodsitemData', function ($http) {
               'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
+            angular.copy(data.data.goodsInfo.defaultSpec, self.specId);
             return angular.copy(data.data.goodsInfo, self.goodsInfo);
         }).error(function (res) {
             return console.log('ERROR: ' + res);
         })
     };
-    //  添加证书
+    // 下单
     self.goodsAddCartserviece = function (formData) {
         var url = '/api/addCart';
         return $http({
