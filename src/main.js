@@ -20,6 +20,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.when('profile_browse', '/profile_browse');
     $urlRouterProvider.when('address_list', '/address_list');
     $urlRouterProvider.when('help', '/help');
+    $urlRouterProvider.when('about', '/about');
     return $stateProvider
         .state('index', {
             url: '/',
@@ -64,6 +65,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('help', {
             url: '/help',
             templateUrl: 'src/views/help/help.html'
+        })
+        .state('about', {
+            url: '/about',
+            templateUrl: 'src/views/help/about.html'
         })
 })
 
