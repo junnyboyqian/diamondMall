@@ -1,11 +1,14 @@
 var app = angular.module('app', [
     'ui.router',
+    'ngCookies',
     'oc.lazyLoad',
     'indexCtrl',
     'juejiCtrl',
     'zhuanshiCtrl',
     'goodsinfoCtrl',
-    'cartCtrl'
+    'cartCtrl',
+    'loginMainCtrl',
+    'angular-md5'
 ])
 
 app.config(function ($stateProvider, $urlRouterProvider) {
@@ -61,6 +64,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('address_list', {
             url: '/address_list',
             templateUrl: 'src/views/user/address_list.html'
+        })
+	.state('login', {
+            url: '/login',
+            templateUrl: 'src/views/login/login.html'
+        })
+        .state('zhuce', {
+            url: '/zhuce',
+            templateUrl: 'src/views/login/login.html'
         })
         .state('help', {
             url: '/help',
