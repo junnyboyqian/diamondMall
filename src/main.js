@@ -19,6 +19,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.when('profile_password', '/profile_password');
     $urlRouterProvider.when('profile_browse', '/profile_browse');
     $urlRouterProvider.when('address_list', '/address_list');
+    $urlRouterProvider.when('help', '/help');
     return $stateProvider
         .state('index', {
             url: '/',
@@ -59,6 +60,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('address_list', {
             url: '/address_list',
             templateUrl: 'src/views/user/address_list.html'
+        })
+        .state('help', {
+            url: '/help',
+            templateUrl: 'src/views/help/help.html'
         })
 })
 

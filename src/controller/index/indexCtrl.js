@@ -1,9 +1,6 @@
 var module = angular.module('indexCtrl', ['indexService'])
 
 module.controller('indexListCtrl', function ($scope, goodsData) {
-    angular.element(document).ready(function () {
-        $('.flicker-example').flickersss();
-    });
 
     $(".in1606_ad").mouseenter(function() {
         var $this = $(this);
@@ -30,21 +27,6 @@ module.controller('indexListCtrl', function ($scope, goodsData) {
             "width": "845px",
             "height": "465px"
         }, 1000);
-    });
-
-    $(document).ready(function() {
-        $("#count1").dayuwscroll({
-            parent_ele: '#wrapBox1',
-            list_btn: '#tabT04',
-            pre_btn: '#left1',
-            next_btn: '#right1',
-            path: 'left',
-            auto: true,
-            time: 3000,
-            num: 4,
-            gd_num: 4,
-            waite_time: 1000
-        });
     });
     // 爵迹系列
     goodsData.getGoodsList()
