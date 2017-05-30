@@ -8,6 +8,7 @@ var app = angular.module('app', [
     'goodsinfoCtrl',
     'cartCtrl',
     'loginMainCtrl',
+    'payCtrl',
     'angular-md5'
 ])
 
@@ -65,13 +66,17 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/address_list',
             templateUrl: 'src/views/user/address_list.html'
         })
-	.state('login', {
+	   .state('login', {
             url: '/login',
             templateUrl: 'src/views/login/login.html'
         })
         .state('zhuce', {
             url: '/zhuce',
             templateUrl: 'src/views/login/login.html'
+        })
+        .state('payMent', {
+            url: '/payMent/:orderId',
+            templateUrl: 'src/views/payMent/index.html'
         })
         .state('help', {
             url: '/help',

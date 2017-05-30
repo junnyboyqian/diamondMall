@@ -6,7 +6,7 @@
     <div class="pay14_jindu_1"></div>
 </div>
 
-<div class="index14_wrap" style="margin-top:10px;">
+<div class="index14_wrap" style="margin-top:10px;" ng-controller="orderFlowCtrl">
     <div class="pay14_title">填写核对订单信息</div>
     <script type="text/javascript" src="js/mklm/ga/ga_checkout.js"></script>
     <form name="theForm" id="theForm" onsubmit="return checkOrderForm(this)">
@@ -15,12 +15,12 @@
         <div class="pay14_tit">收货人信息
             <a href="javascript:;">[修改]</a></div>
         <div class="pay14_con">
-            <p>凡</p>
-            <p>13845613256</p>
-            <p>1494750818@mklm.cn</p>
+            <p>{{checkInfo.addressList.consignee}}</p>
+            <p>{{checkInfo.addressList.mobile}}</p>
+            <p>{{checkInfo.addressList.email}}</p>
             <p>123456</p>
             <br>
-            <p>福建 福州 鼓楼区 福建福州</p>
+            <p>{{checkInfo.addressList.address}}</p>
         </div>
         <div class="pay14_tit">支付及配送方式
             <a href="javascript:void(0);" onclick="showTopNav('pay_zf'); hideTopNav('pay_zf2');">[修改]</a></div>
@@ -81,32 +81,32 @@
             </table>
             <table class="gwc_table" border="0" cellspacing="1" cellpadding="0">
                 <tbody>
-                    <tr>
+                    <tr ng-repeat="item in checkInfo.goodsInfo.items">
                         <td width="500">
                             <div class="gwc_t_pic">
                                 <a href="javascript:;" target="_blank">
-                                    <img src="images/201605/thumb_img/11207175_thumb_G_1463641296704.jpg" width="80" height="80" alt="MAKELUMER/每克拉美 情缘 白18K金钻石女戒钻戒求婚结婚"></a>
+                                    <img ng-src="{{item.goodsImage}}" width="80" height="80" alt="{{item.goodsName}}"></a>
                             </div>
                             <div class="gwc_t_tit">
-                                <a href="javascript:;" target="_blank">　MAKELUMER/每克拉美 情缘 白18K金钻石女戒钻戒求婚结婚</a>
+                                <a href="javascript:;" target="_blank">{{item.goodsName}}</a>
                                 <br>　
-                                <span style="color:#f11924;">所选手寸：9</span></div>
+                                <span style="color:#f11924;">所选手寸：{{item.ringSize}}</span></div>
                         </td>
-                        <td width="180">121067</td>
-                        <td width="100">1</td>
-                        <td width="180">￥2482.00</td></tr>
+                        <td width="180">{{item.goodsSn}}</td>
+                        <td width="100">{{item.quantity}}</td>
+                        <td width="180">￥{{item.price}}</td></tr>
                 </tbody>
             </table>
             <div id="ECS_ORDERTOTAL">
                 <ul class="pay14_jisuan_1">
-                    <li>商品总金额：￥2482.00</li>
+                    <li>商品总金额：￥{{checkInfo.goodsInfo.amount}}</li>
                     <li>&nbsp;</li>
                     <!--<li>+ 运费：￥ 0.00</li>--></ul>
                 <div class="clear"></div>
                 <div class="pay14_jisuan">
-                    <input type="button">
+                    <input type="button" ng-click="submit()">
                     <p>应付总额：
-                        <span>￥2482.00</span>元</p></div>
+                        <span>￥{{checkInfo.goodsInfo.amount}}</span>元</p></div>
                 <input type="hidden" value="2482" id="total_amount"></div>
             <input type="hidden" name="step" value="done"></div>
     </form>
