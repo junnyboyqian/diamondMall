@@ -270,7 +270,7 @@ nav {
                 <input value="" placeholder="请设置6~20位密码" id="pwd" type="password" maxlength="20" ng-model="z_info.pwd">
                 <input value="" placeholder="请再次输入" id="re_pwd" type="password" maxlength="20"ng-model="z_info.repwd" >
                 <div class="login_check" ng-model="z_password_agin">
-                    <input id="agreement_box" type="checkbox" checked="checked">已阅读并同意<a href="./index.php?act=user_agreement" target="_blank">《每克拉美用户协议》</a></div>
+                    <input id="agreement_box" type="checkbox" checked="checked">已阅读并同意<a href="./index.php?act=user_agreement" target="_blank">《格莱弗用户协议》</a></div>
                 <div class="clear"></div>
                 <a href="javascript:;" ng-click="submitForm()" class="button_red">&nbsp;&nbsp;注册&nbsp;&nbsp;</a>
             </div>
@@ -286,7 +286,7 @@ nav {
                     layer.alert('请您输入您的手机号码');
                     return false;
                 } else if ($("#agreement_box").is(':checked') != true) {
-                    layer.alert('请您阅读并同意《每克拉美用户协议》');
+                    layer.alert('请您阅读并同意《格莱弗用户协议》');
                     return false;
                 } else if (check_code == '') {
                     layer.alert('请您输入短信验证码');
@@ -307,7 +307,7 @@ nav {
                     layer.alert('2次密码不一致');
                     return false;
                 } else if ($("#agreement_box").attr('checked') != 'checked') {
-                    layer.alert('《每克拉美用户协议》');
+                    layer.alert('《格莱弗用户协议》');
                     return false;
                 } else {
                     $.post('./ajax2017.php?act=register', {
