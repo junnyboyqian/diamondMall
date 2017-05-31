@@ -1,0 +1,64 @@
+<div class="" ng-include="'src/components/cart/header.html'"></div>
+<div class="index14_wrap" style="margin-top:10px;">
+    <div class="pay14_logo">
+        <a ui-sref="index"></a>
+    </div>
+    <div class="pay14_jindu_0"></div>
+</div>
+<div class="index14_wrap" style="margin-top:10px;" ng-controller="cartFlowCtrl">
+    <div class="pay14_title">我的购物车</div>
+    <div class="gwc_ts">
+        <div class="gwc_ts_logo"></div>
+        <div class="gwc_ts_txt">每克拉美提醒您：商品数量有限，请抓紧下订单</div></div>
+        <form id="formCart" name="formCart" method="post" action="flow.php">
+            <table class="gwc_table_title" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td width="440">商品明细</td>
+                        <td width="160">商品编号</td>
+                        <td width="130">购买价</td>
+                        <td width="130">购买数量</td>
+                        <td width="100">操作</td></tr>
+                </tbody>
+            </table>
+            <table class="gwc_table" border="0" cellspacing="1" cellpadding="0">
+                <tbody>
+                    <tr ng-repeat="list in cartList.goods">
+                        <td width="440">
+                            <div class="gwc_t_pic">
+                                <a href="javascript:;">
+                                    <img ng-src="{{list.goodsImage}}" width="80" height="80"></a>
+                            </div>
+                            <div class="gwc_t_tit">
+                                <a href="javascript:;" target="_blank">{{list.goodsName}}</a>
+                                <br>
+                                <span style="color:#f11924;">所选手寸：{{list.ringSize}}</span></div>
+                        </td>
+                        <td width="160">{{list.goodsSn}}</td>
+                        <td width="130">￥{{list.price}}</td>
+                        <td width="130" style="color:#f11924;">{{list.quantity}}</td>
+                        <td width="100">
+                            <span>
+                                <a href="javascript:;" ng-click="delCart(list.recId)">删除</a></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        <input type="hidden" name="goods_number[22748]" id="goods_number_22748" value="1">
+        <div class="gwc_tongji">
+            <input type="button" style="float:left; margin:25px 0 0 10px;" value="清空购物车" ng-click="dropCart()">　　商品数量总计：
+            <span>{{cartList.quantity}}件</span>　　商品总金额：
+            <span>￥{{cartList.amount}}</span>　　
+        </div>
+    </form>
+    <div class="gwc_sub">
+        <div class="gwc_sub_nbsp"></div>
+        <div class="gwc_sub_goon">
+            <a ui-sref="index"></a>
+        </div>
+        <div class="gwc_sub_jiesuan">
+            <a href="javascript:;" ng-click="goOrderInfo()"></a>
+        </div>
+    </div>
+</div>
+<div class="bottom14" ng-include="'src/components/list/footer.html'"></div>

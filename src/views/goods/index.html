@@ -1,0 +1,372 @@
+<div class="" ng-include="'src/components/list/header.html'"></div>
+<div class="noumenon" id="zeronn" ng-controller="goodsitemCtrl">
+    <div class="dts_wrap">
+        <div class="dts_datu">
+            <div class="dts_datu_img" id="specn1">
+                <img class="img" src="src/assets/images/201605/goods_img/11207175_P_1463641296504.jpg" jqimg="src/assets/images/201605/goods_img/11207175_P_1463641296504.jpg" width="400" height="400" /></div>
+            <div class="dts_datu_xt" id="spec">
+                <div class="dts_datu_xt_li_l" id="specleft"></div>
+                <div id="speclist">
+                    <ul>
+                        <li onclick="hideTopNav('sp');">
+                            <img src="src/assets/images/201605/goods_img/11207175_P_1463641296504.jpg" /></li>
+                        <li onclick="hideTopNav('sp');">
+                            <img src="src/assets/images/201605/goods_img/11207175_P_1463641351333.jpg" /></li>
+                        <li onclick="hideTopNav('sp');">
+                            <img src="src/assets/images/201605/goods_img/11207175_P_1463641351376.jpg" /></li>
+                        <li onclick="hideTopNav('sp');">
+                            <img src="src/assets/images/201605/goods_img/11207175_P_1463641351664.jpg" /></li>
+                        <li onclick="hideTopNav('sp');">
+                            <img src="src/assets/images/201605/goods_img/11207175_P_1463641351071.jpg" /></li>
+                    </ul>
+                </div>
+                <div class="dts_datu_xt_li_r" id="specright"></div>
+            </div>
+        </div>
+        <div class="dts_info">
+            <h1 class="dts_info_tit1">{{goodsInfo.goodsName}}</h1>
+            <ul class="dts_item">
+                <li>
+                    <label>市场价：</label>
+                    <del>￥{{goodsInfo.marketPrice}}</del></li>
+                <li>
+                    <label>价格：</label>
+                    <b class="redPrice">￥{{goodsInfo.price}}</b></li>
+                <!--<li><label>本店售价：</label><del>￥2482.00</del></li>
+                <li><label>满千减百价：</label><b class="redPrice">￥2282.00 </b></li>-->
+                <li>
+                    <label>编号：</label>{{goodsInfo.goodsSn}}</li></ul>
+            <form ng-submit="goodsAddCart()">
+                <ul class="dts_item">
+                    <li>
+                        <label>材质：</label>{{goodsInfo.material}}</li></ul>
+                <ul class="dts_item" id="menu0">
+                    <li class="hover" ng-mouseover="setTab(0,0)">总重：　{{goodsInfo.goodsWeight}}</li>
+                    <li ng-mouseover="setTab(0,1)" ng-mouseout="setTab(0,0)">净度：　{{goodsInfo.diaJd}}</li>
+                    <li ng-mouseover="setTab(0,2)" ng-mouseout="setTab(0,0)">颜色：　{{goodsInfo.diaColor}}</li>
+                    <li ng-mouseover="setTab(0,3)" ng-mouseout="setTab(0,0)">切工：　{{goodsInfo.diaQg}}</li></ul>
+                <ul class="dts_item">
+                    <li>
+                        <label>库存：</label>现货（下单后1-2日内发货）
+                        <select id="ring_size" 
+                            ng-model="formData.stock"
+                            ng-init="formData.stock='1'">
+                            <option ng-repeat="item in goodsInfo.stock" value="{{$index + 1}}">{{$index + 1}}</option>
+                        </select>
+                    </li>
+                    <li class="shareBar">
+                        <label>分享到：</label>
+                        <span>
+                            <a href="javascript:void(0);" onclick="snsShare('Sina', '我在@每克拉美钻石网 看见的，很喜欢哦，给大家分享一下：', ' MAKELUMER/每克拉美 情缘 白18K金钻石女戒钻戒求婚结婚', 'src/assets/images/201605/goods_img/11207175_P_1463641296504.jpg');_gaq.push(['_trackEvent','channel','share_tsina', 'share_11207175__MAKELUMER/每克拉美 情缘 白18K金钻石女戒钻戒求婚结婚']);" class="tSinaIco" title="分享到新浪微博">新浪微博</a>
+                            <a href="javascript:void(0);" onclick="snsShare('Tx', '我在@每克拉美钻石网 看见的，很喜欢哦，给大家分享一下：', ' MAKELUMER/每克拉美 情缘 白18K金钻石女戒钻戒求婚结婚', 'src/assets/images/201605/goods_img/11207175_P_1463641296504.jpg');_gaq.push(['_trackEvent','channel','share_tqq', 'share_11207175__MAKELUMER/每克拉美 情缘 白18K金钻石女戒钻戒求婚结婚']);" class="tQqIco" title="分享到腾讯微博">腾讯微博</a>
+                            <a href="javascript:void(0);" onclick="snsShare('Ren', '我在@每克拉美钻石网 看见的，很喜欢哦，给大家分享一下：', ' MAKELUMER/每克拉美 情缘 白18K金钻石女戒钻戒求婚结婚', 'src/assets/images/201605/goods_img/11207175_P_1463641296504.jpg');_gaq.push(['_trackEvent','channel','share_renren', 'share_11207175__MAKELUMER/每克拉美 情缘 白18K金钻石女戒钻戒求婚结婚']);" class="rRenIco" title="分享到人人网">人人网</a>
+                            <a href="javascript:void(0);" onclick="snsShare('QZone', '我在@每克拉美钻石网 看见的，很喜欢哦，给大家分享一下：', ' MAKELUMER/每克拉美 情缘 白18K金钻石女戒钻戒求婚结婚', 'src/assets/images/201605/goods_img/11207175_P_1463641296504.jpg');_gaq.push(['_trackEvent','channel','share_qzone', 'share_11207175__MAKELUMER/每克拉美 情缘 白18K金钻石女戒钻戒求婚结婚']);" class="qZoneIco" title="分享到QQ空间">QQ空间</a>
+                            <a href="javascript:void(0);" onclick="snsShare('DCang', '我在@每克拉美钻石网 看见的，很喜欢哦，给大家分享一下：', ' MAKELUMER/每克拉美 情缘 白18K金钻石女戒钻戒求婚结婚', 'src/assets/images/201605/goods_img/11207175_P_1463641296504.jpg');_gaq.push(['_trackEvent','channel','share_baidusc', 'share_11207175__MAKELUMER/每克拉美 情缘 白18K金钻石女戒钻戒求婚结婚']);" class="duCangIco" title="分享到百度搜藏">百度搜藏</a></span>
+                    </li>
+                </ul>
+                <div class="dts_sc">
+                    <p>
+                        <select id="ring_size" 
+                            ng-model="formData.ringSize"
+                            ng-init="formData.ringSize='0'">
+                            <option selected="selected" value="0">选择您的手寸</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option></select>
+                        <a href="help.php?link=cjwt&amp;id=83" target="_blank">如何量手寸？</a></p>
+                </div>
+                <ul class="dts_item">
+                    <li class="shareBar">
+                        <label style="color:#FF0000;">注：下单前，请先联系客服人员确认库存</label></li>
+                </ul>
+                <input name="number" type="hidden" id="number" value="1" />
+                <div class="buyLine">
+                    <a class="dts_buy lh400o" href="javascript:;" ng-click="goodsAddCart()">立即购买 Buy Now</a>
+                    <!-- <p class="lh400o">
+                    <a href="javascript:;" target="_blank">15天退换货</a>
+                    <a href="javascript:;" target="_blank">全国免运费</a>
+                    <a href="javascript:;" target="_blank">支持货到付款</a>
+                    <a href="javascript:;" target="_blank">100%权威证书</a>
+                    <a href="javascript:;" target="_blank">产品终身保养</a></p> --></div>
+            </form>
+            <div class="det_tech" id="main0">
+                <ol class="block">
+                    <li class="det_tech_tit">重量 Carat</li>
+                    <li class="det_tech_txt">　　钻石的重量是用克拉来计量。
+                        <br />　　一克拉等于0.2g，每一克拉分为一百分（或相当于200毫克），因此一颗35分的钻石重0.35克拉。
+                        <br />　　同等品质的钻石，重量越大越珍贵。</li>
+                    <li class="det_tech_more">
+                        <a href="http://mklm.cn/help.php?link=zsjbcs" target="_blank" onclick="_gaq.push(['_trackEvent','goods','more_help','Carat_jumpToHelp']);">更多钻石知识&nbsp;&gt;</a></li>
+                </ol>
+                <ol>
+                    <li class="det_tech_tit">净度 Clarity</li>
+                    <li class="det_tech_txt">　　净度代表钻石的透明程度，主要是从内含物的体积、位置和数量与瑕疵来评级。
+                        <br />　　净度级别细分为FL/IF、VVS1、VVS2、VS1、VS2、SI1、SI2、P1、P2、P3共10个级别。</li>
+                    <li class="det_tech_more">
+                        <a href="http://mklm.cn/help.php?link=zsjbcs" target="_blank" onclick="_gaq.push(['_trackEvent','goods','more_help','Clarity_jumpToHelp']);">更多钻石知识&nbsp;&gt;</a></li>
+                </ol>
+                <ol>
+                    <li class="det_tech_tit">颜色 Color</li>
+                    <li class="det_tech_txt">　　颜色分级是指采用比色法，在规定的环境下对无色—浅黄色（褐、灰）系列的钻石进行颜色等级划分。
+                        <br />　　最高色级为D，极其稀有；E-F级非常珍贵；G-H接近无色，性价比高；I-J可检测到轻微颜色，也属于价值较高的钻石。</li>
+                    <li class="det_tech_more">
+                        <a href="http://mklm.cn/help.php?link=zsjbcs" target="_blank" onclick="_gaq.push(['_trackEvent','goods','more_help','Color_jumpToHelp']);">更多钻石知识&nbsp;&gt;</a></li>
+                </ol>
+                <ol>
+                    <li class="det_tech_tit">切工 Cut</li>
+                    <li class="det_tech_txt">　　切工是指它的切磨比率的精确性和修饰完工后的完美性。
+                        <br />　　好的切工应该尽可能的体现钻石的亮度和火彩，并且尽量保持原石重量。切工级别中，以“EX”为最优，以下分别是“VG”（非常好）及“G”（好）。</li>
+                    <li class="det_tech_more">
+                        <a href="http://mklm.cn/help.php?link=zsjbcs" target="_blank" onclick="_gaq.push(['_trackEvent','goods','more_help','Cut_jumpToHelp']);">更多钻石知识&nbsp;&gt;</a></li>
+                </ol>
+            </div>
+        </div>
+        <ul class="des_cont" id="menu1">
+            <li class="hover" ng-click="setTab(1,0)">商品详情 DETAILS</li>
+            <!-- <li ng-click="setTab(1,1)">购买评价 COMMENT</li> -->
+            <li ng-click="setTab(1,1)">产品服务 SERVICES</li>
+            <li ng-click="setTab(1,2)">支付方式 PAYMENT</li></ul>
+        <div class="des_con" id="main1">
+            <ol class="block">
+                <ul class="dts_spcon">
+                    <li>编　　号：{{goodsInfo.goodsSn}}</li>
+                    <li>主钻数量：{{goodsInfo.zdiaNum}}</li>
+                    <li>主钻形状：{{goodsInfo.zdiaShape}}</li>
+                    <li>证书：{{goodsInfo.certificate}}</li>
+                    <li>主钻重量(ct)：{{goodsInfo.zdiaWeight}}</li>
+                    <li>材质：{{goodsInfo.material}}</li></ul>
+                <div class="dts_sp_photo">
+                    <p>
+                        <img alt="" width="790" height="807" src="/src/assets/images/upload/Image/1(343).jpg" />
+                        <img alt="" width="790" height="691" src="/src/assets/images/upload/Image/2(417).jpg" />
+                        <img alt="" width="790" height="476" src="/src/assets/images/upload/Image/3(415).jpg" />
+                        <img alt="" width="790" height="671" src="/src/assets/images/upload/Image/4(398).jpg" />
+                        <img alt="" width="790" height="531" src="/src/assets/images/upload/Image/5(72).jpg" />
+                        <img alt="" width="790" height="420" src="/src/assets/images/upload/Image/6(184).jpg" /></p>
+                </div>
+                <div class="dts_sccl">
+                    <h3 class="dts_sccl_l">购买须知</h3>
+                    <div class="dts_sccl_r">
+                        <p>1.　由于商品在各个平台同时在售，购买前请咨询客服是否有货</p>
+                        <p>2.　免费改圈服务限定在3个号以内，如戒指手寸为13号，则10-16号内免费修改</p>
+                        <p>&nbsp;&nbsp;　（注：个别款戒指不支持改圈，下单前请联系客服人员确认）</p>
+                        <p>3.　如需刻字、改圈等定制类服务、则发货时间顺延一天</p>
+                        <p>4.　特价商品及定制类商品不支持货到付款，如非质量问题不支持退换货</p>
+                    </div>
+                </div>
+                <div class="dts_sccl">
+                    <h3 class="dts_sccl_l">手寸测量</h3>
+                    <div class="dts_sccl_r">
+                        <p>1.　准备一个宽约1厘米，长约10厘米的长方形纸条</p>
+                        <p>2.　将纸条绕在您需要佩戴的手指上，并移至手指最粗的部分（无论是指节或指根）</p>
+                        <p>3.　收紧纸条，但确保手指的舒适，不要过于压迫</p>
+                        <p>4.　在纸片上标记手指周长</p>
+                        <p>5.　对照下表即可得到您的手寸大小</p>
+                        <table border="0" cellspacing="1" cellpadding="0" class="dts_sccl_table">
+                            <colgroup class="dts_sccl_td_1"></colgroup>
+                            <colgroup class="dts_sccl_td_2"></colgroup>
+                            <colgroup class="dts_sccl_td_1"></colgroup>
+                            <colgroup class="dts_sccl_td_2"></colgroup>
+                            <colgroup class="dts_sccl_td_1"></colgroup>
+                            <colgroup class="dts_sccl_td_2"></colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>手寸号</th>
+                                    <th>周长</th>
+                                    <th>手寸号</th>
+                                    <th>周长</th>
+                                    <th>手寸号</th>
+                                    <th>周长</th></tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>44.1mm</td>
+                                    <td>7</td>
+                                    <td>45.2mm</td>
+                                    <td>8</td>
+                                    <td>46.5mm</td></tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>47.8mm</td>
+                                    <td>10</td>
+                                    <td>49.0mm</td>
+                                    <td>11</td>
+                                    <td>50.3mm</td></tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>51.7mm</td>
+                                    <td>13</td>
+                                    <td>53.1mm</td>
+                                    <td>14</td>
+                                    <td>54.3mm</td></tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>55.6mm</td>
+                                    <td>16</td>
+                                    <td>57.2mm</td>
+                                    <td>17</td>
+                                    <td>58.4mm</td></tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td>59.7mm</td>
+                                    <td>19</td>
+                                    <td>60.9mm</td>
+                                    <td>20</td>
+                                    <td>62.2mm</td></tr>
+                                <tr>
+                                    <td>21</td>
+                                    <td>63.5mm</td>
+                                    <td>22</td>
+                                    <td>64.7mm</td>
+                                    <td>23</td>
+                                    <td>66.0mm</td></tr>
+                            </tbody>
+                        </table>
+                        <p>如何测量得更加准确：</p>
+                        <p>1.　想得到更确切的尺寸，您可以在19:00---21:00的时候测量，因为这个时候手指尺寸最为准确；</p>
+                        <p>2.　不要在天气过冷时测量手指，因为这个时候手指的尺寸是最小的；</p>
+                        <p>3.　根据季节不同来适当调整自己的号码，冬天购买戒指，由于天气较冷，手指比夏天要细一号到半号，戒指以带上后可以左右旋转但不易脱落为宜，夏天则以带上后感觉稍紧为宜；</p>
+                        <p>4.　您也可以前往附近的珠宝金店或每克拉美钻石商场，由专业人士进行更精确的测量。</p>
+                    </div>
+                </div>
+            </ol>
+            <!-- <ol>
+                <script type="text/javascript" src="js/transport.js"></script>
+                <script type="text/javascript" src="js/utils.js"></script>
+                <div id="ECS_COMMENT" class="lzdt14_cont">
+                    <div style="margin:10px auto; width:960px;">
+                        <h3 class="dts_pl_tit">购买评价</h3>
+                        <div class="dts_pl_tit_bottom"></div>暂无评论
+                        <h2 class="dts_pl_wypl lh400o">我要评论 COMMENT</h2>
+                        <form action="javascript:;" onsubmit="submitComment(this)" method="post" name="commentForm" id="commentForm">
+                            <textarea class="dts_pl_input" name="content" onfocus="javascript:if(this.value=='发表评论')this.value='';" onblur="javascript:if(this.value=='')this.value='发表评论';"></textarea>
+                            <div style="float:left;">验证码：
+                                <input type="text" name="captcha" class="inputBorder" style="width:50px; margin-left:5px;" />
+                                </div>
+                            <p class="dts_pl_sub">
+                                <input class="dts_pl_submit" type="image" src="src/assets/themes/mklm201306/images/2012_detail_submit.jpg" width="143" height="28" />
+                                <input type="text" class="dts_pl_sub_input" name="username" value="填入昵称" onfocus="javascript:if(this.value=='填入昵称')this.value='';" onblur="javascript:if(this.value=='')this.value='填入昵称';" />
+                                <span>昵称：</span></p>
+                            <input type="hidden" name="cmt_type" value="0" />
+                            <input type="hidden" name="id" value="11207175" /></form>
+                        <div class="dts_nbsp"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <script type="text/javascript">//<![CDATA[
+                    var cmt_empty_username = "请输入您的用户名称";
+                    var cmt_empty_email = "请输入您的电子邮件地址";
+                    var cmt_error_email = "电子邮件地址格式不正确";
+                    var cmt_empty_content = "您没有输入评论的内容";
+                    var captcha_not_null = "验证码不能为空!";
+                    var cmt_invalid_comments = "无效的评论内容!";
+
+                    /**
+ * 提交评论信息
+*/
+                    function submitComment(frm) {
+                        var cmt = new Object;
+
+                        cmt.username = frm.elements['username'].value;
+                        //cmt.email           = frm.elements['email'].value;
+                        cmt.email = 'QiXiPingLun@QIXI.COM';
+                        cmt.content = frm.elements['content'].value;
+                        cmt.type = frm.elements['cmt_type'].value;
+                        cmt.id = frm.elements['id'].value;
+                        cmt.enabled_captcha = frm.elements['enabled_captcha'] ? frm.elements['enabled_captcha'].value: '0';
+                        cmt.captcha = frm.elements['captcha'] ? frm.elements['captcha'].value: '';
+                        cmt.rank = 5;
+
+                        /*for (i = 0; i < frm.elements['comment_rank'].length; i++)
+  {
+    if (frm.elements['comment_rank'][i].checked)
+    {
+       cmt.rank = frm.elements['comment_rank'][i].value;
+     }
+  }*/
+
+                        if (cmt.username.length == 0) {
+                            alert(cmt_empty_username);
+                            return false;
+                        }
+
+                        if (cmt.email.length > 0) {
+                            if (! (Utils.isEmail(cmt.email))) {
+                                alert(cmt_error_email);
+                                return false;
+                            }
+                        } else {
+                            alert(cmt_empty_email);
+                            return false;
+                        }
+
+                        if (cmt.content.length == 0) {
+                            alert(cmt_empty_content);
+                            return false;
+                        }
+
+                        if (cmt.enabled_captcha > 0 && cmt.captcha.length == 0) {
+                            alert(captcha_not_null);
+                            return false;
+                        }
+
+                        Ajax.call('comment.php', 'cmt=' + cmt.toJSONString(), commentResponse, 'POST', 'JSON');
+                        return false;
+                    }
+
+                    /**
+ * 处理提交评论的反馈信息
+*/
+                    function commentResponse(result) {
+                        if (result.message) {
+                            alert(result.message);
+                        }
+
+                        if (result.error == 0) {
+                            var layer = document.getElementById('ECS_COMMENT');
+
+                            if (layer) {
+                                layer.innerHTML = result.content;
+                            }
+                        }
+                    }
+
+                    //]]>
+                    </script>
+            </ol> -->
+            <ol>
+                <div class="det_service">
+                    <img src="src/assets/themes/mklm201306/images/2013115_service.jpg" width="780" height="960" />
+                </div>
+            </ol>
+            <ol>
+                <h4 class="de_zf_tit">1.　银行在线支付（借记卡&amp;信用卡）</h4>
+                <p class="de_zf_txt">-&nbsp;确认您的借记卡或信用卡已开通网上支付功能
+                    <br />-&nbsp;目前支持以下银行在线支付货款：
+                    <br />
+                    <img src="src/assets/themes/mklm201306/images/detail_zf1.jpg" width="614" height="101" />
+                    <br />-&nbsp;
+                    <a class="colr txul" href="help-cjwt-78.html" target="_blank">查看各银行网上支付限额</a></p>
+                <h4 class="de_zf_tit">2.　快钱支付
+                    <span>可以通过快钱选择银行卡、快钱账户、电话银行、邮局汇款、银行汇款等多种方式支付款项</span></h4>
+                <p class="de_zf_txt">-&nbsp;支持以下银行卡网银支付：　[
+                    <a class="colr txul" href="http://www.99bill.com/seashell/html/demo/gr/yhkzf01.html" target="_blank">支付演示</a>]
+                    <br />
+                    <img src="src/assets/themes/mklm201306/images/detail_zf2.jpg" width="675" height="174" />
+                    <br />-&nbsp;支持快钱账户支付　[
+                    <a class="colr txul" href="http://www.99bill.com/seashell/html/demo/gr/zhzf01.html" target="_blank">支付演示</a>]
+                    <br />-&nbsp;支持电话银行支付　[
+                    <a class="colr txul" href="http://www.99bill.com/seashell/html/demo/gr/dhzf01.html" target="_blank">支付演示</a>]
+                    <br />-&nbsp;支持邮局汇款、银行汇款　[
+                    <a class="colr txul" href="http://www.99bill.com/seashell/html/demo/gr/xxzf01.html" target="_blank">支付演示</a>]</p>
+                <h4 class="de_zf_title">3.　货到付款</h4>
+                <p class="de_zf_txt">-&nbsp;5000元以内商品支持货到付款服务
+                    <br />-&nbsp;具体货到付款支持的城市请参见　[
+                    <a class="colr txul" href="help-cjwt-82.html" target="_blank">货到付款配送范围</a>]</p></ol>
+        </div>
+    </div>
+    <div class="bottom14" ng-include="'src/components/list/footer.html'"></div>
+</div>

@@ -1,0 +1,94 @@
+<div class="" ng-include="'src/components/list/header.html?101'"></div>
+<div ng-controller="juejiListCtrl">
+<div class="index14_body">
+    <div class="in1406_menu">
+        <div class="in1406_menu_1" ng-mouseover="showTopNav('list_shu');" ng-mouseout="hideTopNav('list_shu');">全部商品分类
+            <ul class="in1406_menus hidden" id="list_shu">
+                <li><a ui-sref="jueji({id: 6})">戒指</a></li>
+                <li><a ui-sref="jueji({id: 9})">吊坠</a></li>
+                <li><a ui-sref="jueji({id: 10})">耳饰</a></li>
+                <li><a ui-sref="jueji({id: 15})">手链</a></li>
+                <li><a ui-sref="jueji({id: 41})">腕表</a></li>
+            </ul>
+
+        </div>
+        <ul class="in1406_menu_2">
+            <li><a ui-sref="index">首页</a></li>
+            <li><a ui-sref="jueji({id: 6})">戒指</a></li>
+            <li><a ui-sref="jueji({id: 9})">吊坠</a></li>
+            <li><a ui-sref="jueji({id: 10})">耳饰</a></li>
+            <li><a ui-sref="jueji({id: 15})">手链</a></li>
+            <li><a ui-sref="jueji({id: 41})">腕表</a></li>
+        </ul>
+    </div>
+</div>
+<div class="noumenon">
+
+    <div class="wrap">
+
+        <div class="li_tit lh400o" id="top">CHOOSE 商品筛选</div>
+        <div class="chooseList">
+            <ul>
+                <!--当前被选中状态的选项，将<a>标签改为<b>标签即可-->
+                <li ng-repeat="list in AllList.filters">
+                    <label>{{list.name}}：</label>
+                    <ol>
+                        <li ng-repeat="item in list.items">
+                            <label for="{{list.zd}}">{{item.attrVal}}</label>
+                            <input type="radio" name="{{list.zd}}">
+                        </li>
+                    </ol>
+                </li>
+            </ul>
+        </div>
+        <a href="javascript:void(0);" target="_black">
+            <div style="height: 350px; background-image:url(./src/assets/themes/mklm201306/images/watch.jpg); margin-top: 10px; margin-bottom: 20px"></div>
+        </a>
+        <div class="list_sppx" id="goods_list">
+            <span class="list_sppx_l">
+                <form method="GET"  name="listform">
+                    <b>排序方式</b>
+                    <a title="按价格排序" class="listRankDef" href="javascript:void(0);">价格</a>
+                    <a title="按上架时间排序" class="listRankDESC" href="javascript:void(0);">新品</a>
+                    <input type="hidden" name="category" value="1" />
+                    <input type="hidden" name="display" value="grid" id="display" />
+                    <input type="hidden" name="brand" value="0" />
+                    <input type="hidden" name="price_min" value="0" />
+                    <input type="hidden" name="price_max" value="0" />
+                    <input type="hidden" name="filter_attr" value="0" />
+                    <input type="hidden" name="page" value="1" />
+                    <input type="hidden" name="sort" value="goods_id" />
+                    <input type="hidden" name="order" value="DESC" />
+                </form>
+            </span>
+            <span class="list_sppx_r"><form name="selectPageForm" action="/category.php" method="get">
+                <b>Page 1 of 1</b>
+                </form>
+            </span>
+        </div>
+        <div style=" margin-top: 10px; margin-bottom: 20px"></div>
+        <ul class="li_list_z">
+            <li ng-repeat="item in AllList.goodsList" onmouseover="this.className='hover';" onmouseout="this.className='';">
+                <a ui-sref="goods({id: item.goodsId})">
+                    <img ng-src="{{item.defaultImage}}" alt="{{item.goodsName}}" width="260" height="260" />
+                </a>
+                <h4>{{item.goodsName}}</h4>
+
+                <p class="li_list_price">市场价：<del>￥{{item.price}}</del><br />
+                    <b>本店售价：￥{{item.marketPrice}}</b><br />
+                </p>
+            </li>
+        </ul>
+
+
+        <form name="selectPageForm" action="/category.php" method="get">
+            <p class="listPages">
+                <b>Page 1 of 1</b>
+            </p>
+        </form>
+    </div>
+    <div class="bottom14" ng-include="'src/components/list/footer.html'"></div>
+    </div>
+</div>
+</div>
+

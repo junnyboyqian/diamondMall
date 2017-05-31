@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.help_2012_l{width:170px; height:auto; float:left;}
+.help_2012_l h3{width:170px; height:30px; font:700 14px/30px Arial, "微软雅黑";}
+.help_2012_l ul{padding:10px 0 10px 0; border-top:solid 1px #ccc; border-bottom:solid 1px #ccc; background:#f5f4f4;}
+.help_2012_l li{line-height:25px; padding-left:30px;}
+
+.help2012_l_faq_logo{width:170px; height:89px; background:url(images/help_bg.gif) no-repeat 0 -301px; border-bottom:solid 1px #ccc;}
+.help2012_l_faq_logo a:link{width:170px; height:89px; display:block;}
+.help2012_l_faq_logo a:visited{width:170px; height:89px; display:block;}
+.help2012_l_faq_logo a:hover{width:170px; height:89px; display:block;}
+
+.help_2012_r{width:750px; height:auto; float:left; margin-left:35px;}
+.help_2012_r_t_gwzn,.help_2012_r_t_gyzf,.help_2012_r_t_gyps,.help_2012_r_t_shfw,.help_2012_r_t_faq,.help_2012_r_t_cjwt{width:750px; height:81px; border-bottom:solid 1px #d9151d; background:url(images/help_bg.gif) no-repeat; position:relative;}
+.help_2012_r_t_gwzn{background-position:0 -1018px;}
+.help_2012_r_t_gyzf{background-position:0 -1118px;}
+.help_2012_r_t_gyps{background-position:0 -1222px;}
+.help_2012_r_t_shfw{background-position:0 -687px;}
+.help_2012_r_t_faq{background-position:0 -1499px;}
+.help_2012_r_t_cjwt{background-position:0 -919px;}
+
+
+.help_2012_r_t_more,.help_2012_r_t_more2{height:21px; background:url(images/help_jiao.gif) no-repeat right #000; position:absolute; padding:0 25px 0 5px; font:700 14px/21px "微软雅黑"; color:#fff; top:45px;}
+.help_2012_r_t_more{left:180px;}
+.help_2012_r_t_more2{left:240px;}
+
+.help_2012_r p{line-height:25px; margin:10px 0 10px 0;}
+.help_2012_r img{margin:10px 0 10px 0;}
+.help_2012_r p a:link{color:#ee262d; text-decoration:underline;}
+.help_2012_r p a:visited{color:#ee262d; text-decoration:underline;}
+.help_2012_r p a:hover{color:#ee262d; text-decoration:underline;}
+.help_2012_r span{margin-left:20px;}
+.help_2012_r li{border-bottom:dashed 1px #999; line-height:60px;}
+.help_2012_r dt{float:right;}
+
+.help_2012_pslc{width:750px;overflow:hidden;}
+.help_2012_pslc li{margin-top:-35px;padding:35px 0;background:url(images/help_bg.gif) no-repeat -100px -1692px;border:0;line-height:22px;}
+.help_2012_pslc p{padding:15px;background:#f5f4f4;border:solid 1px #ccc;color:#666;}
+
+
+
+
+
+
+

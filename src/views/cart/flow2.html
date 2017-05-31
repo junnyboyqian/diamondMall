@@ -1,0 +1,136 @@
+<div class="" ng-include="'src/components/cart/header.html'"></div>
+<div class="index14_wrap" style="margin-top:10px;">
+    <div class="pay14_logo">
+        <a ui-sref="index"></a>
+    </div>
+    <div class="pay14_jindu_1"></div>
+</div>
+
+<div class="index14_wrap" style="margin-top:10px;" ng-controller="orderFlowCtrl">
+    <div class="pay14_title">填写核对订单信息</div>
+    <script type="text/javascript" src="js/mklm/ga/ga_checkout.js"></script>
+    <form name="theForm" id="theForm" onsubmit="return checkOrderForm(this)">
+        <script type="text/javascript">var flow_no_payment = "您必须选定一个支付方式。";
+            var flow_no_shipping = "您必须选定一个配送方式。";</script>
+        <div class="pay14_tit">收货人信息
+            <a href="javascript:;">[修改]</a></div>
+        <div class="pay14_con">
+            <p>{{checkInfo.addressList.consignee}}</p>
+            <p>{{checkInfo.addressList.mobile}}</p>
+            <p>{{checkInfo.addressList.email}}</p>
+            <p>123456</p>
+            <br>
+            <p>{{checkInfo.addressList.address}}</p>
+        </div>
+        <div class="pay14_tit">支付及配送方式
+            <a href="javascript:void(0);" onclick="showTopNav('pay_zf'); hideTopNav('pay_zf2');">[修改]</a></div>
+        <div class="pay14_con hidden" id="pay_zf" style="display: none;">
+            <p>
+                <input id="payment_platform" name="payment" type="radio" value="14" iscod="0" onclick="select_default_payment(this)" checked="checked">&nbsp;&nbsp;在线支付</p>
+            <br>
+            <p>
+                <input type="radio" name="payment" id="payment" value="1" iscod="0" onclick="selectPayment(this)">&nbsp;&nbsp;转账汇款</p>
+            <br>
+            <p>
+                <input name="payment" type="radio" value="2" iscod="0" onclick="selectPayment(this)" id="COD">&nbsp;&nbsp;货到付款&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>货到付款仅限订单金额在5000元以内的商品；货到付款支持所有联邦快递能到的区域</span>&nbsp;&nbsp;
+                <a href="help-cjzfwt-82.html" target="_blank">查看配送范围</a>
+                <input type="hidden" value="" id="futures_lz"></p>
+            <div class="pay_save" onclick="showTopNav('pay_zf2'); hideTopNav('pay_zf');"></div>
+        </div>
+        <div class="pay14_con" id="pay_zf2" style="display: block;">
+            <p id="pay_type">在线支付</p>
+            <p>
+                <span id="pay_ts">温馨提示：提交订单后，请在1小时内完成支付。否则订单会自动取消，以错过您喜爱的商品。</span></p>
+            <br>
+            <p>
+                <input name="shipping" type="radio" value="2" checked="checked" supportcod="1" insure="0" onclick="selectShipping(this)">　 中国邮政EMS或FEDEX联邦快递(由每克拉美钻石网免费提供)
+                <br></p></div>
+        <div class="pay14_tit">发票信息
+            <a href="javascript:void(0);" onclick="showTopNav('pay_fp'); hideTopNav('pay_fp2');">[修改]</a></div>
+        <div class="pay14_con hidden" id="pay_fp">
+            <input name="inv_type" type="hidden" id="ECS_INVTYPE" disabled="disabled">
+            <p>
+                <input name="need_inv" type="radio" id="ECS_NEEDINV" value="1" onclick="changeNeedInv()" checked="checked">&nbsp;&nbsp;发票抬头&nbsp;&nbsp;
+                <select name="inv_content" id="ECS_INVCONTENT" onchange="changeNeedInv()" style="border:1px solid #ccc;">
+                    <option value="个人">个人</option>
+                    <option value="单位" selected="">单位</option></select>&nbsp;&nbsp;
+                <input name="inv_payee" type="text" placeholder="个人请填写礼品或饰品，单位请填写单位名称" class="input" id="ECS_INVPAYEE" size="20" value="饰品" onblur="changeNeedInv()" style="width:265px;"></p>
+            <br>
+            <p>
+                <input name="need_inv" type="radio" id="ECS_NEEDINV" value="0" onclick="changeNeedInv()">&nbsp;&nbsp;不需要发票</p>
+            <br>
+            <div class="pay_save" onclick="showTopNav('pay_fp2'); hideTopNav('pay_fp');"></div>
+        </div>
+        <div class="pay14_con" id="pay_fp2">
+            <p id="fapiao_type">普通发票（纸质）&nbsp;&nbsp;单位&nbsp;&nbsp;</p>
+            <br>
+            <p>
+                <span id="fapiao_ts">温馨提示：发票内容默认为实买实开或“饰品”、“礼品”。</span></p>
+        </div>
+        <div class="pay14_tit">商品清单</div>
+        <div class="wrap">
+            <table class="gwc_table_title2" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td width="500">商品明细</td>
+                        <td width="180">编号</td>
+                        <td width="100">购买数量</td>
+                        <td width="180">购买价</td></tr>
+                </tbody>
+            </table>
+            <table class="gwc_table" border="0" cellspacing="1" cellpadding="0">
+                <tbody>
+                    <tr ng-repeat="item in checkInfo.goodsInfo.items">
+                        <td width="500">
+                            <div class="gwc_t_pic">
+                                <a href="javascript:;" target="_blank">
+                                    <img ng-src="{{item.goodsImage}}" width="80" height="80" alt="{{item.goodsName}}"></a>
+                            </div>
+                            <div class="gwc_t_tit">
+                                <a href="javascript:;" target="_blank">{{item.goodsName}}</a>
+                                <br>　
+                                <span style="color:#f11924;">所选手寸：{{item.ringSize}}</span></div>
+                        </td>
+                        <td width="180">{{item.goodsSn}}</td>
+                        <td width="100">{{item.quantity}}</td>
+                        <td width="180">￥{{item.price}}</td></tr>
+                </tbody>
+            </table>
+            <div id="ECS_ORDERTOTAL">
+                <ul class="pay14_jisuan_1">
+                    <li>商品总金额：￥{{checkInfo.goodsInfo.amount}}</li>
+                    <li>&nbsp;</li>
+                    <!--<li>+ 运费：￥ 0.00</li>--></ul>
+                <div class="clear"></div>
+                <div class="pay14_jisuan">
+                    <input type="button" ng-click="submit()">
+                    <p>应付总额：
+                        <span>￥{{checkInfo.goodsInfo.amount}}</span>元</p></div>
+                <input type="hidden" value="2482" id="total_amount"></div>
+            <input type="hidden" name="step" value="done"></div>
+    </form>
+    <script type="text/javascript">
+        function check_invoice() {
+            var kai = document.getElementById('ECS_NEEDINV');
+            if (kai.checked == true) {
+                var kaicontent = document.getElementById('ECS_INVPAYEE');
+                if (kaicontent.value == '') {
+                    alert('请填写发票抬头!');
+                    return false;
+                } else {
+                    //var xForm = document.forms['theForm'];
+                    //var flag = xForm.onsubmit();
+                    //if(flag)xForm.submit();
+                    return true;
+                }
+            } else {
+                //var xForm = document.forms['theForm'];
+                //var flag = xForm.onsubmit();
+                //if(flag)xForm.submit();
+                return true;
+            }
+        }
+    </script>
+</div>
+<div class="bottom14" ng-include="'src/components/list/footer.html'"></div>
