@@ -88,4 +88,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'src/views/help/about.html'
         })
 })
+  app.run(function($rootScope, $state, $stateParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+    $rootScope.$on('$stateChangeSuccess', function() {
+      $(window).scrollTop(0);
+    });
+  });
 
