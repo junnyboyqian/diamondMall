@@ -4,6 +4,7 @@ module.controller('loginCtrl', function($scope, $state, $cookies, LoginData, md5
     // 判断登录还是注册
     $scope.login = false
     $scope.signup = false
+    $scope.isSignup = false
     if ($state.current.name == 'login') {
         $scope.login = true
         $scope.signup = false

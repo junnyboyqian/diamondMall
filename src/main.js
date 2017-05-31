@@ -14,7 +14,7 @@ var app = angular.module('app', [
 
 app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.when('', '/');
-    $urlRouterProvider.when('zhuanshi', '/zhuanshi');
+    $urlRouterProvider.when('masonry', '/masonry');
     $urlRouterProvider.when('jueji', '/jueji');
     $urlRouterProvider.when('goods', '/goods');
     $urlRouterProvider.when('cart-flow', '/cart-flow');
@@ -30,8 +30,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/',
             templateUrl: 'src/views/index/index.html'
         })
-        .state('zhuanshi', {
-            url: '/zhuanshi/:id',
+        .state('masonry', {
+            url: '/masonry/:id',
             templateUrl: 'src/views/zhuanshi/index.html'
         })
         .state('jueji', {

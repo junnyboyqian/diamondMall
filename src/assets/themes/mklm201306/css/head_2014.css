@@ -116,9 +116,9 @@ a:hover {color:#000;}
 .in1406_serch_more a{color:#9e9e9e; text-decoration:none; margin-right:20px;}
 .in1406_serch_more a:hover{color:#333; text-decoration:none;}
 
-.in1406_tel{width:190px; height:auto; float:right; margin-top:15px;}
-.in1406_tel_text{width:190px; height:25px; font:700 18px/25px "Arial"; color:#adadad; text-align:right;}
-.in1406_car{width:180px; height:32px; border:solid 1px #f0f0f0; background:url(../images/201406/201406index_bg.png) no-repeat -864px -47px; background-color: #f6f6f6; text-align:right; padding-right:5px; line-height:32px; color:#000; cursor:pointer;}
+.in1406_tel{width:120px; height:auto; float:right; margin-top:22px;}
+.in1406_tel_text{width:120px; height:25px; font:700 18px/25px "Arial"; color:#adadad; text-align:right;}
+.in1406_car{width:110px; height:32px; border:solid 1px #f0f0f0; background:url(../images/201406/201406index_bg.png) no-repeat -864px -47px; background-color: #f6f6f6; text-align:right; padding-right:15px; line-height:32px; color:#000; cursor:pointer;}
 .in1406_car span{color:#e50000; margin:0 5px;}
 .in1406_head_line{width:100%; height:2px; background:#ebeaea; border-top:solid 1px #c8c8c8;}
 
