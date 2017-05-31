@@ -70,8 +70,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: '/login',
             templateUrl: 'src/views/login/login.html'
         })
-        .state('zhuce', {
-            url: '/zhuce',
+        .state('signup', {
+            url: '/signup',
             templateUrl: 'src/views/login/login.html'
         })
         .state('payMent', {

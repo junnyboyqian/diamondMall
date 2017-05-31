@@ -34,7 +34,7 @@ module.controller('paymentCtrl', function($scope, $state, httpData) {
  		$scope.payData.data.paymentId = $scope.payInfo.paymentId
 	    httpData.GET($scope.payData).then(function (resp) {
 			if(resp.code == 10000){
-				window.location.href = $scope.payInfo.onlinePays[0].paymentLink + '?orderId=' + $scope.orderId
+				window.location.href = 'http://hzmozhi.com:85/index.html#/goAlipay.php?orderId=' + $scope.orderId
 			} else {
 			    alert(resp.msg)
 			}

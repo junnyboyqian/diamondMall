@@ -1,15 +1,15 @@
-var module = angular.module('loginMainCtrl', ['loginService',])
+var module = angular.module('loginMainCtrl', ['loginService', ])
 
 module.controller('loginCtrl', function($scope, $state, $cookies, LoginData, md5) {
     // 判断登录还是注册
     $scope.login = false
-    $scope.zhuce = false
+    $scope.signup = false
     if ($state.current.name == 'login') {
         $scope.login = true
-        $scope.zhuce = false
+        $scope.signup = false
     }
-    if ($state.current.name == 'zhuce') {
-        $scope.zhuce = true
+    if ($state.current.name == 'signup') {
+        $scope.signup = true
         $scope.login = false
     }
 
@@ -23,15 +23,15 @@ module.controller('loginCtrl', function($scope, $state, $cookies, LoginData, md5
         data: $scope.userInfo
     }
     $scope.loginFun = function() {
-    		$scope.loginData.data.mobile = $scope.userInfo.mobile
-    		$scope.loginData.data.pwd = md5.createHash($scope.userInfo.pwd)
+            $scope.loginData.data.mobile = $scope.userInfo.mobile
+            $scope.loginData.data.pwd = md5.createHash($scope.userInfo.pwd)
             LoginData.POST($scope.loginData).then(function(resp) {
                 if (resp.code == 10000) {
-                	$cookies.put("userInfo", JSON.stringify(resp.data), {"path": "/"});
+                    $cookies.put("userInfo", JSON.stringify(resp.data), { "path": "/" });
                     sessionStorage['userInfo'] = JSON.stringify(resp.data);
                     $state.go('index')
-                } else{
-                	alert(resp.msg)
+                } else {
+                    alert(resp.msg)
                 }
             }, function(err) {
                 alert(err)
@@ -68,8 +68,8 @@ module.controller('loginCtrl', function($scope, $state, $cookies, LoginData, md5
                     // $scope.z_info.vcode = resp.data
                     alert('验证码发送成功')
                     $scope.vcodeCount = 1
-                } else if(resp.code == 20010){
-                	alert(resp.msg)
+                } else if (resp.code == 20010) {
+                    alert(resp.msg)
                 }
             }, function(err) {
                 alert(err)
@@ -80,30 +80,28 @@ module.controller('loginCtrl', function($scope, $state, $cookies, LoginData, md5
         //注册
     $scope.zCount = 1
     $scope.submitForm = function() {
-    	$scope.zData.data = {}
+        $scope.zData.data = {}
         $scope.zData.data.mobile = $scope.z_info.mobile
         $scope.zData.data.pwd = md5.createHash($scope.z_info.pwd)
         $scope.zData.data.repwd = md5.createHash($scope.z_info.repwd)
         $scope.zData.data.vcode = $scope.z_info.vcode
         $scope.zData.url = '/api/register'
-
-        $scope.submit_form = function() {
-            if ($scope.zCount > 1) {
-                return
-            }
-            $scope.zCount = 2
-            LoginData.POST($scope.zData).then(function(resp) {
-                if (resp.code == 10000) {
-                	$cookies.put("userInfo", JSON.stringify(result.data), {"path": "/"});
-                    sessionStorage["userInfo"] = JSON.stringify(resp.data)
-                    $scope.vcodeCount = 1
-                    $state.go('index')
-                }
-            }, function(err) {
-                alert(err)
-                $scope.vcodeCount = 1
-            })
+        if ($scope.zCount > 1) {
+            return
         }
+        $scope.zCount = 2
+        LoginData.POST($scope.zData).then(function(resp) {
+            if (resp.code == 10000) {
+                $cookies.put("userInfo", JSON.stringify(result.data), { "path": "/" });
+                sessionStorage["userInfo"] = JSON.stringify(resp.data)
+                $scope.vcodeCount = 1
+                $state.go('index')
+            }
+        }, function(err) {
+            alert(err)
+            $scope.vcodeCount = 1
+        })
+
     }
 
 
