@@ -1,4 +1,4 @@
-var module = angular.module('loginMainCtrl', ['loginService', ])
+var module = angular.module('loginMainCtrl', ['loginService'])
 
 module.controller('loginCtrl', function($scope, $state, $cookies, LoginData, md5) {
     // 判断登录还是注册
@@ -68,6 +68,18 @@ module.controller('loginCtrl', function($scope, $state, $cookies, LoginData, md5
                 if (resp.code == 10000) {
                     // $scope.z_info.vcode = resp.data
                     alert('验证码发送成功')
+                    $("#login_botton").hide();
+                    $("#login_botton2").show();
+
+                    var time = 60;
+                    var timer = setInterval(function() {
+                        time--;
+                        $("#login_botton2").html(time + '秒后重发');
+                        if (time == 0) {
+                            $("#login_botton").show();
+                            $("#login_botton2").hide();
+                        }
+                    }, 1000);
                     $scope.vcodeCount = 1
                 } else if (resp.code == 20010) {
                     alert(resp.msg)
@@ -93,7 +105,7 @@ module.controller('loginCtrl', function($scope, $state, $cookies, LoginData, md5
         $scope.zCount = 2
         LoginData.POST($scope.zData).then(function(resp) {
             if (resp.code == 10000) {
-                $cookies.put("userInfo", JSON.stringify(result.data), { "path": "/" });
+                $cookies.put("userInfo", JSON.stringify(resp.data), { "path": "/" });
                 sessionStorage["userInfo"] = JSON.stringify(resp.data)
                 $scope.vcodeCount = 1
                 $state.go('index')

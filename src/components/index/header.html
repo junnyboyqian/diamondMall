@@ -1,5 +1,5 @@
 
-<div class="head1606">
+<div class="head1606" ng-controller="headerCtrl">
     <div class="head1606_top">
         <div class="head1606_top_con">
             <p>I SEE YOU · 发现美</p>
@@ -8,9 +8,20 @@
                     <a href="javascript:void(0);" style="color:#FFFFFF">购物车</a>
                 </div>
                 <div class="head1606_top_login">
-                    <a href="javascript:void(0);" ui-sref="login">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:void(0);" ui-sref="signup">注册</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="javascript:void(0);" ui-sref="help"><b>帮助中心</b></a>
+                    <div ng-if="!loginOn">
+                        <a href="javascript:void(0);" ui-sref="login">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:void(0);" ui-sref="signup">注册</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="javascript:void(0);" ui-sref="help"><b>帮助中心</b></a>
+                    </div>
+                    <div ng-if='loginOn'>
+                        <a ui-sref="profile_browse">我的账户</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                        <a ui-sref="order_list">订单查询</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                        <a href="javascript:void(0);" ui-sref="help">帮助中心</a>&nbsp;&nbsp;
+                    </div>
                 </div>
+            </div>
+            <div class="index14_login_r">
+                
+                <!-- <a href="javascript:void(0);">服务承诺</a>&nbsp;&nbsp; -->
             </div>
         </div>
     </div>

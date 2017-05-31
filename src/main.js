@@ -9,6 +9,7 @@ var app = angular.module('app', [
     'cartCtrl',
     'loginMainCtrl',
     'payCtrl',
+    'headerController',
     'angular-md5'
 ])
 

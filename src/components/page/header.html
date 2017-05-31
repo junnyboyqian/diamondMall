@@ -1,19 +1,18 @@
 <style type="text/css" class="ng-scope">.tl_body{width:100%; height:auto; margin:0 auto;} .tl_wrap{width:990px; height:auto; margin:0 auto;} .tl_wrap img a{border:none;}</style>
-<div class="index14_body index14_login" ng-controller="loginCtrl">
+<div class="index14_body index14_login" ng-controller="headerCtrl">
     <div class="index14_wrap index14_login">
-        <div class="index14_login_l">
+        <div class="index14_login_l" ng-if='!loginOn'>
             欢迎光临格莱弗！&nbsp;&nbsp;&nbsp;&nbsp;{{username}}
             <a href="javascript:void(0);" ui-sref="login" ng-show="!isSignup">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;
             <a href="javascript:void(0);" ui-sref="signup" ng-show="!isSignup">注册</a>
             <span ng-show="isSignup">[QQ]凡凡凡凡&nbsp;&nbsp;|&nbsp;&nbsp;</span>
             <a href="javascript:void(0);" ui-sref="signup" ng-show="isSignup">退出</a>
         </div>
-        <div class="index14_login_r">
+        <div class="index14_login_r" ng-if="loginOn">
             <a ui-sref="profile_browse">我的账户</a>&nbsp;&nbsp;|&nbsp;&nbsp;
             <a ui-sref="order_list">订单查询</a>&nbsp;&nbsp;|&nbsp;&nbsp;
             <a href="javascript:void(0);" ui-sref="help">帮助中心</a>&nbsp;&nbsp;
             <!-- <a href="javascript:void(0);">服务承诺</a>&nbsp;&nbsp; -->
-
         </div>
     </div>
 </div>
