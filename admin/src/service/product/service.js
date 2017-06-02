@@ -98,7 +98,7 @@ module.service('proData', function ($http, $state, SweetAlert) {
         }).error(function (res) {
             return console.log('ERROR: ' + res);
         })
-    }
+    };
     // 产品分类
     self.productCatLits = [];
     self.getProductCatLits = function () {

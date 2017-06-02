@@ -4,6 +4,7 @@ module.controller('goodsListCtrl', function ($scope, proData) {
     //  证书货数据
     proData.getZshList()
     $scope.zshList = proData.zshList
+    console.log($scope.zshList)
 })
 
 module.controller('addGoodsCtrl', function ($scope, proData, SweetAlert) {
@@ -50,6 +51,9 @@ module.controller('addGoodsCtrl', function ($scope, proData, SweetAlert) {
 module.controller('proListCtrl', function ($scope, proData) {
     $scope.person = proData.person()
 })
+module.controller('productList', function ($scope, proData) {
+    $scope.productList = proData.person()
+})
 
 module.controller('productAttributeListCtrl', function ($scope, proData) {
     // 产品属性
@@ -61,6 +65,7 @@ module.controller('goodsSeriesListCtrl', function ($scope, proData) {
     // 产品系列
     proData.getGoodsSeriesList()
     $scope.goodsSeriesList = proData.goodsSeriesList
+    console.log('goodsSeriesList',proData.goodsSeriesList)
 })
 
 module.controller('productCatLitsCtrl', function ($scope, proData) {

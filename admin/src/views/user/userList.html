@@ -49,22 +49,20 @@
 
                 <tbody>
                     <tr ng-repeat="item in userList">
-                        <td align="center">
-                            1
-                        </td>
-                        <td align="center">超级管理员</td>
-                        <td align="center">正常</td>
-                        <td align="center">超级管理员组</td>
-                        <td align="center">超级管理员</td>
-                        <td align="center">超级管理员</td>
-                        <td align="center">超级管理员</td>
-                        <td align="center">超级管理员</td>
-                        <td align="center">超级管理员</td>
+                        <td align="center">{{item.userId}}</td>
+                        <td align="center">{{item.userName}}</td>
+                        <td align="center">{{item.realName}}</td>
+                        <td align="center">{{item.groupId || 0}}</td>
+                        <td align="center">{{item.ywyId}}</td>
+                        <td align="center">{{item.lastLogin | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                        <td align="center">{{item.lastIp || '0.0.0.0'}}</td>
+                        <td align="center">{{item.status == '0'?'是':'否'}}</td>
+                        <td align="center">{{item.chargeTotal || 0 }}</td>
                         <td class="hidden-480" align="center">
-                            <a ui-sref="index.userInfo">编辑</a>
-                            <a ui-sref="index.groupInfo">删除</a>
-                            <a ui-sref="index.userAddList({id: 10})">收货地址</a>
-                            <a ui-sref="index.userTrecord({id: 10})">交易记录</a>
+                            <a ui-sref="index.userInfo({id:item.userId})">编辑</a>
+                            <a ui-sref="index.groupInfo({id: item.userId})">删除</a>
+                            <a ui-sref="index.userAddList({id: item.userId})">收货地址</a>
+                            <a ui-sref="index.userTrecord({id: item.userId})">交易记录</a>
                         </td>
                     </tr>
                 </tbody>

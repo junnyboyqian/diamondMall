@@ -63,6 +63,7 @@ module.service('userData', function ($http, $state, SweetAlert) {
               'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
+            console.log('permissions',data.data.permissionList)
             return angular.copy(data.data.permissionList, self.permissionList);
         }).error(function (res) {
             return console.log('ERROR: ' + res);
@@ -208,7 +209,7 @@ module.service('userData', function ($http, $state, SweetAlert) {
     }
     // 产品分类
     self.productCatLits = [];
-    self.getProductCatLits = function () {
+    self.getProductCatList = function () {
         var url = '/api/goodsCateListV1';
         return $http({
             method: 'GET',
@@ -222,4 +223,73 @@ module.service('userData', function ($http, $state, SweetAlert) {
             return console.log('ERROR: ' + res);
         })
     }
+    //操作管理员
+    self.operAdmin = function (formData) {
+        var url = '/api/admin/operAdmin';
+            return $http({
+            method: 'POST',
+            url: url,
+            params: formData,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function (data) {
+            SweetAlert.swal({
+                title: '正确',
+                text: '操作成功',
+                type: 'success'
+            });
+            $state.go('index.goodsList');
+        }).error(function (res) {
+            SweetAlert.swal({
+                title: '错误',
+                text: '请填写所有字段',
+                type: 'error'
+            });
+        })
+    }
+    //管理员详情
+    self.adminDetail = [];
+    self.getAdminDetail = function () {
+        var url = '/api/admin/getAdminDetail';
+        return $http({
+            method: 'GET',
+            url: url,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function (data) {
+            return angular.copy(data.data.adminDetail, self.adminDetail);
+        }).error(function (res) {
+            return console.log('ERROR: ' + res);
+        })
+    }
+
+    //用户详情
+    self.userDetail = [];
+    self.getUserDetail = function (id) {
+        var url = '/api/admin/getUserDetail?userId=' + id;
+        return $http({
+            method: 'GET',
+            url: url,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function (data) {
+            return angular.copy(data.data.userDetail, self.userDetail);
+            console.log('userDetail',self.userDetail)
+        }).error(function (res) {
+            return console.log('ERROR: ' + res);
+        })
+    }
+
+
+
+
+
+
+
+
+
+
 })

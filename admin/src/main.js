@@ -63,7 +63,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             templateUrl: 'src/views/user/userList.html'
         })
         .state('index.userInfo', {
-            url: 'index/userInfo',
+            url: 'index/userInfo/:id',
             templateUrl: 'src/views/user/userInfo.html'
         })
         .state('index.userAddList', {

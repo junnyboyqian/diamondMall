@@ -87,8 +87,8 @@
                                     <div class="widget-main">
                                         <label ng-repeat="item in list.items">
                                             <input name="permission" type="checkbox" class="ace" value="{{item.id}}" 
-                                                ng-model="$parent.formData.permission[list.id][$index]">
-                                            <span class="lbl"> {{item.perName}}</span>
+                                                ng-model="$parent.formData.permission[list.id][$index]">&nbsp;
+                                            <span class="lbl">{{item.perName}}</span>
                                         </label>
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@
                 </div>
                 <div class="clearfix form-actions">
 					<div class="col-md-offset-1 col-md-9">
-						<button class="btn btn-info" type="submit">
+						<button class="btn btn-info" type="submit" ng-click="addGroupSubmit()">
 							<i class="ace-icon fa fa-check bigger-110"></i>
 							提交
 						</button>
