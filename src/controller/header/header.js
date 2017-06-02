@@ -6,6 +6,5 @@ module.controller('headerCtrl', function($scope, $state, $cookies, httpData) {
     if(sessionStorage['userInfo']){
         $scope.userInfo = JSON.parse(sessionStorage['userInfo'])
         $scope.loginOn = true
-        console.log(sessionStorage['userInfo'])
     }
 })

@@ -10,6 +10,7 @@ var app = angular.module('app', [
     'loginMainCtrl',
     'payCtrl',
     'headerController',
+    'userController',
     'angular-md5'
 ])
 

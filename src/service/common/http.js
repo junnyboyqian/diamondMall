@@ -1,6 +1,6 @@
 var module = angular.module('httpService', [])
 
-module.service('httpData', function ($http, $state) {
+module.service('httpData', function ($http) {
 	let self = this
 	self.GET = function(data){
 		data.data.accessToken = JSON.parse(sessionStorage["userInfo"]).accessToken
