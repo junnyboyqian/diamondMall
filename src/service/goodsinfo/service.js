@@ -36,6 +36,8 @@ module.service('goodsitemData', function ($http, $state) {
         }).success(function (data) {
             if (data.code === '10000') {
                 $state.go('cart-flow');
+            } else if (data.code === '-3') {
+                alert('库存不足,请挑选其他商品');
             } else {
                 alert('请完善信息');
             }
