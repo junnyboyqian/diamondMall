@@ -1,17 +1,17 @@
 var module = angular.module('goodsinfoService', [])
 
-module.service('goodsitemData', function ($http, $stateParam, $state) {
+module.service('goodsitemData', function ($http, $state) {
     let self = this;
     //  获取信息
     self.goodsInfo = {};
     self.specId = null;
-    self.getGoodsInfo = function () {
+    self.getGoodsInfo = function (id) {
         var url = '/api/goods';
         return $http({
             method: 'GET',
             url: url,
             params: {
-                goodsId: $stateParams.id
+                goodsId: id
             },
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded'

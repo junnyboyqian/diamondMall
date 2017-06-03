@@ -49,7 +49,8 @@ module.controller('goodsitemCtrl', function ($scope, $stateParams, goodsitemData
             mli[i].style.display = i == n ? "block": "none";
         }
     }
-    goodsitemData.getGoodsInfo()
+    var id = $stateParams.id
+    goodsitemData.getGoodsInfo(id)
     $scope.goodsInfo = goodsitemData.goodsInfo
     $scope.goodsAddCart = function () {
         $scope.formData.specId = $scope.goodsInfo.defaultSpec
