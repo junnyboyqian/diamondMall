@@ -1,6 +1,8 @@
 var module = angular.module('cartCtrl', ['cartService', 'httpService'])
 // 购物车
 module.controller('cartFlowCtrl', function ($scope, $state, cartFlowData, httpData) {
+    cartFlowData.getCartList()
+    $scope.cartList = cartFlowData.cartList
     $scope.delCart = function (id) {
         // $scope.formData.specId = $stateParams.id
         // $scope.formData.isLz = false
@@ -8,6 +10,7 @@ module.controller('cartFlowCtrl', function ($scope, $state, cartFlowData, httpDa
         // var params = $scope.formData
         // goodsitemData.goodsAddCartserviece(params)
         if (confirm('您确实要把该商品移出购物车吗？')){
+            $scope.cartList.splice(idx,1);
             cartFlowData.delCartserviece(id)
         }
     }
@@ -21,8 +24,6 @@ module.controller('cartFlowCtrl', function ($scope, $state, cartFlowData, httpDa
             cartFlowData.dropCartserviece()
         }
     }
-    cartFlowData.getCartList()
-    $scope.cartList = cartFlowData.cartList
 
     // 跳转结算页面
     $scope.goOrderInfo = function () {
