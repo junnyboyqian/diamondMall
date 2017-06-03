@@ -1,7 +1,10 @@
 var module = angular.module('cartCtrl', ['cartService', 'httpService'])
 // 购物车
 module.controller('cartFlowCtrl', function ($scope, $state, cartFlowData, httpData) {
-    cartFlowData.getCartList()
+    if(sessionStorage["userInfo"]){
+        $scope.cartData.accessToken = JSON.parse(sessionStorage["userInfo"]).accessToken
+    }
+    cartFlowData.getCartList($scope.cartData)
     $scope.cartList = cartFlowData.cartList
     $scope.delCart = function (id) {
         // $scope.formData.specId = $stateParams.id
@@ -21,7 +24,10 @@ module.controller('cartFlowCtrl', function ($scope, $state, cartFlowData, httpDa
         // var params = $scope.formData
         // goodsitemData.goodsAddCartserviece(params)
         if (confirm('您确实要把该商品移出购物车吗？')){
-            cartFlowData.dropCartserviece()
+            if(sessionStorage["userInfo"]){
+                $scope.formData.accessToken = JSON.parse(sessionStorage["userInfo"]).accessToken
+            }
+            cartFlowData.dropCartserviece($scope.formData)
         }
     }
 

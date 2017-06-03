@@ -56,7 +56,6 @@ module.controller('goodsitemCtrl', function ($scope, $stateParams, goodsitemData
         $scope.formData.isLz = 0
         $scope.formData.quantity = 1
         if(sessionStorage["userInfo"]){
-            alert(1)
             $scope.formData.accessToken = JSON.parse(sessionStorage["userInfo"]).accessToken
         }
         if ($scope.formData.ringSize === '0') {
