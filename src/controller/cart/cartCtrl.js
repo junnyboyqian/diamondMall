@@ -2,6 +2,7 @@ var module = angular.module('cartCtrl', ['cartService', 'httpService'])
 // 购物车
 module.controller('cartFlowCtrl', function ($scope, $state, cartFlowData, httpData) {
     if(sessionStorage["userInfo"]){
+        console.log(JSON.parse(sessionStorage["userInfo"]))
         $scope.cartData.accessToken = JSON.parse(sessionStorage["userInfo"]).accessToken
     }
     cartFlowData.getCartList($scope.cartData)
