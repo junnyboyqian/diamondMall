@@ -10,7 +10,7 @@ module.controller('cartFlowCtrl', function ($scope, $state, cartFlowData, httpDa
         // var params = $scope.formData
         // goodsitemData.goodsAddCartserviece(params)
         if (confirm('您确实要把该商品移出购物车吗？')){
-            $scope.cartList.splice(idx,1);
+            $scope.cartList.splice(id,1);
             cartFlowData.delCartserviece(id)
         }
     }
