@@ -59,9 +59,10 @@ module.controller('orderFlowCtrl', function ($scope, $state, httpData) {
     }
     httpData.GET($scope.checkData)
     .then(function (resp) {
-        if(resp.code == 51000){
-            alert('暂无收获地址')
-            // 跳转收获地址页面
+        if(resp.code == 51000){ 
+            if (confirm('暂无收获地址,请填写收货地址！')){
+                $state.go('address_list')
+            }
         } else if (resp.code == -1) {
             alert(resp.msg)
             $state.go('goods')
