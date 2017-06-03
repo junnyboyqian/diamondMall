@@ -109,7 +109,7 @@ goodsAttrList
 
 
 上传证书货图片
-url: uploadZshImage
+url: admin/uploadZshImage
 POST
 input: imageUrl
 output:
@@ -117,7 +117,7 @@ code 10000
 
 
 上传证书货视频
-url: uploadZshVideo
+url: admin/uploadZshVideo
 POST
 input: videoUrl
 output:
@@ -125,7 +125,7 @@ code 10000
 
 
 上传产品图片
-url: uploadGoodsImage
+url: admin/uploadGoodsImage
 POST
 input: imageUrl
 output:
@@ -133,14 +133,14 @@ code 10000
 
 
 上传珠宝试戴图片
-url: uploadGoodsTryThumb
+url: admin/uploadGoodsTryThumb
 POST
 input: tryThumb
 output:
 code 10000
 
 上传珠宝视频
-url: uploadGoodsVideoAdds
+url: admin/uploadGoodsVideoAdds
 POST
 input: videoAdds
 output:
