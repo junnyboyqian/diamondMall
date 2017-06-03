@@ -1,6 +1,6 @@
 var module = angular.module('goodsinfoService', [])
 
-module.service('goodsitemData', function ($http, $state) {
+module.service('goodsitemData', function ($http, $stateParam, $state) {
     let self = this;
     //  获取信息
     self.goodsInfo = {};
@@ -11,7 +11,7 @@ module.service('goodsitemData', function ($http, $state) {
             method: 'GET',
             url: url,
             params: {
-                goodsId: '1'
+                goodsId: $stateParams.id
             },
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded'
