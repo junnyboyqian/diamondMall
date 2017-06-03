@@ -60,7 +60,28 @@ module.controller('userAddressCtrl', function($scope, $state, httpData, commonDa
             alert(err)
     })
 });
-
+// 订单相关
+module.controller('userOrderCtrl', function($scope, $state, httpData, commonData) {
+    // 订单列表
+    $scope.orderList = []
+    $scope.orderData = {
+        url: '/api/orderList',
+        data: {
+            offset: 1,
+            count: 10,
+            accessToken: ''
+        }
+    }
+    httpData.GET($scope.orderData).then(function(resp){
+        if(resp.code == 10000){
+            $scope.orderList = resp.data
+        } else {
+            alert(resp.msg)
+        }
+    }, function(err){
+        alert(err)
+    })
+})
 
 
 

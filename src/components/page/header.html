@@ -2,7 +2,7 @@
 <div class="index14_body index14_login" ng-controller="headerCtrl">
     <div class="index14_wrap index14_login">
         <div class="index14_login_l" >
-            <span ng-if="loginOn">欢迎光临格莱弗！&nbsp;<a ui-sref="profile_browse">{{userInfo.userName}}</a></span>
+            <span ng-if="loginOn">欢迎光临格莱弗！&nbsp;<a ui-sref="profile_browse">{{userInfo.userName}} </a> <a href="" ng-click="logout()"> [退出登录]</a></span>
             <div ng-if='!loginOn'>
                 <a href="javascript:void(0);" ui-sref="login" ng-show="!isSignup">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                 <a href="javascript:void(0);" ui-sref="signup" ng-show="!isSignup">注册</a>

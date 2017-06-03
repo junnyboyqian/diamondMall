@@ -3,7 +3,8 @@
     <div class="head1606_top">
         <div class="head1606_top_con">
             <p ng-if="!loginOn">I SEE YOU · 发现美</p>
-            <p ng-if="loginOn">欢迎光临格莱弗！&nbsp; <a ui-sref="profile_browse">{{userInfo.userName}}</a></p>
+            <p ng-if="loginOn">欢迎光临格莱弗！&nbsp; <a ui-sref="profile_browse">{{userInfo.userName}} </a> <a href="" ng-click="logout()"> [退出登录]</a></p>
+           
             <div class="head1606_top_con_r">
                 <div class="head1606_top_car" style="background: none">
                     <a href="javascript:void(0);" style="color:#FFFFFF">购物车</a>
