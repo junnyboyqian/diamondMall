@@ -56,9 +56,7 @@ module.controller('goodsitemCtrl', function ($scope, $stateParams, goodsitemData
         $scope.formData.specId = $scope.goodsInfo.defaultSpec
         $scope.formData.isLz = 0
         $scope.formData.quantity = 1
-        $scope.formData = {
-            accessToken: ''
-        }
+        $scope.formData.accessToken = ''
         if(sessionStorage["userInfo"]){
             $scope.formData.accessToken = JSON.parse(sessionStorage["userInfo"]).accessToken
         }
