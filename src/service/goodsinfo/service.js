@@ -34,7 +34,11 @@ module.service('goodsitemData', function ($http, $state) {
               'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
-            $state.go('cart-flow');
+            if (data.code === '10000') {
+                $state.go('cart-flow');
+            } else {
+                alert('请完善信息');
+            }
         }).error(function (res) {
             console.log(res)
         })
