@@ -119,18 +119,23 @@ module.controller('addProductCtrl', function ($scope, proData, SweetAlert) {
         //     return
         // }
         // proData.uploadVideo('goodsVideo',file3);
-        $scope.formData.goodsImages = [];
-        for (var g = 0; g < file1.length; g++) {
-            $scope.formData.goodsImages.push(file1[g].name)
-        }
-        $scope.formData.defaultImage = file1[0].name;
-        $scope.formData.goodsImages = angular.toJson($scope.formData.goodsImages)
-        $scope.formData.tryThumb = file2.name
-        $scope.formData.videoAdds = file3.name || '';
+
+        // $scope.formData.goodsImages = [];
+        // for (var g = 0; g < file1.length; g++) {
+        //     $scope.formData.goodsImages.push(file1[g].name)
+        // }
+        //
+
+        $scope.formData.videoAdds = '';
         $scope.formData.description = $('#editor1').html()
-        var params = $scope.formData
         proData.uploadImg('addProduct', file1 ,function () {
+            $scope.formData.goodsImages = angular.toJson(proData.goodsImages)
+            $scope.formData.defaultImage = proData.goodsImages[0];
             proData.uploadImg('uploadGoodsTry', file2 , function () {
+                $scope.formData.tryThumb = proData.tryThumb;
+                console.log('img array',$scope.formData.goodsImages)
+                console.log('try img',$scope.formData.tryThumb)
+                var params = $scope.formData
                 proData.addProduct(params)
             });
         });
