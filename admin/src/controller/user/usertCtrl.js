@@ -55,13 +55,18 @@ module.controller('userGroupListCtrl', function ($scope, userData) {
     console.log('userGroupList',$scope.userGroupList)
 })
 
-module.controller('groupInfoCtrl',function ($scope,userData) {
+module.controller('groupInfoCtrl',function ($scope,userData,$stateParams) {
     userData.getPermissionList();
     $scope.permissionList = userData.permissionList;
+    userData.getAdminGroupDetail($stateParams.id);
+    $scope.adminGroupDetail = userData.adminGroupDetail;
+    console.log($scope.adminGroupDetail);
     console.log($scope.permissionList)
 
 })
 module.controller('userDetailCtrl',function ($scope, $stateParams,userData) {
     console.log($stateParams.id)
-    userData.getUserDetail($stateParams.id)
+    userData.getUserDetail($stateParams.id);
+    $scope.
+    console.log()
 })

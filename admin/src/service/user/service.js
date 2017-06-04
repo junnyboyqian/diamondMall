@@ -1,7 +1,7 @@
 var module = angular.module('userService', [])
 
 module.service('userData', function ($http, $state, SweetAlert) {
-    let self = this;
+    var self = this;
     //  管理组列表
     self.adminGroupList = [];
     self.getAdminGroupList = function () {
@@ -47,6 +47,33 @@ module.service('userData', function ($http, $state, SweetAlert) {
             });
         })
     };
+
+    ////groupInfo
+    // 管理员组详情
+    // url：admin/getAdminGroupDetail
+    // GET
+    // input:
+    //     adminGpId
+    // output:
+    //     adminGroupDetail
+    self.adminGroupDetail = [];
+    self.getAdminGroupDetail = function (id) {
+        var url = '/api/admin/getAdminGroupDetail';
+        return $http({
+            method: 'GET',
+            url: url,
+            params: {
+                adminGpId:id
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function (data) {
+            return angular.copy(data.data.adminGroupDetail, self.adminGroupDetail);
+        }).error(function (res) {
+            return console.log('ERROR: ' + res);
+        })
+    }
 
     //  管理员列表
     self.permissionList = [];
@@ -268,10 +295,13 @@ module.service('userData', function ($http, $state, SweetAlert) {
     //用户详情
     self.userDetail = [];
     self.getUserDetail = function (id) {
-        var url = '/api/admin/getUserDetail?userId=' + id;
+        var url = '/api/admin/getUserDetail';
         return $http({
             method: 'GET',
             url: url,
+            params: {
+                userId:id
+            },
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }

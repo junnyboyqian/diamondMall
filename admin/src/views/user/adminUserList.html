@@ -63,8 +63,8 @@
                         <td align="center">{{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                         <td align="center">{{item.loginTimes}}</td>
                         <td class="hidden-480" align="center">
-                            <a ui-sref="index.adminUserInfo({id: 10})">编辑</a>
-                            <a ui-sref="index.groupInfo">删除</a>
+                            <a ui-sref="index.adminUserInfo({id: item.id})">编辑</a>
+                            <a ui-sref="index.groupInfo(item.id)">删除</a>
                         </td>
                     </tr>
                 </tbody>

@@ -40,7 +40,7 @@
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 管理组名称： </label>
 
                     <div class="col-sm-9">
-                        <input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" value="管理组名称">
+                        <input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" ng-model="adminGroupDetail[0].groupName">
                     </div>
                 </div>
                 <div class="form-group">
@@ -57,9 +57,9 @@
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 是否是业务员： </label>
 
                     <div class="col-sm-9">
-                        <select class="" name="">
-                            <option value="">是</option>
-                            <option value="" selected>否</option>
+                        <select class="" name="" ng-model="adminGroupDetail[0].isYwy">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
                         </select>
                     </div>
                 </div>
@@ -67,11 +67,11 @@
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 备注： </label>
 
                     <div class="col-sm-9">
-                        <textarea class="form-control" id="form-field-8" placeholder="Default Text"></textarea>
+                        <textarea ng-model="adminGroupDetail[0].remark" class="form-control" id="form-field-8" placeholder="Default Text"></textarea>
                     </div>
                 </div>
-                <div class="form-group" ng-repeat = 'item in permissionList'>
-                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 权限： </label>
+                <div class="form-group" ng-repeat = '(index,item) in permissionList'>
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 权限：{{index}} </label>
 
                     <div class="col-sm-9">
                         <div class="widget-box">
@@ -79,10 +79,10 @@
 								<h4 class="widget-title">{{item.perName}}</h4>
 							</div>
 
-							<div class="widget-body" ng-repeat="obj in item.items">
+							<div class="widget-body" ng-repeat="(_index,obj) in item.items">
 								<div class="widget-main">
-                                    <label>
-										<input name="form-field-checkbox" type="checkbox" class="ace">
+                                    <label>{{_index}}
+										<input name="form-field-checkbox" type="checkbox" class="ace" ng-checked="item.permission[index][_index]">
 										<span class="lbl"> {{obj.perName}}</span>
 									</label>
 								</div>

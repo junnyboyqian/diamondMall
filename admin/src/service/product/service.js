@@ -1,7 +1,7 @@
 var module = angular.module('productService', [])
 
 module.service('proData', function ($http, $state, SweetAlert) {
-    let self = this;
+    var self = this;
     //  证书货数据
     self.zshList = [];
     self.getZshList = function () {
@@ -140,4 +140,136 @@ module.service('proData', function ($http, $state, SweetAlert) {
             });
         })
     };
+
+    //uploadImg
+    self.uploadImg = function (type,formData, cb) {
+        var url = '';
+
+        if(type === 'addProduct'){
+            var count = 0;
+            var result = 'succ';
+            url = '/api/admin/uploadGoodsImage';
+            for(var i = 0; i<formData.length; i++){
+                var data = new FormData();
+                data.append('imageUrl', formData[i]);
+                $http({
+                    method: 'POST',
+                    url: url,
+                    data: data,
+                    headers: {
+                        'Content-Type': undefined
+                    }
+                }).success(function (data) {
+                    count ++;
+                    console.log(count,data)
+                    if(count >= formData.length && result === 'succ'){
+                        SweetAlert.swal({
+                            title: '正确',
+                            text: '添加图片成功',
+                            type: 'success'
+                        });
+                        cb && cb();
+                    }
+                }).error(function (res) {
+                    count ++;
+                    result = 'fail';
+                    if(count >= formData.length && result === 'fail'){
+                        SweetAlert.swal({
+                            title: '错误',
+                            text: '图片上传失败',
+                            type: 'error'
+                        });
+                    }
+                })
+
+
+
+            }
+
+        }else if(type === 'uploadGoodsTry'){
+            var data = new FormData();
+            url = '/api/admin/uploadGoodsTryThumb';
+            data.append('tryThumb', formData);
+            return $http({
+                method: 'POST',
+                url: url,
+                data: data,
+                headers: {
+                    'Content-Type': undefined
+                }
+            }).success(function (data) {
+                SweetAlert.swal({
+                    title: '正确',
+                    text: '添加图片成功',
+                    type: 'success'
+                });
+                console.log(type,data)
+                cb && cb();
+            }).error(function (res) {
+                SweetAlert.swal({
+                    title: '错误',
+                    text: '图片上传失败',
+                    type: 'error'
+                });
+            })
+        }
+
+        // return $http({
+        //     method: 'POST',
+        //     url: url,
+        //     data: data,
+        //     headers: {
+        //         'Content-Type': undefined
+        //     }
+        // }).success(function (data) {
+        //     SweetAlert.swal({
+        //         title: '正确',
+        //         text: '添加图片成功',
+        //         type: 'success'
+        //     });
+        //     console.log(type,data)
+        //     // $state.go('index.productList');
+        // }).error(function (res) {
+        //     SweetAlert.swal({
+        //         title: '错误',
+        //         text: '图片上传失败',
+        //         type: 'error'
+        //     });
+        // })
+    };
+
+    //uploadVideo
+    self.uploadVideo = function (type,formData) {
+        var url = '';
+        var data = new FormData();
+
+        if(type === 'goodsVideo'){
+            url = '/api/admin/uploadGoodsVideoAdds';
+            data.append('videoAdds', formData);
+        }
+        return $http({
+            method: 'POST',
+            url: url,
+            data: data,
+            headers: {
+                'Content-Type': undefined
+            }
+        }).success(function (data) {
+            SweetAlert.swal({
+                title: '正确',
+                text: '添加视频成功',
+                type: 'success'
+            });
+            console.log(type,data)
+            // $state.go('index.goodsList');
+        }).error(function (res) {
+            SweetAlert.swal({
+                title: '错误',
+                text: '视频上传失败',
+                type: 'error'
+            });
+        })
+    };
+
+
 })
