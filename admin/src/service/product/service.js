@@ -14,7 +14,7 @@ module.service('proData', function ($http, $state, SweetAlert) {
                 count: '20'
             },
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             return angular.copy(data.data.zshList, self.zshList);
@@ -30,7 +30,7 @@ module.service('proData', function ($http, $state, SweetAlert) {
             url: url,
             params: formData,
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             SweetAlert.swal({
@@ -59,7 +59,7 @@ module.service('proData', function ($http, $state, SweetAlert) {
                 count: '20'
             },
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             return angular.copy(data.data.goodsList, self.goodsList);
@@ -75,7 +75,7 @@ module.service('proData', function ($http, $state, SweetAlert) {
             method: 'GET',
             url: url,
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             return angular.copy(data.data.goodsAttrList, self.AttributeList);
@@ -91,7 +91,7 @@ module.service('proData', function ($http, $state, SweetAlert) {
             method: 'GET',
             url: url,
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             return angular.copy(data.data.goodsSeriesList, self.goodsSeriesList);
@@ -107,7 +107,7 @@ module.service('proData', function ($http, $state, SweetAlert) {
             method: 'GET',
             url: url,
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             return angular.copy(data.data.goodsCateList, self.productCatLits);
@@ -123,7 +123,7 @@ module.service('proData', function ($http, $state, SweetAlert) {
             url: url,
             params: formData,
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             SweetAlert.swal({
@@ -142,14 +142,16 @@ module.service('proData', function ($http, $state, SweetAlert) {
     };
 
     //uploadImg
-    self.uploadImg = function (type,formData, cb) {
+    self.goodsImages = [];
+    self.tryThumb = '';
+    self.uploadImg = function (type, formData, cb) {
         var url = '';
 
-        if(type === 'addProduct'){
+        if (type === 'addProduct') {
             var count = 0;
             var result = 'succ';
             url = '/api/admin/uploadGoodsImage';
-            for(var i = 0; i<formData.length; i++){
+            for (var i = 0; i < formData.length; i++) {
                 var data = new FormData();
                 data.append('imageUrl', formData[i]);
                 $http({
@@ -160,9 +162,10 @@ module.service('proData', function ($http, $state, SweetAlert) {
                         'Content-Type': undefined
                     }
                 }).success(function (data) {
-                    count ++;
-                    console.log(count,data)
-                    if(count >= formData.length && result === 'succ'){
+                    count++;
+                    self.goodsImages.push(data.data.fileurl);
+                    console.log(count, data);
+                    if (count >= formData.length && result === 'succ') {
                         SweetAlert.swal({
                             title: '正确',
                             text: '添加图片成功',
@@ -171,9 +174,9 @@ module.service('proData', function ($http, $state, SweetAlert) {
                         cb && cb();
                     }
                 }).error(function (res) {
-                    count ++;
+                    count++;
                     result = 'fail';
-                    if(count >= formData.length && result === 'fail'){
+                    if (count >= formData.length && result === 'fail') {
                         SweetAlert.swal({
                             title: '错误',
                             text: '图片上传失败',
@@ -183,10 +186,9 @@ module.service('proData', function ($http, $state, SweetAlert) {
                 })
 
 
-
             }
 
-        }else if(type === 'uploadGoodsTry'){
+        } else if (type === 'uploadGoodsTry') {
             var data = new FormData();
             url = '/api/admin/uploadGoodsTryThumb';
             data.append('tryThumb', formData);
@@ -203,7 +205,8 @@ module.service('proData', function ($http, $state, SweetAlert) {
                     text: '添加图片成功',
                     type: 'success'
                 });
-                console.log(type,data)
+                self.tryThumb = data.data.fileurl;
+                console.log(type, data);
                 cb && cb();
             }).error(function (res) {
                 SweetAlert.swal({
@@ -239,11 +242,11 @@ module.service('proData', function ($http, $state, SweetAlert) {
     };
 
     //uploadVideo
-    self.uploadVideo = function (type,formData) {
+    self.uploadVideo = function (type, formData) {
         var url = '';
         var data = new FormData();
 
-        if(type === 'goodsVideo'){
+        if (type === 'goodsVideo') {
             url = '/api/admin/uploadGoodsVideoAdds';
             data.append('videoAdds', formData);
         }
@@ -260,7 +263,7 @@ module.service('proData', function ($http, $state, SweetAlert) {
                 text: '添加视频成功',
                 type: 'success'
             });
-            console.log(type,data)
+            console.log(type, data)
             // $state.go('index.goodsList');
         }).error(function (res) {
             SweetAlert.swal({
