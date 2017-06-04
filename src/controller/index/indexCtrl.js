@@ -1,7 +1,10 @@
 var module = angular.module('indexCtrl', ['indexService'])
 
-module.controller('indexListCtrl', function ($scope, goodsData) {
-
+module.controller('indexListCtrl', function ($scope, indexgoodsData) {
+    // 商品列表
+    var id = '6'
+    indexgoodsData.getGoodsList(id)
+    $scope.indexList = indexgoodsData.indexList
     $(".in1606_ad").mouseenter(function() {
         var $this = $(this);
         var $div = $this.find(".in1606_adpicl img");
@@ -28,7 +31,4 @@ module.controller('indexListCtrl', function ($scope, goodsData) {
             "height": "465px"
         }, 1000);
     });
-    // 爵迹系列
-    goodsData.getGoodsList()
-    $scope.goodsList = goodsData.goodsList
 })

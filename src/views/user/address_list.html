@@ -19,71 +19,35 @@
                         <ul>
                             <li>
                                 <span>地区：</span>
-                                <select name="country" id="selCountries_0" onchange="region.changed(this, 1, 'selProvinces_0')">
-                                    <option value="0">请选择国家</option>
-                                    <option value="1" selected="selected">中国</option></select>&nbsp;&nbsp;
-                                <select name="province" id="selProvinces_0" onchange="region.changed(this, 2, 'selCities_0')">
-                                    <option value="0">请选择省</option>
-                                    <option value="2">北京</option>
-                                    <option value="3">安徽</option>
-                                    <option value="4" selected="selected">福建</option>
-                                    <option value="5">甘肃</option>
-                                    <option value="6">广东</option>
-                                    <option value="7">广西</option>
-                                    <option value="8">贵州</option>
-                                    <option value="9">海南</option>
-                                    <option value="10">河北</option>
-                                    <option value="11">河南</option>
-                                    <option value="12">黑龙江</option>
-                                    <option value="13">湖北</option>
-                                    <option value="14">湖南</option>
-                                    <option value="15">吉林</option>
-                                    <option value="16">江苏</option>
-                                    <option value="17">江西</option>
-                                    <option value="18">辽宁</option>
-                                    <option value="19">内蒙古</option>
-                                    <option value="20">宁夏</option>
-                                    <option value="21">青海</option>
-                                    <option value="22">山东</option>
-                                    <option value="23">山西</option>
-                                    <option value="24">陕西</option>
-                                    <option value="25">上海</option>
-                                    <option value="26">四川</option>
-                                    <option value="27">天津</option>
-                                    <option value="28">西藏</option>
-                                    <option value="29">新疆</option>
-                                    <option value="30">云南</option>
-                                    <option value="31">浙江</option>
-                                    <option value="32">重庆</option>
-                                    <option value="33">香港</option>
-                                    <option value="34">澳门</option>
-                                    <option value="35">台湾</option></select>&nbsp;&nbsp;
-                                <select name="city" id="selCities_0" onchange="region.changed(this, 3, 'selDistricts_0')">
-                                    <option value="0">请选择市</option>
-                                    <option value="53" selected="selected">福州</option>
-                                    <option value="54">龙岩</option>
-                                    <option value="55">南平</option>
-                                    <option value="56">宁德</option>
-                                    <option value="57">莆田</option>
-                                    <option value="58">泉州</option>
-                                    <option value="59">三明</option>
-                                    <option value="60">厦门</option>
-                                    <option value="61">漳州</option></select>&nbsp;&nbsp;
-                                <select name="district" id="selDistricts_0">
-                                    <option value="0">请选择区</option>
-                                    <option value="518" selected="selected">鼓楼区</option>
-                                    <option value="519">台江区</option>
-                                    <option value="520">仓山区</option>
-                                    <option value="521">马尾区</option>
-                                    <option value="522">晋安区</option>
-                                    <option value="523">福清市</option>
-                                    <option value="524">长乐市</option>
-                                    <option value="525">闽侯县</option>
-                                    <option value="526">连江县</option>
-                                    <option value="527">罗源县</option>
-                                    <option value="528">闽清县</option>
-                                    <option value="529">永泰县</option>
-                                    <option value="530">平潭县</option></select>
+                                <select  ng-model="formData.provinceId" 
+                                    ng-change="getCity()"
+                                    ng-init="formData.provinceId='0'">
+                                    <option value="0">请选择省份</option>
+                                    <option ng-repeat="item in provinceList" 
+                                        ng-selected="formData.provinceId == item.regionId" 
+                                        value="{{item.regionId}}">
+                                            {{item.regionName}}
+                                    </option>
+                                </select>
+                                <select  ng-model="formData.cityId" 
+                                    ng-change="getArea()"
+                                    ng-init="formData.cityId='0'">
+                                    <option value="0">请选择城市</option>
+                                    <option ng-repeat="item in cityList" 
+                                        ng-selected="formData.cityId == item.regionId" 
+                                        value="{{item.regionId}}">
+                                            {{item.regionName}}
+                                    </option>
+                                </select>
+                                <select  ng-model="formData.areaId" 
+                                    ng-init="formData.areaId='0'">
+                                    <option value="0">请选择区域</option>
+                                    <option ng-repeat="item in areaList" 
+                                        ng-selected="formData.areaId == item.regionId" 
+                                        value="{{item.regionId}}">
+                                            {{item.regionName}}
+                                    </option>
+                                </select>
                             </li>
                             <li>
                                 <span>收件人：</span>
@@ -106,10 +70,11 @@
                             <input type="submit" name="submit" class="submit_hong" value="确认修改">
                             <input name="button" type="button" class="submit_hong" onclick="if (confirm('你确认要删除该收货地址吗？'))location.href='user.php?act=drop_consignee&amp;id=3727'" value="删除">
                             <input type="hidden" name="act" value="act_edit_address">
-                            <input name="address_id" type="hidden" value="3727"></ul>
+                            <input name="address_id" type="hidden" value="3727">
+                        </ul>
                     </form>
                     <hr class="menbet_r_line" size="1">
-                    <form action="user.php" method="post" name="theForm" onsubmit="return checkConsignee(this)">
+                    <form name="theForm" ng-submit="addAddress()">
                         <ul>
                             <li>
                                 <span>
@@ -118,65 +83,51 @@
                             <hr class="menbet_r_line" size="1">
                             <li>
                                 <span>地区：</span>
-                                <select name="country" id="selCountries_1" onchange="region.changed(this, 1, 'selProvinces_1')">
-                                    <option value="0">请选择国家</option>
-                                    <option value="1" selected="selected">中国</option></select>&nbsp;&nbsp;
-                                <select name="province" id="selProvinces_1" onchange="region.changed(this, 2, 'selCities_1')">
-                                    <option value="0">请选择省</option>
-                                    <option value="2">北京</option>
-                                    <option value="3">安徽</option>
-                                    <option value="4">福建</option>
-                                    <option value="5">甘肃</option>
-                                    <option value="6">广东</option>
-                                    <option value="7">广西</option>
-                                    <option value="8">贵州</option>
-                                    <option value="9">海南</option>
-                                    <option value="10">河北</option>
-                                    <option value="11">河南</option>
-                                    <option value="12">黑龙江</option>
-                                    <option value="13">湖北</option>
-                                    <option value="14">湖南</option>
-                                    <option value="15">吉林</option>
-                                    <option value="16">江苏</option>
-                                    <option value="17">江西</option>
-                                    <option value="18">辽宁</option>
-                                    <option value="19">内蒙古</option>
-                                    <option value="20">宁夏</option>
-                                    <option value="21">青海</option>
-                                    <option value="22">山东</option>
-                                    <option value="23">山西</option>
-                                    <option value="24">陕西</option>
-                                    <option value="25">上海</option>
-                                    <option value="26">四川</option>
-                                    <option value="27">天津</option>
-                                    <option value="28">西藏</option>
-                                    <option value="29">新疆</option>
-                                    <option value="30">云南</option>
-                                    <option value="31">浙江</option>
-                                    <option value="32">重庆</option>
-                                    <option value="33">香港</option>
-                                    <option value="34">澳门</option>
-                                    <option value="35">台湾</option></select>&nbsp;&nbsp;
-                                <select name="city" id="selCities_1" onchange="region.changed(this, 3, 'selDistricts_1')">
-                                    <option value="0">请选择市</option></select>&nbsp;&nbsp;
-                                <select name="district" id="selDistricts_1" style="display:none;">
-                                    <option value="0">请选择区</option></select>
+                                <select  ng-model="formData.provinceId" 
+                                    ng-change="getCity()"
+                                    ng-init="formData.provinceId='0'">
+                                    <option value="0">请选择省份</option>
+                                    <option ng-repeat="item in provinceList" 
+                                        ng-selected="formData.provinceId == item.regionId" 
+                                        value="{{item.regionId}}">
+                                            {{item.regionName}}
+                                    </option>
+                                </select>
+                                <select  ng-model="formData.cityId" 
+                                    ng-change="getArea()"
+                                    ng-init="formData.cityId='0'">
+                                    <option value="0">请选择城市</option>
+                                    <option ng-repeat="item in cityList" 
+                                        ng-selected="formData.cityId == item.regionId" 
+                                        value="{{item.regionId}}">
+                                            {{item.regionName}}
+                                    </option>
+                                </select>
+                                <select  ng-model="formData.areaId" 
+                                    ng-init="formData.areaId='0'">
+                                    <option value="0">请选择区域</option>
+                                    <option ng-repeat="item in areaList" 
+                                        ng-selected="formData.areaId == item.regionId" 
+                                        value="{{item.regionId}}">
+                                            {{item.regionName}}
+                                    </option>
+                                </select>
                             </li>
                             <li>
                                 <span>收件人：</span>
-                                <input name="consignee" type="text" class="menbet_r_input" id="consignee_1" value=""></li>
+                                <input ng-model="formData.consignee" name="consignee" type="text" class="menbet_r_input" id="consignee_1" value=""></li>
                             <li>
                                 <span>邮箱：</span>
-                                <input name="email" type="text" class="menbet_r_input2" id="email_1" value="1494750818@mklm.cn"></li>
+                                <input ng-model="formData.email" name="email" type="text" class="menbet_r_input2" id="email_1" value="1494750818@mklm.cn"></li>
                             <li>
                                 <span>地址：</span>
-                                <input name="address" type="text" class="menbet_r_input2" id="address_1" value=""></li>
+                                <input ng-model="formData.address" name="address" type="text" class="menbet_r_input2" id="address_1" value=""></li>
                             <li>
                                 <span>邮编：</span>
-                                <input name="zipcode" type="text" class="menbet_r_input" id="zipcode_1" value=""></li>
+                                <input ng-model="formData.zipcode" name="zipcode" type="text" class="menbet_r_input" id="zipcode_1" value=""></li>
                             <li>
                                 <span>手机：</span>
-                                <input name="mobile" type="text" class="menbet_r_input" id="mobile_1" value="">&nbsp;&nbsp; 或固定电话：&nbsp;
+                                <input ng-model="formData.mobile" name="mobile" type="text" class="menbet_r_input" id="mobile_1" value="">&nbsp;&nbsp; 或固定电话：&nbsp;
                                 <input name="tel" type="text" class="menbet_r_input" id="tel_1" value=""></li>
                             <br></ul>
                         <ul class="menbet_r_submit">

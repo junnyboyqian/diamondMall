@@ -20,25 +20,25 @@
                         </tbody>
                     </table>
                     <!-- 订单列表 -->
-                    <div ng-repeat="item in orderList">
+                    <div ng-repeat="list in orderList">
                         <div class="menbet_r_bill_tit">
-                            <span>下单时间：2017-05-14 23:07:56</span>订单编号：1705144269</div>
+                            <span>下单时间：{{list.addTime}}</span>订单编号：{{list.orderSn}}</div>
                         <table border="0" cellspacing="1" cellpadding="0" class="menbet_r_con_con">
                             <colgroup class="menbet_r_bill_td1"></colgroup>
                             <colgroup class="menbet_r_bill_td2"></colgroup>
                             <colgroup class="menbet_r_bill_td2"></colgroup>
                             <tbody>
-                                <tr>
+                                <tr ng-repeat="item in list.goods">
                                     <td>
                                         <div style="clear:both; margin-bottom:5px;">
                                             <label>
-                                                <a href="goods.php?id=15783158">
-                                                    <img src="images/201609/thumb_img/15783158_thumb_G_1474935050764.jpg" alt="爵迹官方授权幽冥系列·诸神黄昏·项链" width="100" height="100"></a>
+                                                <a ui-sref="goods({id: item.goodsId})">
+                                                    <img ng-src="{{item.goodsImage}}" alt="{{item.goodsName}}" width="100" height="100"></a>
                                             </label>
-                                            <p>爵迹官方授权幽冥系列·诸神黄昏·项链</p>
+                                            <p>{{item.goodsName}}</p>
                                         </div>
                                     </td>
-                                    <td>￥1111.00
+                                    <td>￥{{item.price}}
                                         <br>支付宝</td>
                                     <td>
                                         <p>
@@ -49,11 +49,11 @@
                                             <span>未发货</span></p>
                                     </td>
                                     <td>
-                                        <a href="flow.php?step=pay_from_order&amp;id=8063">立即付款</a>
+                                        <a ui-sref="payMent({orderId: list.orderId})">立即付款</a>
                                         <br>
-                                        <a href="user.php?act=order_detail&amp;order_id=8063">订单详情</a>
+                                        <a href="javascript:;">订单详情</a>
                                         <br>
-                                        <a href="user.php?act=cancel_order&amp;order_id=8063" onclick="if (!confirm('您确认要取消该订单吗？取消后此订单将视为无效订单')) return false;">取消订单</a></td>
+                                        <a href="javascript:;">取消订单</a></td>
                                 </tr>
                             </tbody>
                         </table>
