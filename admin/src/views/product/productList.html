@@ -17,7 +17,7 @@
 </div>
 
 <!-- /section:basics/content.breadcrumbs -->
-<div class="page-content">
+<div class="page-content" ng-controller="productListCtrl">
     <div class="page-header">
         <h1>
                         产品
@@ -57,21 +57,21 @@
                 </thead>
 
                 <tbody>
-                    <tr >
+                    <tr ng-repeat="item in goodsList track by $index">
 						<td class="center">
 							<label class="pos-rel">
 								<input type="checkbox" class="ace" />
 								<span class="lbl"></span>
 							</label>
 						</td>
-                        <td align="center">3766938</td>
-                        <td align="center">MJ01ZSDZ1</td>
-                        <td align="center">钻石吊坠【空托】</td>
-                        <td align="center">珠宝定制</td>
-                        <td align="center">不展示</td>
-                        <td align="center">未接入</td>
-                        <td align="center">646.00</td>
-                        <td align="center">281.00</td>
+                        <td align="center">{{item.goodsId}}</td>
+                        <td align="center">{{item.goodsSn}}</td>
+                        <td align="center">{{item.goodsName}}</td>
+                        <td align="center">{{item.gtype}}</td>
+                        <td align="center">{{item.ifShow}}</td>
+                        <td align="center">{{item.indexShow}}</td>
+                        <td align="center">{{item.price}}</td>
+                        <td align="center">{{item.refprice}}</td>
                         <td align="center">1</td>
                         <td class="hidden-480" align="center">
                             <a ui-sref="index.productInfo">编辑</a>
