@@ -1,6 +1,6 @@
 var module = angular.module('headerController', ['httpService'])
 
-module.controller('headerCtrl', function($scope, $state, $cookies, httpData) {
+module.controller('headerCtrl', function($scope, $state, $cookies, httpData, $rootScope) {
     // 是否登录
     $scope.loginOn = false
     if(sessionStorage['userInfo']){
@@ -29,5 +29,12 @@ module.controller('headerCtrl', function($scope, $state, $cookies, httpData) {
         }, function(err){
             alert(err)
         })
+    }
+    $scope.addSearch = function () {
+        if (!$scope.keywords) return
+        $rootScope.$broadcast('skeywords', $scope.keywords);
+        setTimeout(function() {
+            $state.go("search", )
+        }, 0)
     }
 })

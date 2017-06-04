@@ -11,6 +11,7 @@ var app = angular.module('app', [
     'payCtrl',
     'headerController',
     'userController',
+    'searchCtrl',
     'angular-md5'
 ])
 
@@ -27,6 +28,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.when('address_list', '/address_list');
     $urlRouterProvider.when('help', '/help');
     $urlRouterProvider.when('about', '/about');
+    $urlRouterProvider.when('search', '/search');
     return $stateProvider
         .state('index', {
             url: '/',
@@ -87,6 +89,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('about', {
             url: '/about',
             templateUrl: 'src/views/help/about.html'
+        })
+        .state('search', {
+            url: '/search',
+            templateUrl: 'src/views/search/index.html'
         })
 })
   app.run(function($rootScope, $state, $stateParams) {

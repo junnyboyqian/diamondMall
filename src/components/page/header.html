@@ -1,5 +1,6 @@
 <style type="text/css" class="ng-scope">.tl_body{width:100%; height:auto; margin:0 auto;} .tl_wrap{width:990px; height:auto; margin:0 auto;} .tl_wrap img a{border:none;}</style>
-<div class="index14_body index14_login" ng-controller="headerCtrl">
+<div ng-controller="headerCtrl">
+<div class="index14_body index14_login">
     <div class="index14_wrap index14_login">
         <div class="index14_login_l" >
             <span ng-if="loginOn">欢迎光临格莱弗！&nbsp;<a ui-sref="profile_browse">{{userInfo.userName}} </a> <a href="" ng-click="logout()"> [退出登录]</a></span>
@@ -32,10 +33,11 @@
         <a ui-sref="index"></a>
     </div>
     <div class="in1406_serch">
-        <form id="searchForm" name="searchForm">
-            <input type="text" name="keywords" id="keywords" class="in1406_inp" value="" placeholder="一克拉裸钻">
+        <form id="searchForm" name="searchForm" ng-submit="addSearch()">
+            <input type="text" ng-model="keywords" name="keywords" id="keywords" class="in1406_inp" value="" placeholder="一克拉裸钻">
             <input type="submit" class="in1406_sub" value="" style="border: 0px;">
-            <input type="hidden" name="action" value="form"></form>
+            <input type="hidden" name="action" value="form">
+        </form>
         <div class="clear"></div>
         <p class="in1406_serch_more">热门搜索：
             <a href="#">50分显钻效果</a>
@@ -47,6 +49,7 @@
         <!-- <div class="in1406_tel_text"></div> -->
         <div class="in1406_car"><a href="" ui-sref="cart-flow">查看购物车</a></div>
     </div>
+</div>
 </div>
 <div class="index14_body">
     <div class="in1406_menu">

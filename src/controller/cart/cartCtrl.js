@@ -18,6 +18,8 @@ module.controller('cartFlowCtrl', function ($scope, $state, cartFlowData, httpDa
         if (confirm('您确实要把该商品移出购物车吗？')){
             $scope.cartList.goods.splice(index,1);
             cartFlowData.delCartserviece(id)
+            cartFlowData.getCartList($scope.cartData)
+            $scope.cartList = cartFlowData.cartList
         }
     }
     $scope.formData = {
@@ -34,6 +36,8 @@ module.controller('cartFlowCtrl', function ($scope, $state, cartFlowData, httpDa
                 $scope.formData.accessToken = JSON.parse(sessionStorage["userInfo"]).accessToken
             }
             cartFlowData.dropCartserviece($scope.formData)
+            cartFlowData.getCartList($scope.cartData)
+            $scope.cartList = cartFlowData.cartList
         }
     }
 

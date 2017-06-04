@@ -32,7 +32,7 @@
     <div class="in1606_adbody">
         <div class="in1606_ad" style="margin-top:50px;">
             <div class="in1606_adpicl">
-                <a ui-sref="masonry({id: 6})" target="_blank">
+                <a ui-sref="masonry({id: 6})">
                     <img src="./src/assets/data/afficheimg/1466964269300755716.png" alt="" />
                 </a>
             </div>
@@ -40,14 +40,14 @@
                 <h2>格莱弗奢华钻戒专区</h2>
                 <h3>LUXURY DIAMOND RING AREA</h3>
                 <h4>￥999元起</h4>
-                <a ui-sref="masonry({id: 6})" target="_blank">查看详情</a>
+                <a ui-sref="masonry({id: 6})">查看详情</a>
             </div>
             <div class="in1606_adpicl_xt" style=" right:100px; top:50px;"><img src="./src/assets/data/afficheimg/1469059564106811234.png" alt="" /></div>
 
         </div>
         <div class="in1606_ad" style="margin-top:50px;">
             <div class="in1606_adpicl">
-                <a href="javascript:void(0);" target="_blank" style="right:0; position:absolute;">
+                <a href="javascript:void(0);" style="right:0; position:absolute;">
                     <img src="./src/assets/data/afficheimg/1466964286459760628.png" alt="" />
                 </a>
             </div>
@@ -65,20 +65,20 @@
     <div class="in1606_adbody">
         <div class="in1606_show">
             <div class="in1606_show_l"></div>
-            <ul id="tabT04" class="in1606_show_menu">
+            <!-- <ul id="tabT04" class="in1606_show_menu">
                 <li class="cur">戒指</li>
                 <li>吊坠</li>
                 <li>耳饰</li>
-            </ul>
+            </ul> -->
         </div>
 
         <div class="clear"></div>
 
         <div class="in1606_show_list">
             <ul>
-                <li ng-repeat="item in goodsList">
-                    <a ui-sref="goods"><img ng-src="{{item.defaultImage}}" alt="" /></a>
-                    <a ui-sref="goods">{{item.goodsName}}<br />￥{{item.marketPrice}}</a>
+                <li ng-repeat="item in indexList">
+                    <a ui-sref="goods({id: item.goodsId})"><img ng-src="{{item.defaultImage}}" alt="" /></a>
+                    <a ui-sref="goods({id: item.goodsId})">{{item.goodsName}}<br />￥{{item.marketPrice}}</a>
                 </li>
             </ul>
         </div>
