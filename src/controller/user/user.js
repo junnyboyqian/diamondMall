@@ -114,6 +114,7 @@ module.controller('userAddressCtrl', function($scope, $state, httpData, commonDa
         httpData.POST($scope.addAddr).then(
             function(resp){
                 if (resp.code == 10000){
+                    alert('收货地址添加成功')
                     $scope.addData = {
                         url:'/api/getAddress',
                         data: {
@@ -155,7 +156,49 @@ module.controller('userOrderCtrl', function($scope, $state, httpData, commonData
     httpData.GET($scope.orderData).then(function(resp){
         if(resp.code == 10000){
             $scope.orderList = resp.data.orderList
-            console.log($scope.orderList)
+            $scope.$apply()
+        } else {
+            alert(resp.msg)
+        }
+    }, function(err){
+        alert(err)
+    })
+    $scope.cancelOrderParams = {
+        url: '/api/cancelOrder',
+        data: {
+            orderId: '',
+            accessToken: ''
+        }
+    }
+    $scope.cancelOrder = function (index, id) {
+        if (id === $scope.cancelOrderParams.data.orderId) return
+        $scope.cancelOrderParams.data.orderId = id;
+        httpData.GET($scope.cancelOrderParams).then(function(resp){
+            if(resp.code == 10000){
+                $scope.orderList.splice(index, 1)
+                $scope.$apply()
+            } else {
+                alert(resp.msg)
+            }
+        }, function(err){
+            alert(err)
+        })
+    }
+})
+// 订单详情
+module.controller('userOrderInfoCtrl', function($scope, $state, $stateParams, httpData, commonData) {
+    // 订单列表
+    $scope.orderInfo = []
+    $scope.orderData = {
+        url: '/api/orderDetail',
+        data: {
+            orderId: $stateParams.id,
+            accessToken: ''
+        }
+    }
+    httpData.GET($scope.orderData).then(function(resp){
+        if(resp.code == 10000){
+            $scope.orderInfo = resp.data.orderInfo
             $scope.$apply()
         } else {
             alert(resp.msg)

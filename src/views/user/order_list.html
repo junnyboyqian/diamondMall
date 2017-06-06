@@ -24,12 +24,9 @@
                         <div class="menbet_r_bill_tit">
                             <span>下单时间：{{list.addTime}}</span>订单编号：{{list.orderSn}}</div>
                         <table border="0" cellspacing="1" cellpadding="0" class="menbet_r_con_con">
-                            <colgroup class="menbet_r_bill_td1"></colgroup>
-                            <colgroup class="menbet_r_bill_td2"></colgroup>
-                            <colgroup class="menbet_r_bill_td2"></colgroup>
                             <tbody>
                                 <tr ng-repeat="item in list.goods">
-                                    <td>
+                                    <td width="310">
                                         <div style="clear:both; margin-bottom:5px;">
                                             <label>
                                                 <a ui-sref="goods({id: item.goodsId})">
@@ -38,22 +35,26 @@
                                             <p>{{item.goodsName}}</p>
                                         </div>
                                     </td>
-                                    <td>￥{{item.price}}
+                                    <td width="100">￥{{item.price}}
                                         <br>支付宝</td>
-                                    <td>
+                                    <td width="100">
                                         <p>
-                                            <span>未付款</span>
-                                            <br>
-                                            <span>未确认</span>
-                                            <br>
-                                            <span>未发货</span></p>
+                                            <span ng-if="list.status == 0">交易已取消</span>
+                                            <span ng-if="list.status == 20">待发货</span>
+                                            <span ng-if="list.status == 30">已发货</span>
+                                            <span ng-if="list.status == 40">交易成功</span>
+                                            <span ng-if="list.status == 50">退款</span>
+                                            <span ng-if="list.status == 11">未付款</span>
+                                        </p>
                                     </td>
-                                    <td>
+                                    <td width="175">
                                         <a ui-sref="payMent({orderId: list.orderId})">立即付款</a>
                                         <br>
-                                        <a href="javascript:;">订单详情</a>
+                                        <a ui-sref="order_info({id: list.orderId})">订单详情</a>
                                         <br>
-                                        <a href="javascript:;">取消订单</a></td>
+                                        <a href="javascript:;" 
+                                            ng-click="cancelOrder($index, list.orderId)" 
+                                            ng-if="list.status == 20 || list.status == 30">取消订单</a></td>
                                 </tr>
                             </tbody>
                         </table>

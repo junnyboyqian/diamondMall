@@ -23,6 +23,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.when('cart-flow', '/cart-flow');
     $urlRouterProvider.when('cart-flow2', '/cart-flow2');
     $urlRouterProvider.when('order_list', '/order_list');
+    $urlRouterProvider.when('order_info', '/order_info');
     $urlRouterProvider.when('profile_password', '/profile_password');
     $urlRouterProvider.when('profile_browse', '/profile_browse');
     $urlRouterProvider.when('address_list', '/address_list');
@@ -57,6 +58,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('order_list', {
             url: '/order_list',
             templateUrl: 'src/views/user/order_list.html'
+        })
+        .state('order_info', {
+            url: '/order_info/:id',
+            templateUrl: 'src/views/user/order_info.html'
         })
         .state('profile_password', {
             url: '/profile_password',
