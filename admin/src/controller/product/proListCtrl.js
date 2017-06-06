@@ -102,8 +102,8 @@ module.controller('productInfoCtrl', function ($scope, proData, SweetAlert, $sta
         console.log($scope.goodsInfo.tryThumb);
 
     }
-    $scope.$watch('goodsInfo',function (newV) {
-        $('#editor1').html(newV.description)
+    $scope.$watch('goodsInfo.description',function (newV) {
+        $('#editor1').html(newV)
     })
 
     //  添加产品
