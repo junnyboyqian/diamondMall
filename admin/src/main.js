@@ -83,7 +83,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             templateUrl: 'src/views/user/userRankInfo.html'
         })
         .state('index.productList', {
-            url: 'index/productList',
+            url: 'index/productList/:page',
             templateUrl: 'src/views/product/productList.html'
         })
         .state('index.productCatLits', {
@@ -107,7 +107,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             templateUrl: 'src/views/product/goodsSeriesUpdate.html'
         })
         .state('index.productInfo', {
-            url: 'index/productInfo',
+            url: 'index/productInfo/:id',
             templateUrl: 'src/views/product/productInfo.html'
         })
         .state('index.goodsList', {

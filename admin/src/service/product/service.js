@@ -47,21 +47,27 @@ module.service('proData', function ($http, $state, SweetAlert) {
             });
         })
     };
+
+
     // 产品列表
     self.goodsList = [];
-    self.getGoodsList = function () {
+    self.goodsTotal = '';
+    self.getGoodsList = function (count, offset, cb) {
         var url = '/api/admin/goodsList';
         return $http({
             method: 'GET',
             url: url,
             params: {
-                offset: '0',
-                count: '20'
+                offset: offset,
+                count: count
             },
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
+            console.log('getGoodslist', data);
+            self.goodsTotal = data.data.total;
+            cb && cb(data);
             return angular.copy(data.data.goodsList, self.goodsList);
         }).error(function (res) {
             return console.log('ERROR: ' + res);
@@ -115,8 +121,31 @@ module.service('proData', function ($http, $state, SweetAlert) {
             return console.log('ERROR: ' + res);
         })
     }
+
+    //产品详情，编辑页
+    self.goodsInfo = [];
+    self.getGoodsDetail = function (id) {
+        var url = 'api/admin/getGoodsDetail';
+        return $http({
+            method: 'GET',
+            params:{
+                goodsId:id
+            },
+            url: url,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function (data) {
+            console.log(data)
+            return angular.copy(data.data.goodsInfo, self.goodsInfo)
+        }).error(function (res) {
+            return console.log('ERROR' + res)
+        })
+    }
+
     //  添加产品
     self.addProduct = function (formData) {
+        console.log('addProduct')
         var url = '/api/admin/operGoods';
         return $http({
             method: 'POST',
@@ -131,7 +160,7 @@ module.service('proData', function ($http, $state, SweetAlert) {
                 text: '添加成功',
                 type: 'success'
             });
-            $state.go('index.productList');
+            $state.go('index.productList',{page:1});
         }).error(function (res) {
             SweetAlert.swal({
                 title: '错误',
@@ -141,12 +170,52 @@ module.service('proData', function ($http, $state, SweetAlert) {
         })
     };
 
+    //上传商品图片
+    self.uploadGoodsImg = function (file,cb) {
+        var url = '/api/admin/uploadGoodsImage';
+        var data = new FormData();
+        console.log(file);
+        data.append('imageUrl',file);
+        return $http({
+            method:"POST",
+            url:url,
+            data:data,
+            headers:{
+                "Content-Type":undefined
+            }
+        }).success(function (data) {
+            console.log('filedata',data);
+            cb && cb(data)
+        }).error(function (err) {
+            cb && cb('error')
+
+        })
+    }
+    //上传试穿图片
+    self.uploadTryImg = function (file,cb) {
+        var url = '/api/admin/uploadGoodsTryThumb';
+        var data = new FormData();
+        data.append('tryThumb',file)
+        return $http({
+            method:"POST",
+            url:url,
+            data:data,
+            headers:{
+                "Content-Type":undefined
+            }
+        }).success(function (data) {
+            cb && cb(data)
+        }).error(function (err) {
+            cb && cb('error')
+        })
+    }
+
+
     //uploadImg
     self.goodsImages = [];
     self.tryThumb = '';
     self.uploadImg = function (type, formData, cb) {
         var url = '';
-
         if (type === 'addProduct') {
             var count = 0;
             var result = 'succ';
@@ -166,11 +235,11 @@ module.service('proData', function ($http, $state, SweetAlert) {
                     self.goodsImages.push(data.data.fileurl);
                     console.log(count, data);
                     if (count >= formData.length && result === 'succ') {
-                        SweetAlert.swal({
-                            title: '正确',
-                            text: '添加图片成功',
-                            type: 'success'
-                        });
+                        // SweetAlert.swal({
+                        //     title: '正确',
+                        //     text: '添加图片成功',
+                        //     type: 'success'
+                        // });
                         cb && cb();
                     }
                 }).error(function (res) {
@@ -200,11 +269,11 @@ module.service('proData', function ($http, $state, SweetAlert) {
                     'Content-Type': undefined
                 }
             }).success(function (data) {
-                SweetAlert.swal({
-                    title: '正确',
-                    text: '添加图片成功',
-                    type: 'success'
-                });
+                // SweetAlert.swal({
+                //     title: '正确',
+                //     text: '添加图片成功',
+                //     type: 'success'
+                // });
                 self.tryThumb = data.data.fileurl;
                 console.log(type, data);
                 cb && cb();

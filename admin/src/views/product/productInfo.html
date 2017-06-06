@@ -17,7 +17,7 @@
 </div>
 
 <!-- /section:basics/content.breadcrumbs -->
-<div class="page-content">
+<div class="page-content" ng-controller="productInfoCtrl">
     <div class="page-header">
         <h1>
                         产品
@@ -36,86 +36,216 @@
     <div class="row">
         <div class="col-xs-12">
             <form class="form-horizontal" role="form">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品分类: </label>
 
-                    <div class="col-sm-9">
-                        <select class="" name="">
-                            <option value="" selected>开启</option>
-                            <option value="">关闭</option>
-                        </select>
-                    </div>
-                </div>
+
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品名称: </label>
 
                     <div class="col-sm-9">
-                        <input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" value="servcie@nanping.btbzm.com">
+                        <input type="text" id="form-field-1" placeholder="产品名称" class="col-xs-10 col-sm-5" value="" ng-model="goodsInfo.goodsName">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品编号: </label>
 
                     <div class="col-sm-9">
-                        <input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" value="servcie@nanping.btbzm.com">
+                        <input type="text" id="form-field-2" placeholder="产品编号" class="col-xs-10 col-sm-5" value="" ng-model="goodsInfo.goodsSn">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品属性: </label>
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 市场价格(￥): </label>
 
                     <div class="col-sm-9">
-                        <div class="widget-box">
-                            <div class="widget-body">
-                                <div class="widget-main">
-                                    <label>
-										<input name="form-field-checkbox" type="checkbox" class="ace">
-										<span class="lbl"> 后台首页</span>
-									</label>
+                        <input type="text" id="form-field-3" placeholder="市场价格" class="col-xs-10 col-sm-5" value="" ng-model="goodsInfo.marketPrice">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 销售价格(￥): </label>
+
+                    <div class="col-sm-9">
+                        <input type="text"  id="form-field-4" placeholder="销售价格" class="col-xs-10 col-sm-5" value="" ng-model="goodsInfo.price">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品分类: </label>
+
+                    <div class="col-sm-9">
+                        <select class="" name=""
+                                ng-model="goodsInfo.cateId">
+                            <option ng-repeat="item in productCatList" value="{{item.cateId}}" ng-selected="goodsInfo.cateId === item.cateId">{{item.cateName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品形状: </label>
+
+                    <div class="col-sm-9">
+                        <select class="" name="zdiaShape"
+                                ng-model="goodsInfo.zdiaShape">
+                            <option value="ROUND" ng-selected="goodsInfo.zdiaShape === 'ROUND'">圆形</option>
+                            <option value="OVAL" ng-selected="goodsInfo.zdiaShape === 'OVAL'">椭圆</option>
+                            <option value="MARQUIS" ng-selected="goodsInfo.zdiaShape === 'MARQUIS'">马眼</option>
+                            <option value="HEART" ng-selected="goodsInfo.zdiaShape === 'HEART'">心形</option>
+                            <option value="PEAR" ng-selected="goodsInfo.zdiaShape === 'PEAR'">水滴</option>
+                            <option value="PRINCESS" ng-selected="goodsInfo.zdiaShape === 'PRINCESS'">方形</option>
+                            <option value="EMERALD" ng-selected="goodsInfo.zdiaShape === 'EMERALD'">祖母绿</option>
+                            <option value="CUSHION" ng-selected="goodsInfo.zdiaShape === 'CUSHION'">枕形</option>
+                            <option value="RADIANT" ng-selected="goodsInfo.zdiaShape === 'RADIANT'">蕾蒂恩</option>
+                            <option value="BAGUETTE " ng-selected="goodsInfo.zdiaShape === 'BAGUETTE'">梯方</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品颜色: </label>
+
+                    <div class="col-sm-9">
+                        <select class="" name="diaColor"
+                                ng-model="goodsInfo.diaColor"
+                                >
+                            <option value="D" ng-selected="goodsInfo.diaColor === 'D'">D</option>
+                            <option value="E" ng-selected="goodsInfo.diaColor === 'E'">E</option>
+                            <option value="F" ng-selected="goodsInfo.diaColor === 'F'">F</option>
+                            <option value="G" ng-selected="goodsInfo.diaColor === 'G'">G</option>
+                            <option value="H" ng-selected="goodsInfo.diaColor === 'H'">H</option>
+                            <option value="I" ng-selected="goodsInfo.diaColor === 'I'">I</option>
+                            <option value="J" ng-selected="goodsInfo.diaColor === 'J'">J</option>
+                            <option value="K" ng-selected="goodsInfo.diaColor === 'K'">K</option>
+                            <option value="L" ng-selected="goodsInfo.diaColor === 'L'">L</option>
+                            <option value="M" ng-selected="goodsInfo.diaColor === 'M'">M</option>
+                            <option value="N" ng-selected="goodsInfo.diaColor === 'N'">N</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品净度: </label>
+
+                    <div class="col-sm-9">
+                        <select class="" name="diaJd"
+                                ng-model="goodsInfo.diaJd"
+                                >
+                            <option value="FL" ng-selected="goodsInfo.diaJd==='FL'">FL</option>
+                            <option value="IF" ng-selected="goodsInfo.diaJd==='IF'">IF</option>
+                            <option value="WS1" ng-selected="goodsInfo.diaJd==='WS1'">WS1</option>
+                            <option value="WS2" ng-selected="goodsInfo.diaJd==='WS2'">WS2</option>
+                            <option value="VS1" ng-selected="goodsInfo.diaJd==='VS1'">VS1</option>
+                            <option value="VS2" ng-selected="goodsInfo.diaJd==='VS2'">VS2</option>
+                            <option value="SI1" ng-selected="goodsInfo.diaJd==='SI1'">SI1</option>
+                            <option value="SI2" ng-selected="goodsInfo.diaJd==='SI2'">SI2</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品切工: </label>
+
+                    <div class="col-sm-9">
+                        <select class="" name="diaQg"
+                                ng-model="goodsInfo.diaQg"
+                                >
+                            <option value="EX" ng-selected="goodsInfo.diaQg==='EX'">EX</option>
+                            <option value="VG" ng-selected="goodsInfo.diaQg==='VG'">VG</option>
+                            <option value="G" ng-selected="goodsInfo.diaQg==='G'">G</option>
+                            <option value="Fair" ng-selected="goodsInfo.diaQg==='Fair'">Fair</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品证书: </label>
+
+                    <div class="col-sm-9">
+                        <select class="" name="goodsId"
+                                ng-model="goodsInfo.certificate"
+                                >
+                            <option value="GIA" ng-selected="goodsInfo.certificate==='GIA'">GIA</option>
+                            <option value="HRD" ng-selected="goodsInfo.certificate==='HRD'">HRD</option>
+                            <option value="IGI" ng-selected="goodsInfo.certificate==='IGI'">G</option>
+                            <option value="国检" ng-selected="goodsInfo.certificate==='国检'">国检</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品抛光: </label>-->
+
+                    <!--<div class="col-sm-9">-->
+                        <!--<select class="" name="polish"-->
+                                <!--ng-model="goodsInfo.diaQg"-->
+                                <!--&gt;-->
+                            <!--<option value="EX">EX</option>-->
+                            <!--<option value="VG">VG</option>-->
+                            <!--<option value="G">G</option>-->
+                            <!--<option value="Fair">Fair</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 对称: </label>-->
+
+                    <!--<div class="col-sm-9">-->
+                        <!--<select class="" name="symmetry"-->
+                                <!--ng-model="goodsInfo.symmetry"-->
+                                <!--&gt;-->
+                            <!--<option value="EX">EX</option>-->
+                            <!--<option value="VG">VG</option>-->
+                            <!--<option value="G">G</option>-->
+                            <!--<option value="Fair">Fair</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right"  for="form-field-1"> 产品图片: </label>
+
+                    <div class="col-sm-9">
+                        <div class="col-sm-6 col-md-3" ng-repeat="item in goodsInfo.goodsImages track by $index">
+                            <div class="thumbnail">
+                                <img ng-src="{{item.imageUrl}}" alt="">
+                                <div class="caption">
+                                    <p>
+                                        <a class="btn btn-primary" role="button" ng-click="deleteImage($index)">删除图片</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品定制规格： </label>
 
-                    <div class="col-sm-9">
-                        <label>
-                            <input type="radio" name="sex" class="ace">
-                            <span class="lbl"> 金工石</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="sex" class="ace">
-                            <span class="lbl"> 自定义</span>
-                        </label>
+
+                </div>
+
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label no-padding-right"></label>
+                    <div class="col-sm-9" id="fixfile">
+                        <input type="file" id="id-input-file-1" multiple />
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 个性符号: </label>
 
-                    <div class="col-sm-9">
-                        <input type="file" id="id-input-file-2" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品图片: </label>
-
-                    <div class="col-sm-9">
-                        <input type="file" id="id-input-file-3" />
-                    </div>
-                </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 珠宝试戴图片: </label>
 
+                    <div class="col-sm-6 col-md-3">
+                        <div class="thumbnail" ng-show="goodsInfo.tryThumb">
+                            <img ng-src="{{goodsInfo.tryThumb | toOnlineUrl}}" alt="">
+                            <div class="caption">
+                                <p>
+                                    <a class="btn btn-primary" role="button" ng-click="deleteTryImage()">删除图片</a>
+                                    <!--<a href="#" class="btn btn-default pull-right" role="button">Button</a>-->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"></label>
                     <div class="col-sm-9">
-                        <input type="file" id="id-input-file-1" />
+                        <input type="file" id="id-input-file-2" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品视频: </label>
 
                     <div class="col-sm-9">
-                        <input type="file" id="id-input-file-4" />
+                        <input type="file" id="id-input-file-3" ng-model="goodsInfo.videoAdds" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -125,9 +255,10 @@
                         <div class="wysiwyg-editor" id="editor1"></div>
                     </div>
                 </div>
+
                 <div class="clearfix form-actions">
                     <div class="col-md-offset-1 col-md-9">
-                        <button class="btn btn-info" type="button">
+                        <button class="btn btn-info" type="button" ng-click="submitEdit()">
 							<i class="ace-icon fa fa-check bigger-110"></i>
 							Submit
 						</button> &nbsp; &nbsp; &nbsp;
@@ -138,7 +269,6 @@
                     </div>
                 </div>
             </form>
-
         </div>
         <!-- /.col -->
     </div>
@@ -146,9 +276,37 @@
 </div>
 <!-- /.page-content -->
 
+<style>
+    div.file-actions .file-footer-buttons .kv-file-upload{
+        display:none;
+    }
+    div.file-actions .file-upload-indicator{
+        display:none;
+    }
+    .file-drop-zone-title{
+        padding:0;
+    }
+</style>
+
 <script type="text/javascript">
     $(function() {
-        $('#id-input-file-1 , #id-input-file-2 , #id-input-file-3, #id-input-file-4').ace_file_input({
+
+        $('#id-input-file-1').fileinput({
+            language: 'zh', //设置语言
+            uploadUrl: "/api/admin/uploadGoodsImage", //上传的地址
+            allowedFileExtensions : ['jpg', 'png','gif','jpeg'],//接收的文件后缀,
+            maxFileCount: 100,
+            overwriteInitial: false,
+            enctype: 'multipart/form-data',
+            showUpload: false, //是否显示上传按钮
+            showCaption: false,//是否显示标题
+            browseClass: "btn btn-primary", //按钮样式
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+        });
+
+
+        $('#id-input-file-2 , #id-input-file-3, #id-input-file-4').ace_file_input({
             no_file: 'No File ...',
             btn_choose: 'Choose',
             btn_change: 'Change',
