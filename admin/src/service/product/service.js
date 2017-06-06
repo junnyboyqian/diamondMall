@@ -125,7 +125,7 @@ module.service('proData', function ($http, $state, SweetAlert) {
     //产品详情，编辑页
     self.goodsInfo = [];
     self.getGoodsDetail = function (id) {
-        var url = 'api/admin/getGoodsDetail';
+        var url = '/api/admin/getGoodsDetail';
         return $http({
             method: 'GET',
             params:{
