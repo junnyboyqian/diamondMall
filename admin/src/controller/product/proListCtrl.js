@@ -180,6 +180,7 @@ module.controller('productInfoCtrl', function ($scope, proData, SweetAlert, $sta
                     sendImg.unshift($scope.goodsInfo.goodsImages[i].imageUrl.replace('http://hzmozhi.com:85/', ''))
                 }
                 $scope.sendData.defaultImage = sendImg[0];
+                $scope.sendData.tryThumb = $scope.sendData.tryThumb.replace('http://hzmozhi.com:85/','');
                 console.log('final data',$scope.sendData);
                 $scope.sendData.goodsImages = angular.toJson(sendImg);
                 proData.addProduct($scope.sendData);
