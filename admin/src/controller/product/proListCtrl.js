@@ -59,6 +59,7 @@ module.controller('productAttributeListCtrl', function ($scope, proData) {
     // 产品属性
     proData.getAttributeList()
     $scope.AttributeList = proData.AttributeList
+    console.log($scope.AttributeList)
 })
 
 module.controller('goodsSeriesListCtrl', function ($scope, proData) {
@@ -68,10 +69,11 @@ module.controller('goodsSeriesListCtrl', function ($scope, proData) {
     console.log('goodsSeriesList', proData.goodsSeriesList)
 })
 
+// 产品分类
 module.controller('productCatLitsCtrl', function ($scope, proData) {
-    // 产品分类
     proData.getProductCatLits()
     $scope.productCatLits = proData.productCatLits
+    console.log('procatList',$scope.productCatLits)
 })
 module.controller('productListCtrl', function ($scope, proData, $stateParams, $rootScope) {
     // 产品分类
@@ -102,7 +104,7 @@ module.controller('productInfoCtrl', function ($scope, proData, SweetAlert, $sta
         console.log($scope.goodsInfo.tryThumb);
 
     }
-    $scope.$watch('goodsInfo.description',function (newV) {
+    $scope.$watch('goodsInfo.description', function (newV) {
         $('#editor1').html(newV)
     })
 
@@ -119,8 +121,7 @@ module.controller('productInfoCtrl', function ($scope, proData, SweetAlert, $sta
         $scope.sendData = {};
         $scope.goodsInfo.description = $('#editor1').html()
 
-        $scope.goodsInfo.zdiaNum = 1;
-        $scope.goodsInfo.fdiaNum = 1;
+
         $scope.goodsInfo.zdiaWeight = 1;
         $scope.goodsInfo.fdiaWeight = 1;
         $scope.goodsInfo.isSpot = 1;
@@ -158,9 +159,9 @@ module.controller('productInfoCtrl', function ($scope, proData, SweetAlert, $sta
             goSubmit();
         }
         function deepCopy(source) {
-            var result={};
+            var result = {};
             for (var key in source) {
-                result[key] = typeof source[key]==='object'? deepCopy(source[key]): source[key];
+                result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key];
             }
             return result;
         }
@@ -180,8 +181,8 @@ module.controller('productInfoCtrl', function ($scope, proData, SweetAlert, $sta
                     sendImg.unshift($scope.goodsInfo.goodsImages[i].imageUrl.replace('http://hzmozhi.com:85/', ''))
                 }
                 $scope.sendData.defaultImage = sendImg[0];
-                $scope.sendData.tryThumb = $scope.sendData.tryThumb.replace('http://hzmozhi.com:85/','');
-                console.log('final data',$scope.sendData);
+                $scope.sendData.tryThumb = $scope.sendData.tryThumb.replace('http://hzmozhi.com:85/', '');
+                console.log('final data', $scope.sendData);
                 $scope.sendData.goodsImages = angular.toJson(sendImg);
                 proData.addProduct($scope.sendData);
             }
@@ -237,21 +238,94 @@ module.controller('addProductCtrl', function ($scope, proData, SweetAlert) {
         //     $scope.formData.goodsImages.push(file1[g].name)
         // }
         //
+        var count = 0;
+        var total = file1.length + 1;
+        $scope.formData.goodsImages = [];
 
-        $scope.formData.videoAdds = '';
-        $scope.formData.description = $('#editor1').html()
-        proData.uploadImg('addProduct', file1, function () {
-            $scope.formData.goodsImages = angular.toJson(proData.goodsImages)
-            $scope.formData.defaultImage = proData.goodsImages[0];
-            proData.uploadImg('uploadGoodsTry', file2, function () {
-                $scope.formData.tryThumb = proData.tryThumb;
-                console.log('img array', $scope.formData.goodsImages)
-                console.log('try img', $scope.formData.tryThumb)
-                var params = $scope.formData
-                proData.addProduct(params)
-            });
-        });
+        for (var i = 0; i < file1.length; i++) {
+            proData.uploadGoodsImg(file1[i], function (data) {
+                if (data !== 'error') {
+                    count++;
+                    $scope.formData.goodsImages.push(data.data.fileurl)
+                    goSubmit();
+                }else{
+                    SweetAlert.swal({
+                        title: '错误',
+                        text: '图片上传失败',
+                        type: 'error'
+                    });
+                    return;
+                }
+            })
+        }
+        proData.uploadTryImg(file2,function (data) {
+            if(data !== 'error'){
+                count ++;
+                $scope.formData.tryThumb = data.data.fileurl;
+                goSubmit();
+            }else{
+                SweetAlert.swal({
+                    title: '错误',
+                    text: '图片上传失败',
+                    type: 'error'
+                });
+                return;
+            }
+        })
+        function goSubmit() {
+            if (count === total) {
+                $scope.formData.videoAdds = '';
+                $scope.formData.description = $('#editor1').html();
+                $scope.formData.defaultImage = $scope.formData.goodsImages[0];
+                $scope.formData.goodsImages = angular.toJson($scope.formData.goodsImages);
+                var params = $scope.formData;
+                proData.addProduct(params);
+            }
+        }
+
+
+
+        // proData.uploadImg('addProduct', file1, function () {
+        //     $scope.formData.goodsImages = angular.toJson(proData.goodsImages);
+        //     $scope.formData.defaultImage = proData.goodsImages[0];
+        //     proData.uploadImg('uploadGoodsTry', file2, function () {
+        //         $scope.formData.tryThumb = proData.tryThumb;
+        //         console.log('img array', $scope.formData.goodsImages);
+        //         console.log('try img', $scope.formData.tryThumb);
+        //         var params = $scope.formData;
+        //         proData.addProduct(params);
+        //     });
+        // });
 
 
     };
+})
+
+module.controller('addGoodsSeriesCtrl',function ($scope, proData, SweetAlert) {
+    console.log('addGoodsSeriesCtrl');
+    $scope.formData = {};
+    $scope.formData.type = '1';
+    $scope.formData.imageUrl = [];
+    $scope.submitForm= function () {
+        var count = 0;
+        var file = document.getElementById('id-input-file-1').files;
+        for(var i = 0;i<file.length;i++){
+            proData.uploadGoodsImg(file[i],function (data) {
+                if(data !== 'error'){
+                    count ++;
+                    $scope.formData.imageUrl.push(data.data.fileurl)
+                    goResult();
+                }
+            })
+        }
+        function goResult() {
+            if(count === file.length){
+                proData.addGoodsSeries($scope.formData)
+            }
+        }
+    }
+
+
+
+
 })

@@ -221,9 +221,9 @@
                         <div class="col-sm-6 col-md-3" ng-repeat="item in goodsInfo.goodsImages track by $index">
                             <div class="thumbnail">
                                 <img ng-src="{{item.imageUrl}}" alt="">
-                                <div class="caption">
+                                <div class="caption text-center">
                                     <p>
-                                        <a class="btn btn-primary" role="button" ng-click="deleteImage($index)">删除图片</a>
+                                        <a class="btn btn-primary btn-sm" role="button" ng-click="deleteImage($index)">删除图片</a>
                                     </p>
                                 </div>
                             </div>
@@ -244,9 +244,9 @@
                     <div class="col-sm-6 col-md-3">
                         <div class="thumbnail" ng-show="goodsInfo.tryThumb">
                             <img ng-src="{{goodsInfo.tryThumb}}" alt="">
-                            <div class="caption">
+                            <div class="caption text-center">
                                 <p>
-                                    <a class="btn btn-primary" role="button" ng-click="deleteTryImage()">删除图片</a>
+                                    <a class="btn btn-primary btn-sm" role="button" ng-click="deleteTryImage()">删除图片</a>
                                     <!--<a href="#" class="btn btn-default pull-right" role="button">Button</a>-->
                                 </p>
                             </div>

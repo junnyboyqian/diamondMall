@@ -67,11 +67,11 @@
                         <td align="center">{{item.goodsId}}</td>
                         <td align="center">{{item.goodsSn}}</td>
                         <td align="center">{{item.goodsName}}</td>
-                        <td align="center">{{item.gtype}}</td>
-                        <td align="center">{{item.ifShow}}</td>
-                        <td align="center">{{item.indexShow}}</td>
-                        <td align="center">{{item.price}}</td>
-                        <td align="center">{{item.refprice}}</td>
+                        <td align="center">{{item.gtype | productList_gtype}}</td>
+                        <td align="center">{{item.ifShow ? '是':'否'}}</td>
+                        <td align="center">{{item.indexShow ? '已上架':'未上架'}}</td>
+                        <td align="center">{{item.price | currency:'￥'}}</td>
+                        <td align="center">{{item.refprice | currency:'￥'}}</td>
                         <td align="center">1</td>
                         <td class="hidden-480" align="center">
                             <a ui-sref="index.productInfo({id:item.goodsId})">编辑</a>
