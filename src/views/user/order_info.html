@@ -1,0 +1,99 @@
+<div class="" ng-include="'src/components/page/header.html'"></div>
+
+
+<style type="text/css">.menbet_right{width:745px; height:auto; float:right; margin-top:10px;} .menbet_right h1{font:700 18px/30px arial,"微软雅黑";} .menbet_right h1 span{color:#727272; margin-left:20px;} .menbet_right p{line-height:25px;} .menbet_right_userinfo{width:735px; height:auto; border:solid 1px #a6a6a6; position:relative; -webkit-box-shadow: 1px 1px 11px #a6a6a6; margin-top:35px; _padding-top:20px;} .menbet_right_userinfo_tit{width:80px; height:28px; padding-left:18px; font:700 12px/28px "微软雅黑"; background:url(./src/assets/themes/mklm201306/images/usercenter_bg.gif) no-repeat -862px 0; position:absolute; top:-28px; left:30px;} .menbet_r_con{width:710px; height:auto; margin:20px auto;} .menbet_r_con_tit,.menbet_r_con_con{width:690px; height:auto; background:#bbb;} .menbet_r_con_tit td{text-align:center; background:#000; height:31px; line-height:31px; color:#fff;} .menbet_r_bill_tit{width:680px; height:31px; line-height:31px; background:#bbb; padding:0 5px;} .menbet_r_bill_tit span{float:right;} .menbet_r_bill_td1{width:310px;} .menbet_r_bill_td2{width:100px;} .menbet_r_con_con td{text-align:center; background:#fff; height:auto; padding-bottom:5px;} .menbet_r_con_con td label{margin:5px 10px 0; float:left;} .menbet_r_con_con td label img{border:solid 1px #d4d4d4;} .menbet_r_con_con td p{line-height:20px; color:#000; text-align:left;} .menbet_r_con_con td p span{margin-left:20px;} .menbet_r_con_con a{text-decoration:underline;} .menbet_r_con_con a:hover{color:#f0040e;} .list_sppx_r{width:680px;text-align:right; margin-top:20px;} .listRankPre,.listRankNex{background:url(themes/mklm201306/images/usercenter_bg.gif) no-repeat;} .listRankPre{background-position:-420px 0; padding-left:10px;} .listRankNex{background-position:-560px 0; margin-left:20px; padding-right:10px;} .list_sppx_r b {margin-left:18px;}
+.uc17_right{width:100%; height:auto; float:left; margin:0 0 0 20px;}
+.uc17_right_tit{width:100%; height:auto; font:400 20px/100px "微软雅黑";}
+.uc17_bill_none{width:100%; height:auto; font:400 18px/100px "微软雅黑"; text-align:center;}
+
+.uc17_mylist{width:100%; height:auto; margin:0 auto;}
+.uc17_mylist_tit{background:#e4e4e4; height:30px;border:solid 1px #c9c9c9;  border-bottom:none;}
+.uc17_mylist_325{width:300px; height:auto; float:left;}
+.uc17_mylist_80{width:80px; height:auto; float:left; border-left:solid 1px #c9c9c9;}
+.uc17_mylist_125{width:75px; height:auto; float:left; border-left:solid 1px #c9c9c9;}
+.uc17_mylist_txtc{text-align:center; font:400 14px/30px "微软雅黑";}
+.uc17_mylist_tit2{background:#fad1d1; border-bottom:none; height:30px; font:400 12px/30px "微软雅黑"; text-indent:10px;}
+.uc17_mylist_tit2 span{float:right; padding-right:10px;}
+
+.uc17_mylist_con{background:#fff; border-top:none; height:100px;border:solid 1px #c9c9c9;}
+.uc17_mylist_conc{text-align:center; font:400 14px/100px "微软雅黑";}
+.uc17_mylist_pic{width:80px; height:80px; float:left; margin:10px 0 0 10px;}
+.uc17_mylist_pic img{width:80px; height:80px;}
+.uc17_mylist_pict{width:180px; height:auto; float:left; margin:10px 0 0 10px;}
+.uc17_mylist_pict li{font:400 12px/30px "微软雅黑";}
+.uc17_mylist_pict li span{color:#ccc;}
+
+.uc17_mylistinfo{width:100%; height:auto; margin:0 auto 20px; background:#fff; padding-bottom:10px;}
+.uc17_mylistinfo_tit{ height:50px; border-bottom:dotted 1px #c9c9c9; font:400 16px/50px "微软雅黑"; margin:0 auto;}
+.uc17_mylistinfo_tit span{float:right;}
+.uc17_mylistinfo_l{width:50%; height:auto; float:left; margin:20px 0 0 20px;}
+.uc17_mylistinfo_l li{font:400 14px/25px "微软雅黑"; margin-bottom:10px; text-indent:-70px; padding-left:70px;}
+.uc17_mylistinfo_r{width: 40%; height:auto; float:left; margin:20px 0 0 0; border-left:dotted 1px #c9c9c9; padding-left:20px;}
+.uc17_mylistinfo_r li{font:400 14px/25px "微软雅黑"; margin-bottom:10px;}
+.uc17_mylistinfo_r li span{float:right; text-align:right;}
+
+.ucar17_botton:hover{cursor:pointer;}
+#upload_notice {font:400 16px/50px "微软雅黑";color:red;text-align:center;line-height:30px;margin-top:15px;display:none;}
+</style>
+<div class="noumenon" id="zeronn" ng-controller="userOrderInfoCtrl">
+    <div class="wrap">
+        <div class="menbet_left" ng-include="'src/components/page/userLeft.html'"></div>
+        <div class="menbet_right">
+            <ul class="menbet_right_userinfo">
+                <div class="menbet_right_userinfo_tit">订单详情</div>
+                <div class="menbet_r_con">
+                    <div class="uc17_mylistinfo">
+                            <div class="uc17_mylistinfo_tit">订单号：{{orderInfo.orderSn}}<span>下单时间：{{orderInfo.addTime}}</span></div>
+                            <ul class="uc17_mylistinfo_l">
+                                    <li>收货人：{{orderInfo.consignee}}</li>
+                                    <li>手机号：{{orderInfo.tel}}</li>
+                                    <li>收货地址：[{{orderInfo.address}}] {{orderInfo.regionName}} [邮政编码: {{orderInfo.zipcode}}]</li>
+                            </ul>
+                            <ul class="uc17_mylistinfo_r">
+                                    <li>商品合计：<span>￥{{orderInfo.goodsAmount}}元</span></li>
+                                    <li>付款方式：<span>支付宝</span></li>
+                                    <li>配送方式：<span>中国邮政EMS或FEDEX联邦快递(由格莱弗钻石网免费提供) </span></li>
+                            </ul>
+                            <div class="clear"></div>
+                    </div>
+                    <ul class="uc17_mylist uc17_mylist_tit">
+                            <li class="uc17_mylist_325 uc17_mylist_txtc">已购宝贝</li>
+                            <li class="uc17_mylist_80 uc17_mylist_txtc">售价</li>
+                            <li class="uc17_mylist_80 uc17_mylist_txtc">数量</li>
+                            <li class="uc17_mylist_80 uc17_mylist_txtc">实付款</li>
+                            <li class="uc17_mylist_125 uc17_mylist_txtc">交易状态</li>
+                            <li class="uc17_mylist_125 uc17_mylist_txtc">交易操作</li>
+                    </ul>
+                    <ul class="uc17_mylist uc17_mylist_con" ng-repeat="item in orderInfo.goods">
+                            <li class="uc17_mylist_325">
+                                    <div class="uc17_mylist_pic">
+                                        <a ui-sref="goods({id: item.goodsId})">
+                                            <img ng-src="{{item.goodsImage}}" alt="">
+                                        </a>
+                                    </div>
+                                    <ul class="uc17_mylist_pict">
+                                        <li>{{item.goodsName}}</li>
+                                    </ul>
+                            </li>
+                            <li class="uc17_mylist_80 uc17_mylist_conc">￥{{item.price}}</li>
+                            <li class="uc17_mylist_80 uc17_mylist_conc">{{item.quantity}}</li>
+                            <li class="uc17_mylist_80 uc17_mylist_conc">￥{{item.price}}</li>
+                            <li class="uc17_mylist_125 uc17_mylist_conc">
+                                <span ng-if="orderInfo.status == 0">交易已取消</span>
+                                <span ng-if="orderInfo.status == 20">待发货</span>
+                                <span ng-if="orderInfo.status == 30">已发货</span>
+                                <span ng-if="orderInfo.status == 40">交易成功</span>
+                                <span ng-if="orderInfo.status == 50">退款</span>
+                                <span ng-if="orderInfo.status == 11">未付款</span>
+                            </li>
+                            <li class="uc17_mylist_125 uc17_mylist_conc">
+                                <a ui-sref="payMent({orderId: orderInfo.orderId})" ng-if="orderInfo.status == 11">去付款</a>
+                                <a ng-else="orderInfo.status == 0">&nbsp;</a>
+                            </li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="bottom14" ng-include="'src/components/page/footer.html'"></div>

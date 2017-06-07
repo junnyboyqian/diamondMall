@@ -3,26 +3,61 @@
     <div class="dts_wrap">
         <div class="dts_datu">
             <div class="dts_datu_img" id="specn1">
-                <img class="img" src="src/assets/images/201605/goods_img/11207175_P_1463641296504.jpg" jqimg="src/assets/images/201605/goods_img/11207175_P_1463641296504.jpg" width="400" height="400" /></div>
+                <img class="img" ng-src="{{goodsInfo.images[0]}}" width="400" height="400" /></div>
             <div class="dts_datu_xt" id="spec">
                 <div class="dts_datu_xt_li_l" id="specleft"></div>
                 <div id="speclist">
                     <ul>
-                        <li onclick="hideTopNav('sp');">
-                            <img src="src/assets/images/201605/goods_img/11207175_P_1463641296504.jpg" /></li>
-                        <li onclick="hideTopNav('sp');">
-                            <img src="src/assets/images/201605/goods_img/11207175_P_1463641351333.jpg" /></li>
-                        <li onclick="hideTopNav('sp');">
-                            <img src="src/assets/images/201605/goods_img/11207175_P_1463641351376.jpg" /></li>
-                        <li onclick="hideTopNav('sp');">
-                            <img src="src/assets/images/201605/goods_img/11207175_P_1463641351664.jpg" /></li>
-                        <li onclick="hideTopNav('sp');">
-                            <img src="src/assets/images/201605/goods_img/11207175_P_1463641351071.jpg" /></li>
+                        <li onclick="hideTopNav('sp');" ng-repeat="img in goodsInfo.images">
+                            <img ng-src="{{img}}" />
+                        </li>
                     </ul>
                 </div>
                 <div class="dts_datu_xt_li_r" id="specright"></div>
             </div>
         </div>
+        <script type="text/javascript">
+            /*大图查看*/
+            $(function() {
+                $(".dts_datu_img").jqueryzoom({
+                    xzoom: 400,
+                    yzoom: 400,
+                    offset: 10,
+                    position: "absolute",
+                    preload: 1,
+                    lens: 1
+                });
+                $("#speclist").jdMarquee({
+                    deriction: "left",
+                    width: 360,
+                    height: 80,
+                    step: 1,
+                    speed: 4,
+                    delay: 10,
+                    control: true,
+                    _front: "#specright",
+                    _back: "#specleft"
+                });
+                $("#speclist img").bind("click",
+                function() {
+                    var src = $(this).attr("src");
+                    $("#specn1 img").eq(0).attr({
+                        src: src.replace("\/n5\/", "\/n1\/"),
+                        jqimg: src.replace("\/n5\/", "\/n0\/")
+                    });
+                    $(this).css({
+                        "border": "1px solid #f60",
+                        "padding": "0"
+                    });
+                }).bind("mouseout",
+                function() {
+                    $(this).css({
+                        "border": "1px solid #ccc",
+                        "padding": "0"
+                    });
+                });
+            })
+        </script>
         <div class="dts_info">
             <h1 class="dts_info_tit1">{{goodsInfo.goodsName}}</h1>
             <ul class="dts_item">

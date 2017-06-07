@@ -47,7 +47,28 @@
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品编号: </label>
 
                     <div class="col-sm-9">
-                        <input type="text" id="form-field-1" placeholder="产品编号" class="col-xs-10 col-sm-5" value="" ng-model="formData.goodsSn">
+                        <input type="text" id="form-field-2" placeholder="产品编号" class="col-xs-10 col-sm-5" value="" ng-model="formData.goodsSn">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 市场价格(￥): </label>
+
+                    <div class="col-sm-9">
+                        <input type="number" step="0.01" id="form-field-3" placeholder="市场价格" class="col-xs-10 col-sm-5" value="" ng-model="formData.marketPrice">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 销售价格(￥): </label>
+
+                    <div class="col-sm-9">
+                        <input type="number" step="0.01" id="form-field-4" placeholder="销售价格" class="col-xs-10 col-sm-5" value="" ng-model="formData.price">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品库存: </label>
+
+                    <div class="col-sm-9">
+                        <input type="number"  id="form-field-4" placeholder="产品库存" class="col-xs-10 col-sm-5" value="" ng-model="formData.stock">
                     </div>
                 </div>
                 <div class="form-group">
@@ -225,12 +246,24 @@
     <!-- /.row -->
 </div>
 <!-- /.page-content -->
+<style>
+    div.file-actions .file-footer-buttons .kv-file-upload{
+        display:none;
+    }
+    div.file-actions .file-upload-indicator{
+        display:none;
+    }
+    .file-drop-zone-title{
+        padding:0;
+    }
+
+</style>
 
 <script type="text/javascript">
     $(function() {
         $('#id-input-file-1').fileinput({
             language: 'zh', //设置语言
-            uploadUrl: "/api/admin/uploadZshImage", //上传的地址
+            uploadUrl: "/api/admin/uploadGoodsImage", //上传的地址
             allowedFileExtensions : ['jpg', 'png','gif','jpeg'],//接收的文件后缀,
             maxFileCount: 10,
             overwriteInitial: false,

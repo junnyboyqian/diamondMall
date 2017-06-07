@@ -1,8 +1,81 @@
-var module = angular.module('productService', [])
+var module = angular.module('spreadService', [])
 
-module.service('proData', function ($http, $state, SweetAlert) {
+module.service('spreadData', function ($http, $state, SweetAlert) {
     var self = this;
     //  证书货数据
+    self.articleCateList = [];
+    self.getArticleCateList = function (offset, count) {
+        var url = '/api/admin/articleCateList';
+        return $http({
+            method: 'GET',
+            url: url,
+            params: {
+                offset: offset,
+                count: count
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function (data) {
+            if (data.code !== '10000')
+                return console.log('ERROR');
+            return angular.copy(data.data.articleCateList, self.articleCateList);
+        }).error(function (res) {
+            return console.log('ERROR: ' + res);
+        })
+    };
+
+    //add Article
+    self.addArticleCate = function (formData) {
+        var url = 'api/admin/operArticleCate';
+        return $http({
+            method: 'POST',
+            url: url,
+            params: formData,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function (data) {
+            SweetAlert.swal({
+                title: '正确',
+                text: '添加成功',
+                type: 'success'
+            });
+            $state.go('index.articleCateList');
+        }).error(function (res) {
+            SweetAlert.swal({
+                title: '错误',
+                text: '请填写所有字段',
+                type: 'error'
+            });
+        })
+    }
+    //获取文章列表
+    self.articleList = [];
+    self.getArticleList = function (offset, count) {
+        var url = '/api/admin/articleList';
+        return $http({
+            method: 'GET',
+            url: url,
+            params: {
+                offset: offset,
+                count: count
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function (data) {
+            if (data.code !== '10000')
+                return console.log('ERROR');
+            return angular.copy(data.data.articleList, self.articleList);
+        }).error(function (res) {
+            return console.log('ERROR: ' + res);
+        })
+    }
+
+
+    //old
+
     self.zshList = [];
     self.getZshList = function () {
         var url = '/api/admin/zshList';
@@ -128,8 +201,8 @@ module.service('proData', function ($http, $state, SweetAlert) {
         var url = '/api/admin/getGoodsDetail';
         return $http({
             method: 'GET',
-            params:{
-                goodsId:id
+            params: {
+                goodsId: id
             },
             url: url,
             headers: {
@@ -160,7 +233,7 @@ module.service('proData', function ($http, $state, SweetAlert) {
                 text: '添加成功',
                 type: 'success'
             });
-            $state.go('index.productList',{page:1});
+            $state.go('index.productList', {page: 1});
         }).error(function (res) {
             SweetAlert.swal({
                 title: '错误',
@@ -187,7 +260,7 @@ module.service('proData', function ($http, $state, SweetAlert) {
                 text: '添加成功',
                 type: 'success'
             });
-            $state.go('index.productList',{page:1});
+            $state.go('index.productList', {page: 1});
         }).error(function (res) {
             SweetAlert.swal({
                 title: '错误',
@@ -198,23 +271,23 @@ module.service('proData', function ($http, $state, SweetAlert) {
     }
 
     //上传商品图片
-    self.uploadGoodsImg = function (file,cb) {
+    self.uploadGoodsImg = function (file, cb) {
         var url = '/api/admin/uploadGoodsImage';
         var data = new FormData();
         console.log(file);
-        data.append('imageUrl',file);
+        data.append('imageUrl', file);
         return $http({
-            method:"POST",
-            url:url,
-            data:data,
-            headers:{
-                "Content-Type":undefined
+            method: "POST",
+            url: url,
+            data: data,
+            headers: {
+                "Content-Type": undefined
             }
         }).success(function (data) {
-            console.log('filedata',data);
-            if(data.code === '10000'){
+            console.log('filedata', data);
+            if (data.code === '10000') {
                 cb && cb(data)
-            }else{
+            } else {
                 cb && cb('error')
             }
 
@@ -224,21 +297,21 @@ module.service('proData', function ($http, $state, SweetAlert) {
         })
     }
     //上传试穿图片
-    self.uploadTryImg = function (file,cb) {
+    self.uploadTryImg = function (file, cb) {
         var url = '/api/admin/uploadGoodsTryThumb';
         var data = new FormData();
-        data.append('tryThumb',file)
+        data.append('tryThumb', file)
         return $http({
-            method:"POST",
-            url:url,
-            data:data,
-            headers:{
-                "Content-Type":undefined
+            method: "POST",
+            url: url,
+            data: data,
+            headers: {
+                "Content-Type": undefined
             }
         }).success(function (data) {
-            if(data.code === '10000'){
+            if (data.code === '10000') {
                 cb && cb(data)
-            }else{
+            } else {
                 cb && cb('error')
             }
         }).error(function (err) {
@@ -378,7 +451,6 @@ module.service('proData', function ($http, $state, SweetAlert) {
             });
         })
     };
-
 
 
 })

@@ -74,7 +74,7 @@
                     <b class="arrow"></b>
                 </li> -->
                 <li class="">
-                    <a ui-sref="index.productList">
+                    <a ui-sref="index.productList({page:1})">
                         <i class="menu-icon fa fa-caret-right"></i>产品列表
                     </a>
 
@@ -104,7 +104,7 @@
             </ul>
         </li>
     <li class="">
-        <a href="#" class="dropdown-toggle">
+        <a class="dropdown-toggle">
             <i class="menu-icon fa fa-list"></i>
             <span class="menu-text">
                     订单
@@ -116,7 +116,7 @@
 
         <ul class="submenu">
             <li class="">
-                <a href="faq.html">
+                <a >
                     <i class="menu-icon fa fa-caret-right"></i>订单列表
                 </a>
 
@@ -228,14 +228,14 @@
 
         <ul class="submenu">
             <li class="">
-                <a href="faq.html">
+                <a ui-sref="index.articleList">
                     <i class="menu-icon fa fa-caret-right"></i>文章管理
                 </a>
 
                 <b class="arrow"></b>
             </li>
             <li class="">
-                <a href="faq.html">
+                <a ui-sref="index.articleCateList">
                     <i class="menu-icon fa fa-caret-right"></i>文章分类
                 </a>
 

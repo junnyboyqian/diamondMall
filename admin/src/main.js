@@ -3,8 +3,15 @@ var app = angular.module('app', [
     'oc.lazyLoad',
     'oitozero.ngSweetAlert',
     'productCtrl',
-    'userCtrl'
+    'userCtrl',
+    'spreadCtrl'
 ])
+
+app.run(['$rootScope',function ($rootScope) {
+    $rootScope.seriesName = [
+
+    ];
+}])
 
 app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
     $urlRouterProvider.when('', '/');
@@ -30,6 +37,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
     $urlRouterProvider.when('proList', '/proList');
     $urlRouterProvider.when('addProduct', '/addProduct');
     $urlRouterProvider.when('addGoods', '/addGoods');
+    $urlRouterProvider.when('addGoodsSeries', '/addGoodsSeries');
     $ocLazyLoadProvider.config({
       debug: false
     });
@@ -83,7 +91,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             templateUrl: 'src/views/user/userRankInfo.html'
         })
         .state('index.productList', {
-            url: 'index/productList',
+            url: 'index/productList/:page',
             templateUrl: 'src/views/product/productList.html'
         })
         .state('index.productCatLits', {
@@ -107,7 +115,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             templateUrl: 'src/views/product/goodsSeriesUpdate.html'
         })
         .state('index.productInfo', {
-            url: 'index/productInfo',
+            url: 'index/productInfo/:id',
             templateUrl: 'src/views/product/productInfo.html'
         })
         .state('index.goodsList', {
@@ -125,5 +133,21 @@ app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
         .state('index.addGoods', {
             url: 'index/addGoods',
             templateUrl: 'src/views/product/addGoods.html'
+        })
+        .state('index.addGoodsSeries', {
+            url: 'index/addGoodsSeries',
+            templateUrl: 'src/views/product/addGoodsSeries.html'
+        })
+        .state('index.articleCateList', {
+            url: 'index/articleCateList',
+            templateUrl: 'src/views/spread/articleCateList.html'
+        })
+        .state('index.addArticleCate', {
+            url: 'index/addArticleCate',
+            templateUrl: 'src/views/spread/addArticleCate.html'
+        })
+        .state('index.articleList', {
+            url: 'index/articleList',
+            templateUrl: 'src/views/spread/articleList.html'
         })
 })
