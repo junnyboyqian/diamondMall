@@ -1,0 +1,106 @@
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {}
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">首页</a>
+        </li>
+        <li class="active">用户</li>
+    </ul>
+    <!-- /.breadcrumb -->
+</div>
+
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    <bread-crumb title="用户" sub-title="管理员列表" end-title="编辑管理员"></bread-crumb>
+    <!-- /.page-header -->
+
+    <div class="row" ng-controller="editAdminCtrl">
+        <div class="col-xs-12">
+            <form class="form-horizontal" role="form" ng-submit="submitForm()">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" > 账号: </label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
+                               ng-model="adminDetail.account">
+                        <!--<span class="text-danger" ng-if="error.name"> {{error.name}}</span>-->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" > 昵称: </label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
+                               ng-model="adminDetail.nickname">
+                        <!--<span class="text-danger" ng-if="error.name"> {{error.name}}</span>-->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" > 邮箱: </label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
+                               ng-model="adminDetail.email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" > 状态: </label>
+                    <div class="col-sm-9" style="padding-top:7px;">
+                        <label>
+                            <input type="radio" name="homeShow" ng-model="adminDetail.status" ng-value="1">
+                            <span>开启</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="homeShow" ng-model="adminDetail.status" ng-value="0">
+                            <span>关闭</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" > 分组: </label>
+                    <div class="col-sm-9">
+                        <select name="" id="" ng-model="adminDetail.groupId" style="width:40%;">
+                            <option ng-value="item.id" ng-repeat="item in adminGroupList" ng-selected="adminDetail.groupId === item.id">{{item.groupName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" > 备注: </label>
+                    <div class="col-sm-9">
+                        <textarea class='col-sm-9' name="remark" id="remark" rows="10" ng-model="adminDetail.remark">
+                        </textarea>
+
+                    </div>
+                </div>
+
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-1 col-md-9">
+                        <button class="btn btn-info" type="submit">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            提交
+                        </button> &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            重置
+                        </button>
+                    </div>
+                </div>
+                <!--old-->
+            </form>
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.page-content -->
+
+
+<!--api
+
+-->
+

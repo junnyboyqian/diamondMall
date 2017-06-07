@@ -14,7 +14,7 @@ module.service('userData', function ($http, $state, SweetAlert) {
                 count: '20'
             },
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             return angular.copy(data.data.adminGroupList, self.adminGroupList);
@@ -30,7 +30,7 @@ module.service('userData', function ($http, $state, SweetAlert) {
             url: url,
             params: formData,
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             SweetAlert.swal({
@@ -57,19 +57,21 @@ module.service('userData', function ($http, $state, SweetAlert) {
     // output:
     //     adminGroupDetail
     self.adminGroupDetail = [];
-    self.getAdminGroupDetail = function (id) {
+    self.getAdminGroupDetail = function (id, cb) {
         var url = '/api/admin/getAdminGroupDetail';
         return $http({
             method: 'GET',
             url: url,
             params: {
-                adminGpId:id
+                adminGpId: id
             },
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
-            return angular.copy(data.data.adminGroupDetail, self.adminGroupDetail);
+            console.log(data)
+            angular.copy(data.data.adminGroupDetail[0], self.adminGroupDetail);
+            return cb && cb()
         }).error(function (res) {
             return console.log('ERROR: ' + res);
         })
@@ -87,10 +89,10 @@ module.service('userData', function ($http, $state, SweetAlert) {
                 count: '20'
             },
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
-            console.log('permissions',data.data.permissionList)
+            console.log('permissions', data.data.permissionList)
             return angular.copy(data.data.permissionList, self.permissionList);
         }).error(function (res) {
             return console.log('ERROR: ' + res);
@@ -109,7 +111,7 @@ module.service('userData', function ($http, $state, SweetAlert) {
                 count: '20'
             },
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             return angular.copy(data.data.adminList, self.adminList);
@@ -117,6 +119,8 @@ module.service('userData', function ($http, $state, SweetAlert) {
             return console.log('ERROR: ' + res);
         })
     };
+
+
     //  客户列表
     self.userList = [];
     self.getUserList = function () {
@@ -129,7 +133,7 @@ module.service('userData', function ($http, $state, SweetAlert) {
                 count: '20'
             },
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             return angular.copy(data.data.userList, self.userList);
@@ -149,7 +153,7 @@ module.service('userData', function ($http, $state, SweetAlert) {
                 count: '20'
             },
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             return angular.copy(data.data.userGroupList, self.userGroupList);
@@ -165,7 +169,7 @@ module.service('userData', function ($http, $state, SweetAlert) {
             url: url,
             params: formData,
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             SweetAlert.swal({
@@ -194,7 +198,7 @@ module.service('userData', function ($http, $state, SweetAlert) {
                 count: '20'
             },
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             return angular.copy(data.data.goodsList, self.goodsList);
@@ -210,7 +214,7 @@ module.service('userData', function ($http, $state, SweetAlert) {
             method: 'GET',
             url: url,
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             return angular.copy(data.data.goodsAttrList, self.AttributeList);
@@ -226,7 +230,7 @@ module.service('userData', function ($http, $state, SweetAlert) {
             method: 'GET',
             url: url,
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             return angular.copy(data.data.goodsSeriesList, self.goodsSeriesList);
@@ -242,7 +246,7 @@ module.service('userData', function ($http, $state, SweetAlert) {
             method: 'GET',
             url: url,
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             return angular.copy(data.data.goodsCateList, self.productCatLits);
@@ -251,9 +255,9 @@ module.service('userData', function ($http, $state, SweetAlert) {
         })
     }
     //操作管理员
-    self.operAdmin = function (formData) {
+    self.operAdmin = function (formData, cb) {
         var url = '/api/admin/operAdmin';
-            return $http({
+        return $http({
             method: 'POST',
             url: url,
             params: formData,
@@ -265,8 +269,9 @@ module.service('userData', function ($http, $state, SweetAlert) {
                 title: '正确',
                 text: '操作成功',
                 type: 'success'
+            }, function () {
+                cb && cb();
             });
-            $state.go('index.goodsList');
         }).error(function (res) {
             SweetAlert.swal({
                 title: '错误',
@@ -277,16 +282,20 @@ module.service('userData', function ($http, $state, SweetAlert) {
     }
     //管理员详情
     self.adminDetail = [];
-    self.getAdminDetail = function () {
+    self.getAdminDetail = function (id) {
         var url = '/api/admin/getAdminDetail';
         return $http({
             method: 'GET',
             url: url,
+            params: {
+                adminId: id
+            },
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
-            return angular.copy(data.data.adminDetail, self.adminDetail);
+            console.log(data)
+            return angular.copy(data.data.adminDetail[0], self.adminDetail);
         }).error(function (res) {
             return console.log('ERROR: ' + res);
         })
@@ -300,26 +309,18 @@ module.service('userData', function ($http, $state, SweetAlert) {
             method: 'GET',
             url: url,
             params: {
-                userId:id
+                userId: id
             },
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
             return angular.copy(data.data.userDetail, self.userDetail);
-            console.log('userDetail',self.userDetail)
+            console.log('userDetail', self.userDetail)
         }).error(function (res) {
             return console.log('ERROR: ' + res);
         })
     }
-
-
-
-
-
-
-
-
 
 
 })

@@ -4,7 +4,8 @@ var app = angular.module('app', [
     'oitozero.ngSweetAlert',
     'productCtrl',
     'userCtrl',
-    'spreadCtrl'
+    'spreadCtrl',
+    'directive'
 ])
 
 app.run(['$rootScope',function ($rootScope) {
@@ -60,11 +61,20 @@ app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
         })
         .state('index.adminUserList', {
             url: 'index/adminUserList/:id',
-            templateUrl: 'src/views/user/adminUserList.html'
+            templateUrl: 'src/views/user/adminUserList.html',
+            cache:false
         })
         .state('index.adminUserInfo', {
             url: 'index/adminUserInfo/:id',
             templateUrl: 'src/views/user/adminUserInfo.html'
+        })
+        .state('index.addAdmin', {
+            url: 'index/addAdmin',
+            templateUrl: 'src/views/user/addAdmin.html'
+        })
+        .state('index.editAdmin',{
+            url:'index/editAdmin/:id',
+            templateUrl:'src/views/user/editAdmin.html'
         })
         .state('index.userList', {
             url: 'index/userList',
@@ -90,6 +100,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             url: 'index/userRankInfo',
             templateUrl: 'src/views/user/userRankInfo.html'
         })
+
+
+
+
         .state('index.productList', {
             url: 'index/productList/:page',
             templateUrl: 'src/views/product/productList.html'

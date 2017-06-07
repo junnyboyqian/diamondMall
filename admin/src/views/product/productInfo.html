@@ -46,6 +46,21 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品类别: </label>
+
+                    <div class="col-sm-9 fix-input">
+                        <label>
+                            <input type="radio" name="gtype" ng-model="goodsInfo.gtype" ng-value="1" ng-checked="goodsInfo.gType === '1'">
+                            <span>珠宝成品</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="gtype" ng-model="goodsInfo.gtype" ng-value="2" ng-checked="goodsInfo.gType === '2'">
+                            <span>珠宝定制</span>
+                        </label>
+
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品编号: </label>
 
                     <div class="col-sm-9">
@@ -65,6 +80,44 @@
                     <div class="col-sm-9">
                         <input type="text"  id="form-field-4" placeholder="销售价格" class="col-xs-10 col-sm-5" value="" ng-model="goodsInfo.price">
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 主钻重量: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" step="0.01" id="form-field-4" placeholder="主钻重量" class="col-xs-10 col-sm-5" value="" ng-model="goodsInfo.zdiaWeight">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 副钻重量: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" step="0.01" id="form-field-4" placeholder="副钻重量" class="col-xs-10 col-sm-5" value="" ng-model="goodsInfo.fdiaWeight">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 总重: </label>
+
+                    <div class="col-sm-9">
+                        <input type="text" step="0.01" id="form-field-4" placeholder="总重" class="col-xs-10 col-sm-5" value="" ng-model="goodsInfo.goodsWeight">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 是否现货: </label>
+
+                    <div class="col-sm-9 fix-input">
+                        <label>
+                            <input type="radio" name="isSpot" ng-model="goodsInfo.isSpot" ng-value="1">
+                            <span>是</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="isSpot" ng-model="goodsInfo.isSpot" ng-value="0">
+                            <span>否</span>
+                        </label>
+                    </div>
+
+
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品库存: </label>
@@ -184,34 +237,34 @@
                     </div>
                 </div>
 
-                <!--<div class="form-group">-->
-                    <!--<label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品抛光: </label>-->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品抛光: </label>
 
-                    <!--<div class="col-sm-9">-->
-                        <!--<select class="" name="polish"-->
-                                <!--ng-model="goodsInfo.diaQg"-->
-                                <!--&gt;-->
-                            <!--<option value="EX">EX</option>-->
-                            <!--<option value="VG">VG</option>-->
-                            <!--<option value="G">G</option>-->
-                            <!--<option value="Fair">Fair</option>-->
-                        <!--</select>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 对称: </label>-->
+                    <div class="col-sm-9">
+                        <select class="" name="polish"
+                                ng-model="goodsInfo.diaQg"
+                                >
+                            <option value="EX" ng-selected="goodsInfo.diaQg === 'EX'">EX</option>
+                            <option value="VG" ng-selected="goodsInfo.diaQg === 'VG'">VG</option>
+                            <option value="G" ng-selected="goodsInfo.diaQg === 'G'">G</option>
+                            <option value="Fair"  ng-selected="goodsInfo.diaQg === 'Fair'">Fair</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 对称: </label>
 
-                    <!--<div class="col-sm-9">-->
-                        <!--<select class="" name="symmetry"-->
-                                <!--ng-model="goodsInfo.symmetry"-->
-                                <!--&gt;-->
-                            <!--<option value="EX">EX</option>-->
-                            <!--<option value="VG">VG</option>-->
-                            <!--<option value="G">G</option>-->
-                            <!--<option value="Fair">Fair</option>-->
-                        <!--</select>-->
-                    <!--</div>-->
-                <!--</div>-->
+                    <div class="col-sm-9">
+                        <select class="" name="symmetry"
+                                ng-model="goodsInfo.symmetry"
+                                >
+                            <option value="EX" ng-selected="goodsInfo.symmetry === 'EX'">EX</option>
+                            <option value="VG" ng-selected="goodsInfo.symmetry === 'VG'">VG</option>
+                            <option value="G" ng-selected="goodsInfo.symmetry === 'G'">G</option>
+                            <option value="Fair" ng-selected="goodsInfo.symmetry === 'Fair'">Fair</option>
+                        </select>
+                    </div>
+                </div>
 
 
                 <div class="form-group">

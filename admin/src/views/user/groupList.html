@@ -41,7 +41,7 @@
                         <th>管理组id</th>
                         <th>管理组名称</th>
                         <th class="hidden-480">管理组状态</th>
-
+                        <th>是否业务员</th>
                         <th>
                             备注
                         </th>
@@ -60,11 +60,13 @@
                             <span ng-show="item.status == 1">正常</span>
                             <span ng-show="item.status == 2">关闭</span>
                         </td>
+                        <td align="center">
+                            {{item.isYwy? '是':'否'}}
+                        </td>
                         <td align="center">{{item.remark}}</td>
 
                         <td class="hidden-480" align="center">
-                            <a ui-sref="index.groupInfo({id: item.id})">分配权限</a>
-                            <a ui-sref="index.adminUserList({id: item.id})">下级管理员</a>
+                            <a ui-sref="index.groupInfo({id: item.id})">编辑</a>
                             <a ui-sref="index.groupInfo">删除</a>
                         </td>
                     </tr>
