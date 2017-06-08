@@ -105,6 +105,22 @@ module.service('proData', function ($http, $state, SweetAlert) {
             return console.log('ERROR: ' + res);
         })
     };
+    // 获取单个产品系列
+    self.goodsSeries = [];
+    self.getGoodsSeriesById = function (id) {
+        var url = '/api/admin/goodsSeriesList';
+        return $http({
+            method: 'GET',
+            url: url,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function (data) {
+            return angular.copy(data.data.goodsSeriesList, self.goodsSeriesList);
+        }).error(function (res) {
+            return console.log('ERROR: ' + res);
+        })
+    };
     // 产品分类
     self.productCatLits = [];
     self.getProductCatLits = function () {
@@ -205,6 +221,31 @@ module.service('proData', function ($http, $state, SweetAlert) {
     }
 
     //上传商品图片
+    self.uploadZshImg = function (file, cb) {
+        var url = '/api/admin/uploadZshImage';
+        var data = new FormData();
+        console.log(file);
+        data.append('imageUrl', file);
+        return $http({
+            method: "POST",
+            url: url,
+            data: data,
+            headers: {
+                "Content-Type": undefined
+            }
+        }).success(function (data) {
+            console.log('filedata', data);
+            if (data.code === '10000') {
+                cb && cb(data)
+            } else {
+                cb && cb('error')
+            }
+        }).error(function (err) {
+            cb && cb('error')
+
+        })
+    }
+    //上传商品图片
     self.uploadGoodsImg = function (file, cb) {
         var url = '/api/admin/uploadGoodsImage';
         var data = new FormData();
@@ -253,100 +294,6 @@ module.service('proData', function ($http, $state, SweetAlert) {
         })
     }
 
-
-    //uploadImg
-    self.goodsImages = [];
-    self.tryThumb = '';
-    self.uploadImg = function (type, formData, cb) {
-        var url = '';
-        if (type === 'addProduct') {
-            var count = 0;
-            var result = 'succ';
-            url = '/api/admin/uploadGoodsImage';
-            for (var i = 0; i < formData.length; i++) {
-                var data = new FormData();
-                data.append('imageUrl', formData[i]);
-                $http({
-                    method: 'POST',
-                    url: url,
-                    data: data,
-                    headers: {
-                        'Content-Type': undefined
-                    }
-                }).success(function (data) {
-                    count++;
-                    self.goodsImages.push(data.data.fileurl);
-                    console.log(count, data);
-                    if (count >= formData.length && result === 'succ') {
-                        cb && cb();
-                    }
-                }).error(function (res) {
-                    count++;
-                    result = 'fail';
-                    if (count >= formData.length && result === 'fail') {
-                        SweetAlert.swal({
-                            title: '错误',
-                            text: '图片上传失败',
-                            type: 'error'
-                        });
-                    }
-                })
-
-
-            }
-
-        } else if (type === 'uploadGoodsTry') {
-            var data = new FormData();
-            url = '/api/admin/uploadGoodsTryThumb';
-            data.append('tryThumb', formData);
-            return $http({
-                method: 'POST',
-                url: url,
-                data: data,
-                headers: {
-                    'Content-Type': undefined
-                }
-            }).success(function (data) {
-                // SweetAlert.swal({
-                //     title: '正确',
-                //     text: '添加图片成功',
-                //     type: 'success'
-                // });
-                self.tryThumb = data.data.fileurl;
-                console.log(type, data);
-                cb && cb();
-            }).error(function (res) {
-                SweetAlert.swal({
-                    title: '错误',
-                    text: '图片上传失败',
-                    type: 'error'
-                });
-            })
-        }
-
-        // return $http({
-        //     method: 'POST',
-        //     url: url,
-        //     data: data,
-        //     headers: {
-        //         'Content-Type': undefined
-        //     }
-        // }).success(function (data) {
-        //     SweetAlert.swal({
-        //         title: '正确',
-        //         text: '添加图片成功',
-        //         type: 'success'
-        //     });
-        //     console.log(type,data)
-        //     // $state.go('index.productList');
-        // }).error(function (res) {
-        //     SweetAlert.swal({
-        //         title: '错误',
-        //         text: '图片上传失败',
-        //         type: 'error'
-        //     });
-        // })
-    };
 
     //uploadVideo
     self.uploadVideo = function (type, formData) {

@@ -29,7 +29,7 @@
     </div>
     <!-- /.page-header -->
     <div class="page-header">
-        <a ui-sref="index.addGroup" class="btn btn-primary">添加管理组</a>
+        <a ui-sref="index.addAdminGroup" class="btn btn-primary">添加管理组</a>
     </div>
     <!-- /.page-header -->
 
@@ -67,7 +67,7 @@
 
                         <td class="hidden-480" align="center">
                             <a ui-sref="index.groupInfo({id: item.id})">编辑</a>
-                            <a ui-sref="index.groupInfo">删除</a>
+                            <a ng-click="deleteAdminGroup(item.id)">删除</a>
                         </td>
                     </tr>
                 </tbody>

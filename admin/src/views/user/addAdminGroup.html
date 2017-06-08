@@ -27,15 +27,15 @@
                         </small>
                         <small>
                             <i class="ace-icon fa fa-angle-double-right"></i>
-                            分配权限
+                            添加管理员组
                         </small>
                     </h1>
     </div>
     <!-- /.page-header -->
 
-    <div class="row" ng-controller="operAdminGroupCtrl">
+    <div class="row" ng-controller="addAdminGroupCtrl">
         <div class="col-xs-12">
-            <form class="form-horizontal" role="form" ng-submit="processForm()">
+            <form class="form-horizontal" role="form" ng-submit="submitForm()">
                 <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 管理组名称： </label>
 
@@ -86,7 +86,7 @@
                                     <div class="widget-main">
                                         <label ng-repeat="item in list.items">
                                             <input name="permission" type="checkbox" class="ace" value="{{item.id}}" 
-                                                ng-model="formData.permission[list.id][$index]">&nbsp;
+                                                ng-model="formData.permission[list.id][item.id]">&nbsp;
                                             <span class="lbl">{{item.perName}}</span>
                                         </label>
                                     </div>

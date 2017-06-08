@@ -61,8 +61,8 @@
                         <td align="center">{{item.status === '0'?'否':'是'}}</td>
                         <td align="center">{{item.chargeTotal || 0 | currency:'￥'}}</td>
                         <td class="hidden-480" align="center">
-                            <a ui-sref="index.userInfo({id:item.userId})">编辑</a>
-                            <a ui-sref="index.groupInfo({id: item.userId})">删除</a>
+                            <a ui-sref="index.editUser({id:item.userId})">编辑</a>
+                            <a ng-click="deleteUser(item.userId)">删除</a>
                             <a ui-sref="index.userAddList({id: item.userId})">收货地址</a>
                             <a ui-sref="index.userTrecord({id: item.userId})">交易记录</a>
                         </td>

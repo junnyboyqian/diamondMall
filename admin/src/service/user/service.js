@@ -22,8 +22,8 @@ module.service('userData', function ($http, $state, SweetAlert) {
             return console.log('ERROR: ' + res);
         })
     };
-    // 添加管理组权限
-    self.addOperAdminGroup = function (formData) {
+    // 操作管理组
+    self.operAdminGroup = function (formData) {
         var url = '/api/admin/operAdminGroup';
         return $http({
             method: 'POST',
@@ -33,12 +33,18 @@ module.service('userData', function ($http, $state, SweetAlert) {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
-            SweetAlert.swal({
-                title: '正确',
-                text: '添加成功',
-                type: 'success'
-            });
-            $state.go('index.user');
+            if(data.code === '10000'){
+                SweetAlert.swal({
+                    title: '正确',
+                    text: '添加成功',
+                    type: 'success'
+                },function () {
+                    $state.go('index.user',{},{reload:true});
+                });
+            }else{
+                console.log("ERROR",data.msg)
+            }
+
         }).error(function (res) {
             SweetAlert.swal({
                 title: '错误',
@@ -77,6 +83,9 @@ module.service('userData', function ($http, $state, SweetAlert) {
         })
     }
 
+
+
+
     //  管理员列表
     self.permissionList = [];
     self.getPermissionList = function () {
@@ -98,7 +107,6 @@ module.service('userData', function ($http, $state, SweetAlert) {
             return console.log('ERROR: ' + res);
         })
     };
-
     //  管理员列表
     self.adminList = [];
     self.getAdminList = function () {
@@ -119,141 +127,6 @@ module.service('userData', function ($http, $state, SweetAlert) {
             return console.log('ERROR: ' + res);
         })
     };
-
-
-    //  客户列表
-    self.userList = [];
-    self.getUserList = function () {
-        var url = '/api/admin/userList';
-        return $http({
-            method: 'GET',
-            url: url,
-            params: {
-                offset: '0',
-                count: '20'
-            },
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }).success(function (data) {
-            return angular.copy(data.data.userList, self.userList);
-        }).error(function (res) {
-            return console.log('ERROR: ' + res);
-        })
-    };
-    //  用户等级
-    self.userGroupList = [];
-    self.getUserGroupList = function () {
-        var url = '/api/admin/userGroupList';
-        return $http({
-            method: 'GET',
-            url: url,
-            params: {
-                offset: '0',
-                count: '20'
-            },
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }).success(function (data) {
-            return angular.copy(data.data.userGroupList, self.userGroupList);
-        }).error(function (res) {
-            return console.log('ERROR: ' + res);
-        })
-    };
-    //  添加证书
-    self.addZshList = function (formData) {
-        var url = '/api/admin/operZsh';
-        return $http({
-            method: 'POST',
-            url: url,
-            params: formData,
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }).success(function (data) {
-            SweetAlert.swal({
-                title: '正确',
-                text: '添加成功',
-                type: 'success'
-            });
-            $state.go('index.goodsList');
-        }).error(function (res) {
-            SweetAlert.swal({
-                title: '错误',
-                text: '请填写所有字段',
-                type: 'error'
-            });
-        })
-    };
-    // 产品列表
-    self.goodsList = [];
-    self.getGoodsList = function () {
-        var url = '/api/admin/goodsList';
-        return $http({
-            method: 'GET',
-            url: url,
-            params: {
-                offset: '0',
-                count: '20'
-            },
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }).success(function (data) {
-            return angular.copy(data.data.goodsList, self.goodsList);
-        }).error(function (res) {
-            return console.log('ERROR: ' + res);
-        })
-    };
-    // 产品属性
-    self.AttributeList = [];
-    self.getAttributeList = function () {
-        var url = '/api/goodsAttrList';
-        return $http({
-            method: 'GET',
-            url: url,
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }).success(function (data) {
-            return angular.copy(data.data.goodsAttrList, self.AttributeList);
-        }).error(function (res) {
-            return console.log('ERROR: ' + res);
-        })
-    }
-    // 产品系列
-    self.goodsSeriesList = [];
-    self.getGoodsSeriesList = function () {
-        var url = '/api/admin/goodsSeriesList';
-        return $http({
-            method: 'GET',
-            url: url,
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }).success(function (data) {
-            return angular.copy(data.data.goodsSeriesList, self.goodsSeriesList);
-        }).error(function (res) {
-            return console.log('ERROR: ' + res);
-        })
-    }
-    // 产品分类
-    self.productCatLits = [];
-    self.getProductCatList = function () {
-        var url = '/api/goodsCateListV1';
-        return $http({
-            method: 'GET',
-            url: url,
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }).success(function (data) {
-            return angular.copy(data.data.goodsCateList, self.productCatLits);
-        }).error(function (res) {
-            return console.log('ERROR: ' + res);
-        })
-    }
     //操作管理员
     self.operAdmin = function (formData, cb) {
         var url = '/api/admin/operAdmin';
@@ -265,19 +138,25 @@ module.service('userData', function ($http, $state, SweetAlert) {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
-            SweetAlert.swal({
-                title: '正确',
-                text: '操作成功',
-                type: 'success'
-            }, function () {
-                cb && cb();
-            });
+            if(data.code === '10000'){
+                SweetAlert.swal({
+                    title: '正确',
+                    text: '操作成功',
+                    type: 'success'
+                }, function () {
+                    cb && cb();
+                });
+            }else{
+                SweetAlert.swal({
+                    title: '错误',
+                    text: '请填写所有字段',
+                    type: 'error'
+                });
+                console.log('ERROR',data.msg)
+            }
+
         }).error(function (res) {
-            SweetAlert.swal({
-                title: '错误',
-                text: '请填写所有字段',
-                type: 'error'
-            });
+           console.log('ERROR',res)
         })
     }
     //管理员详情
@@ -301,6 +180,61 @@ module.service('userData', function ($http, $state, SweetAlert) {
         })
     }
 
+
+
+
+    //用户
+    self.userList = [];
+    self.getUserList = function () {
+        var url = '/api/admin/userList';
+        return $http({
+            method: 'GET',
+            url: url,
+            params: {
+                offset: '0',
+                count: '20'
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function (data) {
+            console.log('userList',data)
+            return angular.copy(data.data.userList, self.userList);
+        }).error(function (res) {
+            return console.log('ERROR: ' + res);
+        })
+    };
+    //  操作用户
+    self.operUser = function (formData, cb) {
+        var url = '/api/admin/operUser';
+        return $http({
+            method: 'POST',
+            url: url,
+            params: formData,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function (data) {
+            if(data.code === '10000'){
+                SweetAlert.swal({
+                    title: '正确',
+                    text: '操作成功',
+                    type: 'success'
+                }, function () {
+                    cb && cb();
+                });
+            }else{
+                SweetAlert.swal({
+                    title: '错误',
+                    text: '请填写所有字段',
+                    type: 'error'
+                });
+                console.log('ERROR',data.msg)
+            }
+        }).error(function (res) {
+            return console.log('ERROR: ' + res);
+        })
+    };
     //用户详情
     self.userDetail = [];
     self.getUserDetail = function (id) {
@@ -315,12 +249,75 @@ module.service('userData', function ($http, $state, SweetAlert) {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).success(function (data) {
-            return angular.copy(data.data.userDetail, self.userDetail);
-            console.log('userDetail', self.userDetail)
+            return angular.copy(data.data.userDetail[0], self.userDetail);
         }).error(function (res) {
             return console.log('ERROR: ' + res);
         })
     }
 
 
+    //用户组
+    //  用户等级
+    self.userGroupList = [];
+    self.getUserGroupList = function () {
+        var url = '/api/admin/userGroupList';
+        return $http({
+            method: 'GET',
+            url: url,
+            params: {
+                offset: '0',
+                count: '20'
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function (data) {
+            return angular.copy(data.data.userGroupList, self.userGroupList);
+        }).error(function (res) {
+            return console.log('ERROR: ' + res);
+        })
+    };
+    //  操作用户等级
+    self.operUserGroupList = function (formData, cb) {
+        var url = '/api/admin/operUserGroup';
+        return $http({
+            method: 'POST',
+            url: url,
+            params: formData,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function (data) {
+            if (data.code === '10000') {
+                cb && cb();
+            } else {
+                console.log('ERROR', data.msg)
+            }
+        }).error(function (res) {
+            return console.log('ERROR: ' + res);
+        })
+    };
+    //  获取单个等级
+    self.userGroupDetail = [];
+    self.getUserGroupById = function (id) {
+        var url = '/api/admin/getUserGroupDetail';
+        return $http({
+            method: 'GET',
+            url: url,
+            params: {
+                userGpId: id
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).success(function (data) {
+            if (data.code === '10000') {
+                return angular.copy(data.data.userGroupDetail[0], self.userGroupDetail);
+            } else {
+                return console.log('ERROR', data)
+            }
+        }).error(function (res) {
+            return console.log('ERROR: ' + res);
+        })
+    }
 })

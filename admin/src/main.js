@@ -9,9 +9,58 @@ var app = angular.module('app', [
 ])
 
 app.run(['$rootScope',function ($rootScope) {
-    $rootScope.seriesName = [
-
+    //对称
+    $rootScope._symmetry = [
+        {name:'EX',value:'EX'},
+        {name:'VG',value:'VG'},
+        {name:'G',value:'G'},
+        {name:'Fair',value:'Fair'},
     ];
+    //切工
+    $rootScope._diaQg = [
+        {name:'EX',value:'EX'},
+        {name:'VG',value:'VG'},
+        {name:'G',value:'G'},
+        {name:'Fair',value:'Fair'},
+    ];
+    //paoguang
+    $rootScope._diaPg = [
+        {name:'EX',value:'EX'},
+        {name:'VG',value:'VG'},
+        {name:'G',value:'G'},
+        {name:'Fair',value:'Fair'},
+    ];
+    //证书
+    $rootScope._certificate = [
+        {name:'GIA',value:'GIA'},
+        {name:'HRD',value:'HRD'},
+        {name:'IGI',value:'IGI'},
+        {name:'国检',value:'国检'},
+    ];
+    //净度
+    $rootScope._diaJd = [
+        {name:'FL',value:'FL'},
+        {name:'IF',value:'IF'},
+        {name:'WS1',value:'WS1'},
+        {name:'WS2',value:'WS2'},
+        {name:'VS1',value:'VS1'},
+        {name:'VS2',value:'VS2'},
+        {name:'SI1',value:'SI1'},
+        {name:'SI2',value:'SI2'},
+    ];
+    //形状
+    $rootScope._diaShape = [
+        {name:'圆形',value:'ROUND'},
+        {name:'椭圆',value:'OVAL'},
+        {name:'马眼',value:'MARQUIS'},
+        {name:'心形',value:'HEART'},
+        {name:'水滴',value:'PEAR'},
+        {name:'方形',value:'PRINCESS'},
+        {name:'祖母绿',value:'EMERALD'},
+        {name:'枕形',value:'CUSHION'},
+        {name:'蕾蒂恩',value:'RADIANT'},
+        {name:'梯方',value:'BAGUETTE'},
+    ]
 }])
 
 app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
@@ -55,9 +104,9 @@ app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             url: 'index/groupInfo/:id',
             templateUrl: 'src/views/user/groupInfo.html'
         })
-        .state('index.addGroup', {
-            url: 'index/addGroup',
-            templateUrl: 'src/views/user/addGroup.html'
+        .state('index.addAdminGroup', {
+            url: 'index/addAdminGroup',
+            templateUrl: 'src/views/user/addAdminGroup.html'
         })
         .state('index.adminUserList', {
             url: 'index/adminUserList/:id',
@@ -84,6 +133,16 @@ app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             url: 'index/userInfo/:id',
             templateUrl: 'src/views/user/userInfo.html'
         })
+        .state('index.addUser',{
+            url:'index/addUser',
+            templateUrl:'src/views/user/addUser.html',
+            controller:'addUserCtrl'
+        })
+        .state('index.editUser',{
+            url:'index/editUser/:id',
+            templateUrl:'src/views/user/editUser.html',
+            controller:'editUserCtrl'
+        })
         .state('index.userAddList', {
             url: 'index/userAddList',
             templateUrl: 'src/views/user/userAddList.html'
@@ -96,9 +155,15 @@ app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             url: 'index/userRank',
             templateUrl: 'src/views/user/userRank.html'
         })
-        .state('index.userRankInfo', {
-            url: 'index/userRankInfo',
-            templateUrl: 'src/views/user/userRankInfo.html'
+        .state('index.addUserRank', {
+            url: 'index/addUserRank',
+            templateUrl: 'src/views/user/addUserRank.html',
+            controller:'addUserRankCtrl'
+        })
+        .state('index.editUserRank', {
+            url: 'index/editUserRank/:id',
+            templateUrl: 'src/views/user/editUserRank.html',
+            controller:'editUserRankCtrl'
         })
 
 
@@ -126,7 +191,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
         })
         .state('index.goodsSeriesUpdate', {
             url: 'index/goodsSeriesUpdate',
-            templateUrl: 'src/views/product/goodsSeriesUpdate.html'
+            templateUrl: 'src/views/product/goodsSeriesUpdate.html',
+            controller:'editGoodsSeries'
         })
         .state('index.productInfo', {
             url: 'index/productInfo/:id',

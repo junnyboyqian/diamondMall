@@ -20,53 +20,55 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-                        用户
-                        <small>
-                            <i class="ace-icon fa fa-angle-double-right"></i>
-                            客户等级列表
-                        </small>
-                        <small>
-                            <i class="ace-icon fa fa-angle-double-right"></i>
-                            客户等级信息
-                        </small>
-                    </h1>
+            用户
+            <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                客户等级列表
+            </small>
+            <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                客户等级信息
+            </small>
+        </h1>
     </div>
     <!-- /.page-header -->
 
     <div class="row">
         <div class="col-xs-12">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" ng-submit="submitForm()">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 客户组名称:： </label>
+                    <label class="col-sm-2 control-label no-padding-right" > 客户组名称:</label>
 
                     <div class="col-sm-9">
-                        <input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" value="客户组名称:">
+                        <input type="text" placeholder="客户组名称" class="col-xs-10 col-sm-5" ng-model="userRankInfo.groupName">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 状态: </label>
+                    <label class="col-sm-2 control-label no-padding-right" > 客户组状态:</label>
+                    <div class="col-sm-9" style="padding-top:8px;">
 
-                    <div class="col-sm-9">
-                        <select class="" name="">
-                            <option value="" selected>开启</option>
-                            <option value="">关闭</option>
-                        </select>
+                        <input type="radio" name="status" ng-model="userRankInfo.status" ng-value="1">
+                        <span>正常</span>
+                        <input type="radio" name="status" ng-model="userRankInfo.status" ng-value="0">
+                        <span>正常</span>
                     </div>
+
+
+
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 备注： </label>
+                    <label class="col-sm-2 control-label no-padding-right" > 备注:</label>
 
                     <div class="col-sm-9">
-                        <textarea class="form-control" id="form-field-8" placeholder="Default Text"></textarea>
+                        <textarea class="form-control" id="form-field-8" placeholder="备注" ng-model="userRankInfo.remark"></textarea>
                     </div>
                 </div>
                 <div class="clearfix form-actions">
 					<div class="col-md-offset-1 col-md-9">
-						<button class="btn btn-info" type="button">
+						<button class="btn btn-info" type="submit">
 							<i class="ace-icon fa fa-check bigger-110"></i>
 							Submit
 						</button>
-
 						&nbsp; &nbsp; &nbsp;
 						<button class="btn" type="reset">
 							<i class="ace-icon fa fa-undo bigger-110"></i>
