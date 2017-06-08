@@ -50,10 +50,10 @@
                         <th>
                             <span ng-repeat="vitem in item.vals">{{vitem.attrVal}},</span>
                         </th>
-                        <td align="center">{{item.inputType}} </td>
+                        <td align="center">{{item.inputType === '1'?'单选属性':item.inputType === '2' ? '多选属性':'手填属性'}} </td>
                         <td align="center"> {{item.inputModel}}</td>
                         <td class="hidden-480" align="center">
-                            <!-- {{item.isSearch}} -->
+                            <input type="checkbox" ng-model="item.isSearch">
                         </td>
                     </tr>
                 </tbody>

@@ -44,6 +44,21 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品类别: </label>
+
+                    <div class="col-sm-9 fix-input">
+                        <label>
+                            <input type="radio" name="gtype" ng-model="formData.gtype" ng-value="1">
+                            <span>珠宝成品</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="gtype" ng-model="formData.gtype" ng-value="2">
+                            <span>珠宝定制</span>
+                        </label>
+
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品编号: </label>
 
                     <div class="col-sm-9">
@@ -65,6 +80,57 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 主钻数量: </label>
+
+                    <div class="col-sm-9">
+                        <input type="number" step="0.01" id="form-field-4" placeholder="主钻数量" class="col-xs-10 col-sm-5" value="" ng-model="formData.zdiaNum">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 副钻数量: </label>
+
+                    <div class="col-sm-9">
+                        <input type="number" step="0.01" id="form-field-4" placeholder="副钻数量" class="col-xs-10 col-sm-5" value="" ng-model="formData.fdiaNum">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 主钻重量: </label>
+
+                    <div class="col-sm-9">
+                        <input type="number" step="0.01" id="form-field-4" placeholder="主钻重量" class="col-xs-10 col-sm-5" value="" ng-model="formData.zdiaWeight">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 副钻重量: </label>
+
+                    <div class="col-sm-9">
+                        <input type="number" step="0.01" id="form-field-4" placeholder="副钻重量" class="col-xs-10 col-sm-5" value="" ng-model="formData.fdiaWeight">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 总重: </label>
+
+                    <div class="col-sm-9">
+                        <input type="number" step="0.01" id="form-field-4" placeholder="总重" class="col-xs-10 col-sm-5" value="" ng-model="formData.goodsWeight">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 是否现货: </label>
+
+                    <div class="col-sm-9 fix-input">
+                        <label>
+                            <input type="radio" name="isSpot" ng-model="formData.isSpot" ng-value="1">
+                            <span>是</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="isSpot" ng-model="formData.isSpot" ng-value="0">
+                            <span>否</span>
+                        </label>
+                    </div>
+
+
+                </div>
+                <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品库存: </label>
 
                     <div class="col-sm-9">
@@ -75,7 +141,7 @@
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 产品分类: </label>
 
                     <div class="col-sm-9">
-                        <select class="" name=""
+                        <select
                             ng-model="formData.cateId">
                             <option ng-repeat="item in productCatLits" value="{{item.cateId}}">{{item.cateName}}</option>
                         </select>
@@ -255,6 +321,9 @@
     }
     .file-drop-zone-title{
         padding:0;
+    }
+    .fix-input{
+        padding-top:7px;
     }
 
 </style>

@@ -1,1 +1,78 @@
-�����ӿ�
+通用：
+请求前缀 http://hzmozhi.com:85/api/
+code 10000  成功  其他失败(具体看msg)
+     50003  缺少accessToken
+     50004  accessToken已过期
+     50007  您的账号已在别处登陆！
+     50008  用户不存在
+     50005  accessToken无效
+
+订单状态
+
+10 针对货到付款而言，他的下一个状态是卖家已发货
+
+11 等待买家付款
+
+20 买家已付款，等待卖家发货
+
+30 卖家已发货
+
+40 交易成功
+
+50 退款
+
+0 交易已取消
+
+
+订单列表
+url：admin/orderList
+GET
+input:
+offset 、count
+output:
+orderList、total
+
+
+订单详情
+url：admin/orderDetail
+GET
+input:
+orderId
+output:
+orderInfo
+
+
+采购单列表
+url：admin/purchaseOrderList
+GET
+input:
+offset 、count
+output:
+purchaseOrderList、total
+
+
+发货单列表
+url：admin/shipOrderList
+GET
+input:
+offset 、count
+output:
+shipOrderList、total
+
+
+退货单列表
+url：admin/refundOrderList
+GET
+input:
+offset 、count
+output:
+refundOrderList、total
+
+
+评价管理
+url：admin/evaluationList
+GET
+input:
+offset 、count
+output:
+evaluationList、total

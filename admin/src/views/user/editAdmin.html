@@ -11,67 +11,69 @@
             <i class="ace-icon fa fa-home home-icon"></i>
             <a href="#">首页</a>
         </li>
-        <li class="active">产品</li>
+        <li class="active">用户</li>
     </ul>
     <!-- /.breadcrumb -->
 </div>
 
 <!-- /section:basics/content.breadcrumbs -->
 <div class="page-content">
-    <div class="page-header">
-        <h1>
-            产品
-            <small>
-                <i class="ace-icon fa fa-angle-double-right"></i>
-                产品系列
-            </small>
-            <small>
-                <i class="ace-icon fa fa-angle-double-right"></i>
-                编辑产品系列
-            </small>
-        </h1>
-    </div>
+    <bread-crumb title="用户" sub-title="管理员列表" end-title="编辑管理员"></bread-crumb>
     <!-- /.page-header -->
 
-    <div class="row" ng-controller="editGoodsSeriesCtrl">
+    <div class="row" ng-controller="editAdminCtrl">
         <div class="col-xs-12">
             <form class="form-horizontal" role="form" ng-submit="submitForm()">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" > 系列名称: </label>
+                    <label class="col-sm-2 control-label no-padding-right" > 账号: </label>
                     <div class="col-sm-9">
                         <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
-                               ng-model="formData.seriesName">
+                               ng-model="adminDetail.account">
                         <!--<span class="text-danger" ng-if="error.name"> {{error.name}}</span>-->
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" > 系列ID: </label>
+                    <label class="col-sm-2 control-label no-padding-right" > 昵称: </label>
                     <div class="col-sm-9">
                         <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
-                               ng-model="formData.seriesId">
+                               ng-model="adminDetail.nickname">
                         <!--<span class="text-danger" ng-if="error.name"> {{error.name}}</span>-->
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" > 首页显示: </label>
+                    <label class="col-sm-2 control-label no-padding-right" > 邮箱: </label>
                     <div class="col-sm-9">
+                        <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
+                               ng-model="adminDetail.email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" > 状态: </label>
+                    <div class="col-sm-9" style="padding-top:7px;">
                         <label>
-                            <input type="radio" name="homeShow" ng-model="formData.homeShow" ng-value="1">
-                            <span>是</span>
+                            <input type="radio" name="homeShow" ng-model="adminDetail.status" ng-value="1">
+                            <span>开启</span>
                         </label>
                         <label>
-                            <input type="radio" name="homeShow" ng-model="formData.homeShow" ng-value="0">
-                            <span>否</span>
+                            <input type="radio" name="homeShow" ng-model="adminDetail.status" ng-value="0">
+                            <span>关闭</span>
                         </label>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" > 分组: </label>
+                    <div class="col-sm-9">
+                        <select name="" id="" ng-model="adminDetail.groupId" style="width:40%;">
+                            <option ng-value="item.id" ng-repeat="item in adminGroupList" ng-selected="adminDetail.groupId === item.id">{{item.groupName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" > 备注: </label>
+                    <div class="col-sm-9">
+                        <textarea class='col-sm-9' name="remark" id="remark" rows="10" ng-model="adminDetail.remark">
+                        </textarea>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" > 系列图片: </label>
-                    <div class="col-sm-9">
-                        <input type="file" id="id-input-file-1" name="image_url"
-                               ng-model="formData.imageUrl"/>
-                        <p>注释：参考尺寸800*800px，等比例放大缩小，大小不得超过3M，支持jpg/png</p>
                     </div>
                 </div>
 
@@ -87,12 +89,7 @@
                         </button>
                     </div>
                 </div>
-
-
-
                 <!--old-->
-
-
             </form>
 
         </div>
@@ -107,21 +104,3 @@
 
 -->
 
-
-
-<script type="text/javascript">
-    $(function() {
-        $('#id-input-file-1').ace_file_input({
-            no_file: 'No File ...',
-            btn_choose: 'Choose',
-            btn_change: 'Change',
-            droppable: false,
-            onchange: null,
-            thumbnail: false //| true | large
-            // whitelist:'gif|png|jpg|jpeg'
-            //blacklist:'exe|php'
-            //onchange:''
-            //
-        });
-    })
-</script>

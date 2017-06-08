@@ -11,17 +11,6 @@ module.controller('addGoodsCtrl', function ($scope, proData, SweetAlert) {
     //  添加证书
     $scope.formData = {};
     $scope.formData.type = '1';
-    $scope.error = {
-        name: '',
-        certificate_number: '',
-        address: '',
-        jd: '',
-        dia_global_price: '',
-        stock: ''
-    };
-    $scope.checkInputError = function (code) {
-        // console.log($scope.formData.image_url)
-    };
     $scope.processForm = function () {
         var file = document.getElementById('id-input-file-3').files[0];
         var file1 = document.getElementById('id-input-file-4').files[0];
@@ -41,10 +30,29 @@ module.controller('addGoodsCtrl', function ($scope, proData, SweetAlert) {
             });
             return
         }
-        $scope.formData.image_url = file.name
-        $scope.formData.video_url = file1.name
-        var params = $scope.formData
-        proData.addZshList(params)
+        var total = 2;
+        var count = 0;
+        proData.uploadZshImg(file,function (data) {
+            if(data !== 'error'){
+                count ++;
+                $scope.formData.imageUrl = data.data.fileurl;
+                goSumbmit()
+            }
+        });
+        proData.uploadZshImg(file1,function (data) {
+            if(data !== 'error'){
+                count ++;
+                $scope.formData.videoUrl = data.data.fileurl;
+                goSumbmit()
+            }
+        });
+        function goSumbmit() {
+            if(count === total){
+                var params = $scope.formData;
+                console.log(params);
+                proData.addZshList(params)
+            }
+        }
     };
 })
 
@@ -62,12 +70,6 @@ module.controller('productAttributeListCtrl', function ($scope, proData) {
     console.log($scope.AttributeList)
 })
 
-module.controller('goodsSeriesListCtrl', function ($scope, proData) {
-    // 产品系列
-    proData.getGoodsSeriesList()
-    $scope.goodsSeriesList = proData.goodsSeriesList
-    console.log('goodsSeriesList', proData.goodsSeriesList)
-})
 
 // 产品分类
 module.controller('productCatLitsCtrl', function ($scope, proData) {
@@ -88,7 +90,7 @@ module.controller('productListCtrl', function ($scope, proData, $stateParams, $r
     $scope.goodsList = proData.goodsList;
 })
 
-module.controller('productInfoCtrl', function ($scope, proData, SweetAlert, $stateParams) {
+module.controller('productInfoCtrl', function ($scope, proData, SweetAlert, $stateParams,$state) {
     proData.getGoodsDetail($stateParams.id);
     $scope.goodsInfo = proData.goodsInfo;
 
@@ -121,10 +123,6 @@ module.controller('productInfoCtrl', function ($scope, proData, SweetAlert, $sta
         $scope.sendData = {};
         $scope.goodsInfo.description = $('#editor1').html()
 
-
-        $scope.goodsInfo.zdiaWeight = 1;
-        $scope.goodsInfo.fdiaWeight = 1;
-        $scope.goodsInfo.isSpot = 1;
         $scope.goodsInfo.imagesPath = '11';
 
         console.log(total);
@@ -166,8 +164,10 @@ module.controller('productInfoCtrl', function ($scope, proData, SweetAlert, $sta
             return result;
         }
 
+        var canSubmit = true;
         function goSubmit() {
-
+            if(canSubmit === false) return;
+            canSubmit = false;
             if (succ === false) {
                 SweetAlert.swal({
                     title: '错误',
@@ -181,10 +181,15 @@ module.controller('productInfoCtrl', function ($scope, proData, SweetAlert, $sta
                     sendImg.unshift($scope.goodsInfo.goodsImages[i].imageUrl.replace('http://hzmozhi.com:85/', ''))
                 }
                 $scope.sendData.defaultImage = sendImg[0];
-                $scope.sendData.tryThumb = $scope.sendData.tryThumb.replace('http://hzmozhi.com:85/', '');
+                $scope.sendData.tryThumb = $scope.sendData.tryThumb && $scope.sendData.tryThumb.replace('http://hzmozhi.com:85/', '');
                 console.log('final data', $scope.sendData);
                 $scope.sendData.goodsImages = angular.toJson(sendImg);
-                proData.addProduct($scope.sendData);
+                proData.addProduct($scope.sendData,function (data) {
+                    canSubmit = true;
+                    if(data !== 'error'){
+                        $state.go('index.productList', {page: 1});
+                    }
+                });
             }
         }
 
@@ -193,7 +198,7 @@ module.controller('productInfoCtrl', function ($scope, proData, SweetAlert, $sta
     console.log('goodsInfo', $scope.goodsInfo)
 })
 
-module.controller('addProductCtrl', function ($scope, proData, SweetAlert) {
+module.controller('addProductCtrl', function ($scope, proData, SweetAlert,$state) {
     // 获取分类
     proData.getProductCatLits()
     $scope.productCatLits = proData.productCatLits
@@ -203,7 +208,11 @@ module.controller('addProductCtrl', function ($scope, proData, SweetAlert) {
     $scope.checkInputError = function (code) {
         // console.log($scope.formData.image_url)
     };
+    var canSubmit = true;
     $scope.addProForm = function () {
+        if(!canSubmit)return;
+        canSubmit = false;
+
         var file1 = document.getElementById('id-input-file-1').files;
         var file2 = document.getElementById('id-input-file-2').files[0];
         var file3 = document.getElementById('id-input-file-3').files[0];
@@ -279,25 +288,14 @@ module.controller('addProductCtrl', function ($scope, proData, SweetAlert) {
                 $scope.formData.defaultImage = $scope.formData.goodsImages[0];
                 $scope.formData.goodsImages = angular.toJson($scope.formData.goodsImages);
                 var params = $scope.formData;
-                proData.addProduct(params);
+                proData.addProduct(params,function (data) {
+                    canSubmit = true;
+                    if(data !== 'error'){
+                        $state.go('index.productList', {page: 1});
+                    }
+                });
             }
         }
-
-
-
-        // proData.uploadImg('addProduct', file1, function () {
-        //     $scope.formData.goodsImages = angular.toJson(proData.goodsImages);
-        //     $scope.formData.defaultImage = proData.goodsImages[0];
-        //     proData.uploadImg('uploadGoodsTry', file2, function () {
-        //         $scope.formData.tryThumb = proData.tryThumb;
-        //         console.log('img array', $scope.formData.goodsImages);
-        //         console.log('try img', $scope.formData.tryThumb);
-        //         var params = $scope.formData;
-        //         proData.addProduct(params);
-        //     });
-        // });
-
-
     };
 })
 
@@ -325,7 +323,15 @@ module.controller('addGoodsSeriesCtrl',function ($scope, proData, SweetAlert) {
         }
     }
 
+})
 
 
+module.controller('goodsSeriesListCtrl', function ($scope, proData) {
+    // 产品系列
+    proData.getGoodsSeriesList()
+    $scope.goodsSeriesList = proData.goodsSeriesList
+    console.log('goodsSeriesList', proData.goodsSeriesList)
+})
+module.controller('editGoodsSeries',function ($scope,proData){
 
 })

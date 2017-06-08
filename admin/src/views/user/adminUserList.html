@@ -20,14 +20,17 @@
 <div class="page-content">
     <div class="page-header">
         <h1>
-                        用户
-                        <small>
-                            <i class="ace-icon fa fa-angle-double-right"></i>
-                            管理员列表
-                        </small>
-                    </h1>
+            用户
+            <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                管理员列表
+            </small>
+        </h1>
     </div>
     <!-- /.page-header -->
+    <div class="page-header">
+        <a ui-sref="index.addAdmin" class="btn btn-primary">添加管理员</a>
+    </div>
 
     <div class="row" ng-controller="adminListCtrl">
         <div class="col-xs-12">
@@ -56,15 +59,14 @@
                         <td align="center">{{item.account}}</td>
                         <td align="center" class="hidden-480">{{item.nickname}}</td>
                         <td align="center">
-                            <span ng-show="item.status == '1'">开启</span>
-                            <span ng-show="item.status == '2'">关闭</span>
+                            {{item.status | adminUserList_status}}
                         </td>
                         <td align="center">{{item.lastLoginTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                         <td align="center">{{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                         <td align="center">{{item.loginTimes}}</td>
                         <td class="hidden-480" align="center">
-                            <a ui-sref="index.adminUserInfo({id: item.id})">编辑</a>
-                            <a ui-sref="index.groupInfo(item.id)">删除</a>
+                            <a ui-sref="index.editAdmin({id:item.id})">编辑</a>
+                            <a ng-click="deleteAdmin(item.id)">删除</a>
                         </td>
                     </tr>
                 </tbody>
