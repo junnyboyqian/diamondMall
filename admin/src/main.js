@@ -5,10 +5,26 @@ var app = angular.module('app', [
     'productCtrl',
     'userCtrl',
     'spreadCtrl',
-    'directive'
+    'directive',
+    'orderCtrl',
 ])
 
 app.run(['$rootScope',function ($rootScope) {
+    $rootScope._loading = {
+        state : true,
+        title: '加载中...',
+        loading: function (title) {
+             this.state = true;
+             this.title = title;
+        },
+        finish:function () {
+            this.state = false;
+            this.title = '加载中...'
+        }
+
+    }
+
+
     //对称
     $rootScope._symmetry = [
         {name:'EX',value:'EX'},
@@ -230,4 +246,57 @@ app.config(function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             url: 'index/articleList',
             templateUrl: 'src/views/spread/articleList.html'
         })
+
+
+        .state('index.orderList',{
+            //订单列表
+            url:'index/orderList/:page',
+            templateUrl :'src/views/order/orderList.html',
+            controller:'orderListCtrl'
+        })
+        .state('index.addOrder',{
+            //添加订单
+            url:'index/addOrder',
+            templateUrl :'src/views/order/addOrder.html',
+            controller:'addOrderCtrl'
+        })
+        .state('index.orderDetail',{
+            //订单详情
+            url:'index/orderDetail/:id',
+            templateUrl :'src/views/order/orderDetail.html',
+            controller:'orderDetailCtrl'
+        })
+
+
+        .state('index.purchaseOrderList',{
+            //采购单列表
+            url:'index/purchaseOrderList/:page',
+            templateUrl :'src/views/order/purchaseOrderList.html',
+            controller:'purchaseOrderListCtrl'
+        })
+        .state('index.addPurchaseOrder',{
+            //添加采购单
+            url:'index/addPurchaseOrder',
+            templateUrl :'src/views/order/addPurchaseOrder.html',
+            controller:'addPurchaseOrderCtrl'
+        })
+        .state('index.shipOrderList',{
+            //发货单列表
+            url:'index/shipOrderList/:page',
+            templateUrl :'src/views/order/shipOrderList.html',
+            controller:'shipOrderListCtrl'
+        })
+        .state('index.refundOrderList',{
+            //退货单列表
+            url:'index/refundOrderList/:page',
+            templateUrl :'src/views/order/refundOrderList.html',
+            controller:'refundOrderListCtrl'
+        })
+        .state('index.evaluationList',{
+            //评价管理
+            url:'index/evaluationList/:page',
+            templateUrl :'src/views/order/evaluationList.html',
+            controller:'evaluationListCtrl'
+        })
+
 })
