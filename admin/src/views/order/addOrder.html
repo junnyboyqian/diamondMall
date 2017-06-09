@@ -1,0 +1,194 @@
+<!-- #section:basics/content.breadcrumbs -->
+<div class="breadcrumbs" id="breadcrumbs">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('breadcrumbs', 'fixed')
+        } catch (e) {}
+    </script>
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">首页</a>
+        </li>
+        <li class="active">产品</li>
+    </ul>
+    <!-- /.breadcrumb -->
+</div>
+
+<!-- /section:basics/content.breadcrumbs -->
+<div class="page-content">
+    <div class="page-header">
+        <break-crumb title="订单" subTitle="订单列表" endTitle=" 订单详情"></break-crumb>
+    </div>
+    <!-- /.page-header -->
+    <style>
+        #orderGoodsTable td{
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+    <div class="row">
+        <div class="col-xs-12">
+            <form class="form-horizontal" role="form" ng-submit="submitForm()">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" >订单编号: </label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
+                               ng-model="orderDetail.orderSn">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" >订单来源: </label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
+                               ng-model="orderDetail.consignee">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" >地址: </label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
+                               ng-model="orderDetail.address">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" >添加时间: </label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value="{{orderDetail.addTime | date:'yyyy-MM-dd HH:mm:ss'}}"
+                               ng-model="orderDetail.addTime" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" >地址: </label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
+                               ng-model="orderDetail.regionName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" >电话: </label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
+                               ng-model="orderDetail.mobile">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" >zipCode: </label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
+                               ng-model="orderDetail.zipcode">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" >tel: </label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
+                               ng-model="orderDetail.tel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" >payment: </label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
+                               ng-model="orderDetail.paymentId">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" >status: </label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
+                               ng-model="orderDetail.status">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" >产品金额: </label>
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="" class="col-xs-10 col-sm-5" name="name" value=""
+                               ng-model="orderDetail.goodsAmount">
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label class="col-sm-2 control-label no-padding-right" > 商品信息: </label>
+                    <div class="col-sm-9">
+                        <table class="table-bordered table-striped table" id="orderGoodsTable">
+                            <tr>
+                                <th>商品ID</th>
+                                <th>商品名称</th>
+                                <th>商品种类</th>
+                                <th>商品数量</th>
+                                <th>商品尺寸</th>
+                                <th>商品特点</th>
+                                <th>商品价格</th>
+                                <th>商品图片</th>
+                            </tr>
+                            <tr ng-repeat="item in orderDetail.goods">
+                                <td>{{item.goodsId}}</td>
+                                <td>{{item.goodsName}}</td>
+                                <td>{{item.type}}</td>
+                                <td>{{item.quantity}}</td>
+                                <td>{{item.ringSize}}</td>
+                                <td>{{item.specification}}</td>
+                                <td>{{item.price | currency:'¥'}}</td>
+                                <td><img ng-src="{{item.goodsImage}}" alt="" style="width:40px;height:40px;"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label no-padding-right" > 系列图片: </label>
+                    <div class="col-sm-9">
+                        <input type="file" id="id-input-file-1" name="image_url"
+                               ng-model="orderDetail.imageUrl"/>
+                        <p>注释：参考尺寸800*800px，等比例放大缩小，大小不得超过3M，支持jpg/png</p>
+                    </div>
+                </div>
+
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-1 col-md-9">
+                        <button class="btn btn-info" type="submit">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            提交
+                        </button> &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            重置
+                        </button>
+                    </div>
+                </div>
+                <!--old-->
+            </form>
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.page-content -->
+
+
+<!--api
+
+-->
+
+
+
+<script type="text/javascript">
+    $(function() {
+        $('#id-input-file-1').ace_file_input({
+            no_file: 'No File ...',
+            btn_choose: 'Choose',
+            btn_change: 'Change',
+            droppable: false,
+            onchange: null,
+            thumbnail: false //| true | large
+            // whitelist:'gif|png|jpg|jpeg'
+            //blacklist:'exe|php'
+            //onchange:''
+            //
+        });
+    })
+</script>
