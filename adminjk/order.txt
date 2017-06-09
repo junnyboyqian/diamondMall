@@ -24,6 +24,17 @@ code 10000  成功  其他失败(具体看msg)
 0 交易已取消
 
 
+卖家订单流程
+
+1.买家未付款 --- 取消订单 查看订单 status 11
+
+2.买家已付款 --- 发货(物流单号) 取消订单 查看订单 status 20
+
+3.卖家已发货 --- 修改单号 取消订单 查看订单 status 30
+
+4.买家确认收货(已完成)/退款 --- 查看订单 status 40(已完成) 50(退款)
+
+
 订单列表
 url：admin/orderList
 GET
@@ -40,6 +51,33 @@ input:
 orderId
 output:
 orderInfo
+
+
+发货
+url：admin/shipOrder
+GET
+input:
+orderId、invoiceNo(物流单号)
+output:
+10000
+
+
+修改物流单号
+url：admin/editInvoiceNo
+GET
+input:
+orderId、invoiceNo(物流单号)
+output:
+10000
+
+
+取消订单
+url：admin/cancelOrder
+GET
+input:
+orderId
+output:
+10000
 
 
 采购单列表
